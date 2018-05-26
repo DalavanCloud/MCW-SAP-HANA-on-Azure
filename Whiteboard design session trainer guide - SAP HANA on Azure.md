@@ -32,7 +32,6 @@ Microsoft and the trademarks listed at https://www.microsoft.com/en-us/legal/int
     - [Abstract and learning objectives](#abstract-and-learning-objectives)
     - [Step 1: Review the customer case study](#step-1--review-the-customer-case-study)
         - [Facilitator/subject matter expert (SME) presentation of customer case study](#facilitator-subject-matter-expert-sme-presentation-of-customer-case-study)
-        - [](#)
         - [Customer situation](#customer-situation)
         - [Customer needs](#customer-needs)
         - [Customer objections](#customer-objections)
@@ -188,8 +187,6 @@ Directions: With all participants in the session, the facilitator/SME presents a
 2.  Read all of the directions for Steps 1--3 in the Student guide.
 
 3.  As a table team, review the following customer case study.
-
-###  
 
 ### Customer situation
 
@@ -429,7 +426,7 @@ Timeframe: 15 minutes
 | High Availability of SAP HANA on Azure Virtual Machines (VMs) | <https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/sap-hana-high-availability/> |
 | HANA + NetWeaver HA on Azure VM | <https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/high-availability-guide-suse> |
 | Scripted HANA deployment | <https://github.com/AzureCAT-GSI/SAP-HANA-ARM> |
-|
+
 
 # SAP HANA on Azure whiteboard design session trainer guide
 
