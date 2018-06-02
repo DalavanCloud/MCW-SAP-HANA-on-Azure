@@ -1,10 +1,17 @@
 ![](images/HeaderPic.png "Microsoft Cloud Workshops")
 
-# SAP HANA on Azure
+<div class="MCWHeader1">
+SAP HANA on Azure
+</div>
 
-## Hands-on lab step-by-step
+<div class="MCWHeader2">
+Hands-on lab step-by-step
+</div>
 
-## December 2017
+<div class="MCWHeader3">
+December 2017
+</div>
+
 
 Information in this document, including URL and other Internet Web site references, is subject to change without notice. Unless otherwise noted, the example companies, organizations, products, domain names, e-mail addresses, logos, people, places, and events depicted herein are fictitious, and no association with any real company, organization, product, domain name, e-mail address, logo, person, place or event is intended or should be inferred. Complying with all applicable copyright laws is the responsibility of the user. Without limiting the rights under copyright, no part of this document may be reproduced, stored in or introduced into a retrieval system, or transmitted in any form or by any means (electronic, mechanical, photocopying, recording, or otherwise), or for any purpose, without the express written permission of Microsoft Corporation.
 
@@ -15,61 +22,54 @@ The names of manufacturers, products, or URLs are provided for informational pur
 
 Microsoft and the trademarks listed at https://www.microsoft.com/en-us/legal/intellectualproperty/Trademarks/Usage/General.aspx are trademarks of the Microsoft group of companies. All other trademarks are property of their respective owners.
 
-## Contents
+**Contents**
 
 <!-- TOC -->
 
-- [SAP HANA on Azure](#sap-hana-on-azure)
-    - [Hands-on lab step-by-step](#hands-on-lab-step-by-step)
-    - [December 2017](#december-2017)
-    - [Contents](#contents)
 - [SAP HANA on Azure hands-on lab step-by-step](#sap-hana-on-azure-hands-on-lab-step-by-step)
     - [Abstract and learning objectives](#abstract-and-learning-objectives)
     - [Overview](#overview)
     - [Requirements](#requirements)
     - [Help references](#help-references)
-    - [Before the hands-on lab](#before-the-hands-on-lab)
-        - [Task 1: Validate the owner role membership in the Azure subscription](#task-1--validate-the-owner-role-membership-in-the-azure-subscription)
-        - [Task 2: Validate availability of the SUSE Linux Enterprise Server image](#task-2--validate-availability-of-the-suse-linux-enterprise-server-image)
-    - [Exercise 1: Provision Azure infrastructure](#exercise-1--provision-azure-infrastructure)
-        - [Task 1: Deploy an Azure virtual machine running Windows](#task-1--deploy-an-azure-virtual-machine-running-windows)
-        - [Task 2: Create a virtual network subnet for the HANA database tier](#task-2--create-a-virtual-network-subnet-for-the-hana-database-tier)
-        - [Task 3: Deploy an Azure Resource Manager QuickStart template](#task-3--deploy-an-azure-resource-manager-quickstart-template)
-        - [Task 4: Configure IP settings of Azure VMs running Linux](#task-4--configure-ip-settings-of-azure-vms-running-linux)
-        - [Task 5: Configure storage of Azure VMs](#task-5--configure-storage-of-azure-vms)
-    - [Exercise 2: Configure operating system on Azure VMs running Linux](#exercise-2--configure-operating-system-on-azure-vms-running-linux)
-        - [Task 1: Connect to Azure Linux VMs and register SUSE Linux Enterprise Server image](#task-1--connect-to-azure-linux-vms-and-register-suse-linux-enterprise-server-image)
-        - [Task 2: Add YaST packages, update the Linux operating system, and install HA Extensions](#task-2--add-yast-packages--update-the-linux-operating-system--and-install-ha-extensions)
-        - [Task 3: Enable cross-node password-less SSH access](#task-3--enable-cross-node-password-less-ssh-access)
-        - [Task 4: Configure storage](#task-4--configure-storage)
-        - [Task 5: Configure name resolution](#task-5--configure-name-resolution)
-    - [Exercise 3: Configure clustering on Azure VMs running Linux](#exercise-3--configure-clustering-on-azure-vms-running-linux)
-        - [Task 1: Configure clustering](#task-1--configure-clustering)
-        - [Task 2: Configure corosync](#task-2--configure-corosync)
-    - [Exercise 4: Install SAP HANA](#exercise-4--install-sap-hana)
-        - [Task 1: Copy installation media to Linux VMs](#task-1--copy-installation-media-to-linux-vms)
-        - [Task 2: Run hdblcm on both Linux VMs](#task-2--run-hdblcm-on-both-linux-vms)
-    - [Exercise 5: Configure SAP HANA replication](#exercise-5--configure-sap-hana-replication)
-        - [Task 1: Create HANA DATA ADMIN user account](#task-1--create-hana-data-admin-user-account)
-        - [Task 2: Configure keystore and perform a backup](#task-2--configure-keystore-and-perform-a-backup)
-        - [Task 3: Create the primary and the secondary sites](#task-3--create-the-primary-and-the-secondary-sites)
-    - [Exercise 6: Configure cluster framework](#exercise-6--configure-cluster-framework)
-        - [Task 1: Configure STONITH clustering options](#task-1--configure-stonith-clustering-options)
-        - [Task 2: Create an Azure AD application for the STONITH device](#task-2--create-an-azure-ad-application-for-the-stonith-device)
-        - [Task 3: Grant permissions to Azure VMs to the service principal of the STONITH app](#task-3--grant-permissions-to-azure-vms-to-the-service-principal-of-the-stonith-app)
-        - [Task 4: Configure the STONITH cluster device](#task-4--configure-the-stonith-cluster-device)
-        - [Task 5: Create SAPHanaTopology cluster resource agent](#task-5--create-saphanatopology-cluster-resource-agent)
-        - [Task 6: Create SAPHana cluster resource agent](#task-6--create-saphana-cluster-resource-agent)
-    - [Exercise 7: Test the deployment](#exercise-7--test-the-deployment)
-        - [Task 1: Install SAP HANA Studio Administration on the Azure VM running Windows](#task-1--install-sap-hana-studio-administration-on-the-azure-vm-running-windows)
-        - [Task 2: Modify Azure Internal Load Balancer configuration](#task-2--modify-azure-internal-load-balancer-configuration)
-        - [Task 3: Connect to HANA cluster by using SAP HANA Studio Administration](#task-3--connect-to-hana-cluster-by-using-sap-hana-studio-administration)
-        - [Task 4: Connect to HANA cluster by using Hawk](#task-4--connect-to-hana-cluster-by-using-hawk)
-        - [Task 5: Test a manual failover (from s03-db-0 to s03-db-1)](#task-5--test-a-manual-failover-from-s03-db-0-to-s03-db-1)
-        - [Task 6: Test a migration (from s03-db-1 to s03-db-0)](#task-6--test-a-migration-from-s03-db-1-to-s03-db-0)
-        - [Task 7: Test fencing](#task-7--test-fencing)
+    - [Exercise 1: Provision Azure infrastructure](#exercise-1-provision-azure-infrastructure)
+        - [Task 1: Deploy an Azure virtual machine running Windows](#task-1-deploy-an-azure-virtual-machine-running-windows)
+        - [Task 2: Create a virtual network subnet for the HANA database tier](#task-2-create-a-virtual-network-subnet-for-the-hana-database-tier)
+        - [Task 3: Deploy an Azure Resource Manager QuickStart template](#task-3-deploy-an-azure-resource-manager-quickstart-template)
+        - [Task 4: Configure IP settings of Azure VMs running Linux](#task-4-configure-ip-settings-of-azure-vms-running-linux)
+        - [Task 5: Configure storage of Azure VMs](#task-5-configure-storage-of-azure-vms)
+    - [Exercise 2: Configure operating system on Azure VMs running Linux](#exercise-2-configure-operating-system-on-azure-vms-running-linux)
+        - [Task 1: Connect to Azure Linux VMs and register SUSE Linux Enterprise Server image](#task-1-connect-to-azure-linux-vms-and-register-suse-linux-enterprise-server-image)
+        - [Task 2: Add YaST packages, update the Linux operating system, and install HA Extensions](#task-2-add-yast-packages-update-the-linux-operating-system-and-install-ha-extensions)
+        - [Task 3: Enable cross-node password-less SSH access](#task-3-enable-cross-node-password-less-ssh-access)
+        - [Task 4: Configure storage](#task-4-configure-storage)
+        - [Task 5: Configure name resolution](#task-5-configure-name-resolution)
+    - [Exercise 3: Configure clustering on Azure VMs running Linux](#exercise-3-configure-clustering-on-azure-vms-running-linux)
+        - [Task 1: Configure clustering](#task-1-configure-clustering)
+        - [Task 2: Configure corosync](#task-2-configure-corosync)
+    - [Exercise 4: Install SAP HANA](#exercise-4-install-sap-hana)
+        - [Task 1: Copy installation media to Linux VMs](#task-1-copy-installation-media-to-linux-vms)
+        - [Task 2: Run hdblcm on both Linux VMs](#task-2-run-hdblcm-on-both-linux-vms)
+    - [Exercise 5: Configure SAP HANA replication](#exercise-5-configure-sap-hana-replication)
+        - [Task 1: Create HANA DATA ADMIN user account](#task-1-create-hana-data-admin-user-account)
+        - [Task 2: Configure keystore and perform a backup](#task-2-configure-keystore-and-perform-a-backup)
+        - [Task 3: Create the primary and the secondary sites](#task-3-create-the-primary-and-the-secondary-sites)
+    - [Exercise 6: Configure cluster framework](#exercise-6-configure-cluster-framework)
+        - [Task 1: Configure STONITH clustering options](#task-1-configure-stonith-clustering-options)
+        - [Task 2: Create an Azure AD application for the STONITH device](#task-2-create-an-azure-ad-application-for-the-stonith-device)
+        - [Task 3: Grant permissions to Azure VMs to the service principal of the STONITH app](#task-3-grant-permissions-to-azure-vms-to-the-service-principal-of-the-stonith-app)
+        - [Task 4: Configure the STONITH cluster device](#task-4-configure-the-stonith-cluster-device)
+        - [Task 5: Create SAPHanaTopology cluster resource agent](#task-5-create-saphanatopology-cluster-resource-agent)
+        - [Task 6: Create SAPHana cluster resource agent](#task-6-create-saphana-cluster-resource-agent)
+    - [Exercise 7: Test the deployment](#exercise-7-test-the-deployment)
+        - [Task 1: Install SAP HANA Studio Administration on the Azure VM running Windows](#task-1-install-sap-hana-studio-administration-on-the-azure-vm-running-windows)
+        - [Task 2: Modify Azure Internal Load Balancer configuration](#task-2-modify-azure-internal-load-balancer-configuration)
+        - [Task 3: Connect to HANA cluster by using SAP HANA Studio Administration](#task-3-connect-to-hana-cluster-by-using-sap-hana-studio-administration)
+        - [Task 4: Connect to HANA cluster by using Hawk](#task-4-connect-to-hana-cluster-by-using-hawk)
+        - [Task 5: Test a manual failover (from s03-db-0 to s03-db-1)](#task-5-test-a-manual-failover-from-s03-db-0-to-s03-db-1)
+        - [Task 6: Test a migration (from s03-db-1 to s03-db-0)](#task-6-test-a-migration-from-s03-db-1-to-s03-db-0)
+        - [Task 7: Test fencing](#task-7-test-fencing)
     - [After the Hands-on Lab](#after-the-hands-on-lab)
-        - [Task 1: Remove the resource group containing all Azure resources deployed in this lab](#task-1--remove-the-resource-group-containing-all-azure-resources-deployed-in-this-lab)
+        - [Task 1: Remove the resource group containing all Azure resources deployed in this lab](#task-1-remove-the-resource-group-containing-all-azure-resources-deployed-in-this-lab)
 
 <!-- /TOC -->
 
@@ -117,36 +117,6 @@ In this Hands-on Lab, you are working with Contoso to develop a process of imple
 | High Availability of SAP HANA on Azure Virtual Machines (VMs) | <https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/sap-hana-high-availability/> |
 |
 
-## Before the hands-on lab
-
-Duration: 10 minutes
-
-To complete this lab, you must verify your account has sufficient permissions to the Azure subscription that you intend to use to deploy Azure VMs. You also need to identify the availability of the SUSE Linux Enterprise Server image that you will use to deploy Azure VMs.
-
-### Task 1: Validate the owner role membership in the Azure subscription
-
-1.  Login to <http://portal.azure.com>, click on **More Services** and, in the service menu, click **Subscriptions**.
-
-2.  On the **Subscriptions** blade, click the name of the subscription you intend to use for this lab.
-
-3.  On the subscription blade, click **Access control (IAM)**.
-
-4.  Review the list of user accounts, and verify that your user account has the Owner role assigned to it
-
-### Task 2: Validate availability of the SUSE Linux Enterprise Server image 
-
-1.  In the Azure portal at <http://portal.azure.com>, click the **Cloud Shell** icon.
-
-    ![In the Azure Portal, the Cloud Shell icon is selected.](images/Hands-onlabstep-by-step-SAPHANAonAzureimages/media/image2.png "Azure Portal")
-
-2.  If prompted, in the **Welcome to Azure Cloud Shell** window, click **Bash (Linux)**.
-
-3.  If prompted, in the **You have no storage mounted** window, click **Create storage**.
-
-4.  Once the storage account gets provisioned, at the Bash prompt, run the following: where ***location*** designates the target Azure region that you intend to use for this lab (e.g. ***eastus2***), and verify the output includes an existing image:
-    ```
-    az vm image list --location location --publisher SUSE --offer SLES-SAP-BYOS --sku 12-SP3 --all --output table
-    ``` 
 
 ## Exercise 1: Provision Azure infrastructure
 
@@ -2364,14 +2334,15 @@ The template-based deployment of Azure components that form the SAP HANA infrast
 
 3.  To remediate this, switch to the SSH session on s03-db-1, and reconfigure the HANA instance as secondary by running the following sequence of commands:
 
-    -   **su -- s03adm** (switch to the s03adm security context)
-
-    -   **sapcontrol --nr 00 --function StopWait 600 10** (stop the HANA instance in case it is running)
-
-    -   **hdbnsutil -sr\_register \--remoteHost=s03-db-0 \--remoteInstance=00 \--replicationMode=sync \--name=SITE2** (register the local instance as secondary)
-
-    -   **exit** (switch back to the root)
     ```
+    su  s03adm (switch to the s03adm security context)
+
+    sapcontrol --nr 00 --function StopWait 600 10 (stop the HANA instance in case it is running)
+
+    hdbnsutil -sr\_register \--remoteHost=s03-db-0 \--remoteInstance=00 \--replicationMode=sync \--name=SITE2 (register the local instance as secondary)
+
+    exit (switch back to the root)
+   
      s03-db-1:~ # su - s03adm
 
      s03adm@s03-db-1:/usr/sap/S03/HDB00> sapcontrol -nr 00 -function StopWait 600 10
@@ -2467,16 +2438,17 @@ The template-based deployment of Azure components that form the SAP HANA infrast
 
 7.  Restart the SSH session to s03-db-0, and run the following commands in order to restore its operational status:
 
-    -   **su -- s03adm** (switch to the s03adm security context)
-
-    -   **sapcontrol --nr 00 --function StopWait 600 10** (stop the HANA instance in case it is running)
-
-    -   **hdbnsutil -sr\_register \--remoteHost=s03-db-1 \--remoteInstance=00 \--replicationMode=sync \--name=SITE1** (register the local instance as secondary)
-
-    -   **exit** (switch back to the root)
-
-    -   **crm resource cleanup msl\_SAPHana\_S03\_HDB00 s03-db-0** (clean up the failed state)
     ```
+    su s03adm (switch to the s03adm security context)
+
+    sapcontrol --nr 00 --function StopWait 600 10 (stop the HANA instance in case it is running)
+
+    hdbnsutil -sr\_register \--remoteHost=s03-db-1 \--remoteInstance=00 \--replicationMode=sync \--name=SITE1** (register the local instance as secondary)
+
+    exit(switch back to the root)
+
+    crm resource cleanup msl\_SAPHana\_S03\_HDB00 s03-db-0** (clean up the failed state)
+    
      s03-db-0:~ # su - s03adm
 
      s03adm@s03-db-0:/usr/sap/S03/HDB00> sapcontrol -nr 00 -function StopWait 600 10

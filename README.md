@@ -1,3 +1,43 @@
+# Abstract
+
+## Workshop
+
+
+
+
+## Whiteboard Design Session
+Architecting SAP HANA on Azure VMs
+
+Learning objectives:
+
+-   Design high availability for SAP HANA workloads on Azure VMs
+
+-   Design disaster recovery for SAP HANA workloads on Azure VMs
+
+## Hand-on Lab
+This Hands-on Lab guides you through implementation of a highly available SAP HANA deployment on Microsoft Azure virtual machines running SUSE Linux Enterprise Server. After its completion, students should be able to:
+
+-   Provision Azure infrastructure components necessary to support highly available SAP HANA deployments
+
+-   Configure Azure virtual machines to support highly available SAP HANA installations
+
+-   Implement SUSE Linux Enterprise clustering
+
+-   Install SAP HANA
+
+-   Configure SAP HANA system replication
+
+
+## Azure services and related products
+- SAP on Azure
+- SAP HANA
+- Azure VMs
+- Azure Active Directory
+- Azure Virtual Networks
+- Load Balancers
+- Failover Clustering
+
+
 
 # Contributing
 
@@ -13,19 +53,3 @@ This project has adopted the [Microsoft Open Source Code of Conduct](https://ope
 For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or
 contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
 
-# Legal Notices
-
-Microsoft and any contributors grant you a license to the Microsoft documentation and other content
-in this repository under the [Creative Commons Attribution 4.0 International Public License](https://creativecommons.org/licenses/by/4.0/legalcode),
-see the [LICENSE](LICENSE) file, and grant you a license to any code in the repository under the [MIT License](https://opensource.org/licenses/MIT), see the
-[LICENSE-CODE](LICENSE-CODE) file.
-
-Microsoft, Windows, Microsoft Azure and/or other Microsoft products and services referenced in the documentation
-may be either trademarks or registered trademarks of Microsoft in the United States and/or other countries.
-The licenses for this project do not grant you rights to use any Microsoft names, logos, or trademarks.
-Microsoft's general trademark guidelines can be found at http://go.microsoft.com/fwlink/?LinkID=254653.
-
-Privacy information can be found at https://privacy.microsoft.com/en-us/
-
-Microsoft and any contributors reserve all others rights, whether under their respective copyrights, patents,
-or trademarks, whether by implication, estoppel or otherwise.

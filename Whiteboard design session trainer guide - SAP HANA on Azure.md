@@ -1,10 +1,19 @@
 ![](images/HeaderPic.png "Microsoft Cloud Workshops")
 
-# SAP HANA on Azure
 
-## Whiteboard design session trainer guide
+<div class="MCWHeader1">
+SAP HANA on Azure
+</div>
 
-## December 2017
+<div class="MCWHeader2">
+ Whiteboard design session trainer guide
+</div>
+
+<div class="MCWHeader3">
+December 2017
+</div>
+
+
 
 Information in this document, including URL and other Internet Web site references, is subject to change without notice. Unless otherwise noted, the example companies, organizations, products, domain names, e-mail addresses, logos, people, places, and events depicted herein are fictitious, and no association with any real company, organization, product, domain name, e-mail address, logo, person, place or event is intended or should be inferred. Complying with all applicable copyright laws is the responsibility of the user. Without limiting the rights under copyright, no part of this document may be reproduced, stored in or introduced into a retrieval system, or transmitted in any form or by any means (electronic, mechanical, photocopying, recording, or otherwise), or for any purpose, without the express written permission of Microsoft Corporation.
 
@@ -15,36 +24,32 @@ The names of manufacturers, products, or URLs are provided for informational pur
 
 Microsoft and the trademarks listed at https://www.microsoft.com/en-us/legal/intellectualproperty/Trademarks/Usage/General.aspx are trademarks of the Microsoft group of companies. All other trademarks are property of their respective owners.
 
-## Contents 
+
+**Contents**
 
 <!-- TOC -->
 
-- [SAP HANA on Azure](#sap-hana-on-azure)
-    - [Whiteboard design session trainer guide](#whiteboard-design-session-trainer-guide)
-    - [December 2017](#december-2017)
-    - [Contents](#contents)
-    - [Trainer information](#trainer-information)
+- [Trainer information](#trainer-information)
     - [Role of the trainer](#role-of-the-trainer)
-        - [Whiteboard design session flow](#whiteboard-design-session-flow)
-        - [Before the whiteboard design session: How to prepare](#before-the-whiteboard-design-session--how-to-prepare)
-        - [During the whiteboard design session: Tips for an effective whiteboard design session](#during-the-whiteboard-design-session--tips-for-an-effective-whiteboard-design-session)
+    - [Whiteboard design session flow](#whiteboard-design-session-flow)
+    - [Before the whiteboard design session: How to prepare](#before-the-whiteboard-design-session-how-to-prepare)
+    - [During the whiteboard design session: Tips for an effective whiteboard design session](#during-the-whiteboard-design-session-tips-for-an-effective-whiteboard-design-session)
 - [SAP HANA on Azure whiteboard design session student guide](#sap-hana-on-azure-whiteboard-design-session-student-guide)
     - [Abstract and learning objectives](#abstract-and-learning-objectives)
-    - [Step 1: Review the customer case study](#step-1--review-the-customer-case-study)
-        - [Facilitator/subject matter expert (SME) presentation of customer case study](#facilitator-subject-matter-expert-sme-presentation-of-customer-case-study)
+    - [Step 1: Review the customer case study](#step-1-review-the-customer-case-study)
         - [Customer situation](#customer-situation)
         - [Customer needs](#customer-needs)
         - [Customer objections](#customer-objections)
         - [Infographic for common scenarios](#infographic-for-common-scenarios)
-    - [Step 2: Design a proof of concept solution](#step-2--design-a-proof-of-concept-solution)
-    - [Step 3: Present the solution](#step-3--present-the-solution)
+    - [Step 2: Design a proof of concept solution](#step-2-design-a-proof-of-concept-solution)
+    - [Step 3: Present the solution](#step-3-present-the-solution)
     - [Wrap-up](#wrap-up)
     - [Additional references](#additional-references)
 - [SAP HANA on Azure whiteboard design session trainer guide](#sap-hana-on-azure-whiteboard-design-session-trainer-guide)
-    - [Step 1: Review the customer case study](#step-1--review-the-customer-case-study)
-    - [Step 2: Design a proof of concept solution](#step-2--design-a-proof-of-concept-solution)
-    - [Step 3: Present the solution](#step-3--present-the-solution)
-    - [Wrap-up](#wrap-up)
+    - [Step 1: Review the customer case study](#step-1-review-the-customer-case-study-1)
+    - [Step 2: Design a proof of concept solution](#step-2-design-a-proof-of-concept-solution-1)
+    - [Step 3: Present the solution](#step-3-present-the-solution-1)
+    - [Wrap-up](#wrap-up-1)
     - [Preferred target audience](#preferred-target-audience)
     - [Preferred solution](#preferred-solution)
     - [Checklist of preferred objection handling](#checklist-of-preferred-objection-handling)
@@ -52,7 +57,7 @@ Microsoft and the trademarks listed at https://www.microsoft.com/en-us/legal/int
 
 <!-- /TOC -->
 
-## Trainer information
+# Trainer information
 
 Thank you for taking time to support the whiteboard design sessions as a trainer!
 
@@ -80,7 +85,7 @@ An amazing trainer:
 
 -   Effectively leads the feedback process.
 
-### Whiteboard design session flow 
+## Whiteboard design session flow 
 
 Each whiteboard design session uses the following flow:
 
@@ -120,7 +125,7 @@ Outcome: Present solution to your customer
 
 -   Review preferred solution
 
-### Before the whiteboard design session: How to prepare
+## Before the whiteboard design session: How to prepare
 
 Before conducting your first whiteboard design session:
 
@@ -134,7 +139,7 @@ Before conducting your first whiteboard design session:
 
 -   Make notes for later.
 
-### During the whiteboard design session: Tips for an effective whiteboard design session
+## During the whiteboard design session: Tips for an effective whiteboard design session
 
 **Refer to the Trainer guide** to stay on track and observe the timings.
 
@@ -170,23 +175,18 @@ Learning objectives:
 
 -   Design disaster recovery for SAP HANA workloads on Azure VMs
 
+
 ## Step 1: Review the customer case study 
 
-**Outcome**
+**Outcome** 
 
-Analyze your customer's needs.
+Analyze your customer’s needs.
+Time frame: 15 minutes 
+Directions: With all participants in the session, the facilitator/SME presents an overview of the customer case study along with technical tips. 
+1.  Meet your table participants and trainer 
+2.  Read all of the directions for steps 1–3 in the student guide 
+3.  As a table team, review the following customer case study
 
-### Facilitator/subject matter expert (SME) presentation of customer case study 
-
-Timeframe: 15 minutes
-
-Directions: With all participants in the session, the facilitator/SME presents an overview of the customer case study along with technical tips.
-
-1.  Meet your table participants and trainer.
-
-2.  Read all of the directions for Steps 1--3 in the Student guide.
-
-3.  As a table team, review the following customer case study.
 
 ### Customer situation
 
@@ -326,22 +326,18 @@ SAP Certified Azure VMs
 
 ## Step 2: Design a proof of concept solution
 
-**Outcome**
+**Outcome** 
+Design a solution and prepare to present the solution to the target customer audience in a 15-minute chalk-talk format. 
 
-Prepare to present a solution to the target customer audience in a 15-minute chalk-talk format.
-
-Timeframe: 60 minutes
+Time frame: 60 minutes
 
 **Business needs**
 
-Directions: With all participants at your table, answer the following questions and list the answers on a flip chart.
-
-1.  Who should you present this solution to? Who is your target customer audience? Who are the decision makers?
-
+Directions: With all participants at your table, answer the following questions and list the answers on a flip chart. 
+1.  Who should you present this solution to? Who is your target customer audience? Who are the decision makers? 
 2.  What customer business needs do you need to address with your solution?
 
-**Design**
-
+**Design** 
 Directions: With all participants at your table, respond to the following questions on a flip chart.
 
 *High-level solution architecture:*
@@ -374,47 +370,42 @@ Directions: With all participants at your table, respond to the following questi
 
 3.  What is the estimated cost of your solution with HA/DR?
 
+
 **Prepare**
 
-Directions: With all participants at your table:
+Directions: With all participants at your table: 
 
-1.  Identify any customer needs that are not addressed with the proposed solution.
+1.  Identify any customer needs that are not addressed with the proposed solution. 
+2.  Identify the benefits of your solution. 
+3.  Determine how you will respond to the customer’s objections. 
 
-2.  Identify the benefits of your solution.
+Prepare a 15-minute chalk-talk style presentation to the customer. 
 
-3.  Determine how you will respond to the customer's objections.
 
-Prepare a 15-minute chalk-talk style presentation to the customer.
 
 ## Step 3: Present the solution
 
 **Outcome**
-
+ 
 Present a solution to the target customer audience in a 15-minute chalk-talk format.
 
-**Presentation**
+Time frame: 30 minutes
 
-Timeframe: 30 minutes
+**Presentation** 
 
-**Directions**
-
+Directions:
 1.  Pair with another table.
-
 2.  One table is the Microsoft team and the other table is the customer.
-
 3.  The Microsoft team presents their proposed solution to the customer.
-
 4.  The customer makes one of the objections from the list of objections.
-
 5.  The Microsoft team responds to the objection.
+6.  The customer team gives feedback to the Microsoft team. 
+7.  Tables switch roles and repeat Steps 2–6.
 
-6.  The customer team gives feedback to the Microsoft team.
-
-7.  Tables switch roles and repeat Steps 2--6.
 
 ##  Wrap-up 
 
-Timeframe: 15 minutes
+Time frame: 15 minutes
 
 -   Tables reconvene with the larger group to hear a SME share the preferred solution for the case study.
 
