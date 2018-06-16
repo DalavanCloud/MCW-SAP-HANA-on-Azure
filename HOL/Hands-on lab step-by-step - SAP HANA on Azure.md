@@ -271,15 +271,15 @@ In this exercise, you will deploy Azure infrastructure prerequisites for impleme
 
 4.  On the **s03-nic-db-0 - IP configurations** blade, click **ipconfig1**.
 
-5.  On the **ipconfig1** blade, specify the following settings and click **Save** twice:
+5.  On the **ipconfig1** blade, specify the following settings and click **Save**:
 
-    -   Public IP address: **Enabled** *(note that in a production environment you would not expose a public IP address)*
+    -   Public IP address settings : **Enabled** (note that in a production environment you would not expose a public IP address)
 
-    -   IP address: **s03-pip-db-0**
+    -   Public IP address: create a new public IP address resource **s03-pip-db-0** of **Basic** SKU and **Static** assignment
 
-    -   **Assignment:** **Static**.
+    -   Private IP address settings assignment: **Static**.
 
-    -   IP address: **172.16.1.10**
+    -   Private IP address settings IP address: **172.16.1.10**
 
         ![The ipconfig blade displays with the previously defined settings.](images/Hands-onlabstep-by-step-SAPHANAonAzureimages/media/image4.png "ipconfig blade")
 
@@ -299,16 +299,16 @@ In this exercise, you will deploy Azure infrastructure prerequisites for impleme
 
 11. On the **s03-nic-db-1 - IP configurations** blade, click **ipconfig1**.
 
-12. On the **ipconfig1** blade, specify the following settings and click **Save** twice:
+12. On the **ipconfig1** blade, specify the following settings and click **Save**:
 
-    -   Public IP address: **Enabled** *(note that in a production environment you would not expose a public IP address)*
+    -   Public IP address settings : **Enabled** (note that in a production environment you would not expose a public IP address)
 
-    -   IP address: **s03-pip-db-1**
+    -   Public IP address: create a new public IP address resource **s03-pip-db-1** of **Basic** SKU and **Static** assignment
 
-    -   **Assignment:** **Static**.
+    -   Private IP address settings assignment: **Static**.
 
-    -   IP address: **172.16.1.11**
-
+    -   Private IP address settings IP address: **172.16.1.11**
+    
         ![The ipconfig blade displays with the previously defined settings.](images/Hands-onlabstep-by-step-SAPHANAonAzureimages/media/image6.png "ipconfig blade")
 
 13. In the Azure portal, navigate back to the **hana-s03-RG** resource group blade, and click **s03-db-1**.
@@ -319,111 +319,6 @@ In this exercise, you will deploy Azure infrastructure prerequisites for impleme
 
     ![In the Configuration blade, Assignment is Dynamic, and Idle timeout is 4 minutes.](images/Hands-onlabstep-by-step-SAPHANAonAzureimages/media/image7.png "Configuration blade")
 
-### Task 5: Configure storage of Azure VMs
-
-1.  In the Azure portal, navigate to the **hana-s03-RG** resource group blade.
-
-2.  On the **hana-s03-RG** resource group blade, in the list of resources, click **s03-db-0**
-
-3.  On the **s03-db-0** blade, click **Disks**.
-
-4.  On the **s03-db-0 -- Disks** blade, click **+ Add data disk**.
-
-5.  In the **NAME** column, in the drop-down list, select **Create disk**.
-
-6.  On the **Create managed disk** blade, specify the following settings, and click **Create**:
-
-    -   Name: **s03-db-0-data0**
-
-    -   Resource group: **hana-s03-RG**
-
-    -   Account type: **Premium (SSD)**
-
-    -   Source type: **None (empty disk)**
-
-    -   Size (GiB): **512**
-
-7.  Back on the **s03-db-0 -- Disks** blade, click **+ Add data disk**.
-
-8.  On the **Create managed disk** blade, specify the following settings, and click **Create**:
-
-    -   Name: **s03-db-0-data1**
-
-    -   Resource group: **hana-s03-RG**
-
-    -   Account type: **Premium (SSD)**
-
-    -   Source type: **None (empty disk)**
-
-    -   Size (GiB): **512**
-
-9.  Back on the **s03-db-0 -- Disks** blade, click **+ Add data disk**.
-
-10. On the **Create managed disk** blade, specify the following settings, and click **Create**:
-
-    -   Name: **s03-db-0-logs0**
-
-    -   Resource group: **hana-s03-RG**
-
-    -   Account type: **Premium (SSD)**
-
-    -   Source type: **None (empty disk)**
-
-    -   Size (GiB): **128**
-
-11. Back on the **s03-db-0 -- Disks** blade, in the **HOST CACHING** column for the first three disks to **Read-only**, and leave the fourth one with its default value of **None**.
-
-12. Now apply the same changes to **s03-db-1**. In the Azure portal, navigate to the **hana-s03-RG** resource group blade.
-
-13. On the **hana-s03-RG** resource group blade, in the list of resources, click **s03-db-1**
-
-14. On the **s03-db-1** blade, click **Disks**.
-
-15. On the **s03-db-1 -- Disks** blade, click **+ Add data disk**.
-
-16. In the **NAME** column, in the drop-down list, select **Create disk**.
-
-17. On the **Create managed disk** blade, specify the following settings, and click **Create**:
-
-    -   Name: **s03-db-1-data0**
-
-    -   Resource group: **hana-s03-RG**
-
-    -   Account type: **Premium (SSD)**
-
-    -   Source type: **None (empty disk)**
-
-    -   Size (GiB): **512**
-
-18. Back on the **s03-db-1 -- Disks** blade, click **+ Add data disk**.
-
-19. On the **Create managed disk** blade, specify the following settings, and click **Create**:
-
-    -   Name: **s03-db-1-data1**
-
-    -   Resource group: **hana-s03-RG**
-
-    -   Account type: **Premium (SSD)**
-
-    -   Source type: **None (empty disk)**
-
-    -   Size (GiB): **512**
-
-20. Back on the **s03-db-1 -- Disks** blade, click **+ Add data disk**.
-
-21. On the **Create managed disk** blade, specify the following settings, and click **Create**:
-
-    -   Name: **s03-db-1-logs0**
-
-    -   Resource group: **hana-s03-RG**
-
-    -   Account type: **Premium (SSD)**
-
-    -   Source type: **None (empty disk)**
-
-    -   Size (GiB): **128**
-
-22. Back on the **s03-db-1 -- Disks** blade, in the **HOST CACHING** column for the first three disks to **Read-only** and leave the fourth one with its default value of **None**.
 
 ## Exercise 2: Configure operating system on Azure VMs running Linux
 
@@ -433,7 +328,7 @@ In this exercise, you will configure operating system settings on Azure VMs runn
 
 ### Task 1: Connect to Azure Linux VMs and register SUSE Linux Enterprise Server image
 
-1.  On the lab computer, start the PuTTY client. In the **Host name (or IP address)** text box, type the fully qualified DNS domain name you assigned to the public IP address of the **s03-db-0** Azure VM in Task 4 of Exercise 1 Ensure the **SSH** option is selected, and click **Open**. This will start an SSH session to **s03-db-0**.
+1.  On the lab computer, start the PuTTY client. In the **Host name (or IP address)** text box, type the fully qualified DNS domain name you assigned to the public IP address of the **s03-db-0** Azure VM in Task 4 of Exercise 1. Ensure the **SSH** option is selected, and click **Open**. This will start an SSH session to **s03-db-0**.
 
     ![The PuTTY client dialog box displays with the previously defined settings.](images/Hands-onlabstep-by-step-SAPHANAonAzureimages/media/image8.png "PuTTY client dialog box")
 
@@ -441,7 +336,7 @@ In this exercise, you will configure operating system settings on Azure VMs runn
 
     ![The PuTTY Security Alert explains that the server\'s host key is not cached in the registry and asks if you want to continue connecting.](images/Hands-onlabstep-by-step-SAPHANAonAzureimages/media/image9.png "PuTTY Security Alert")
 
-3.  When prompted, login as **demouser** with the password **demo\@pass12**:
+3.  When prompted, login as **demouser** with the password **demo\@pass123**:
     ```
      login as: demouser
 
@@ -474,7 +369,7 @@ In this exercise, you will configure operating system settings on Azure VMs runn
      Have a lot of fun...
     ```
     
-4.  Elevate privileges by running **sudo --i** and, when prompted, providing the password for the demouser user account: 
+4.  Elevate privileges by running `sudo -i` and, when prompted, providing the password for the demouser user account: 
     ```
     demouser@s03-db-0:~> sudo -i
 
@@ -530,7 +425,7 @@ In this exercise, you will configure operating system settings on Azure VMs runn
     ![In the YaST Control Center, Accept is selected.](images/Hands-onlabstep-by-step-SAPHANAonAzureimages/media/image14.png "YaST Control Center")
 
 7.  On the **Automatic Changes** screen, click **OK**:
-
+aa
     ![The Automatic Changes screen displays, with OK selected.](images/Hands-onlabstep-by-step-SAPHANAonAzureimages/media/image15.png "Automatic Changes screen")
 
 8.  Once the installation has completed, click **Finish**:
@@ -541,7 +436,7 @@ In this exercise, you will configure operating system settings on Azure VMs runn
 
     ![Quit is selected in the YaST Control Center.](images/Hands-onlabstep-by-step-SAPHANAonAzureimages/media/image17.png "YaST Control Center")
 
-10. Update operating system by running zipper update. When prompted, press **y**:
+10. Update operating system by running `zypper update`. When prompted, press `y`:
     ```
      s03-db-0:~ # zypper update
 
@@ -630,7 +525,7 @@ In this exercise, you will configure operating system settings on Azure VMs runn
      (…)
      ```	
 
-11. Update HA extensions dependencies by running **zypper install sle-ha-release fence-agents**. When prompted, press **y**, read through the **SUSE End User License Agreement**, press **q**, type **yes** to agree with the terms of the license, and press **Enter**.
+11. Update HA extensions dependencies by running `zypper install sle-ha-release fence-agents`. When prompted, press `y`, read through the **SUSE End User License Agreement**, press `q`, type `yes` to agree with the terms of the license, and press **Enter**.
     ```
      s03-db-0:~ # zypper install sle-ha-release fence-agents
 
@@ -691,7 +586,7 @@ In this exercise, you will configure operating system settings on Azure VMs runn
 
 ### Task 3: Enable cross-node password-less SSH access 
 
-1.  From the SSH session on s03-db-0, generate passphrase-less SSH key by running **ssh-keygen --tdsa**. When prompted, press **Enter** three times and then run **cat /root/.ssh/id\_dsa.pub** to display the key.
+1.  From the SSH session on s03-db-0, generate passphrase-less SSH key by running `ssh-keygen -tdsa`. When prompted, press **Enter** three times and then run `cat /root/.ssh/id\_dsa.pub` to display the key.
     ```
      s03-db-0:~ # ssh-keygen -tdsa
 
@@ -742,13 +637,14 @@ In this exercise, you will configure operating system settings on Azure VMs runn
      ssh-dss AAAAB3NzaC1kc3MAAACBALZjoS47twSwRPzEeCFtCl2QH/Az5m7HC9tJPavdocjx0RG0CBDj qdLiQ7IKrEL0FnupoE7LtVYNxXWN8lO1fEEmi4pJxIknLtKC/UgnSmkmqeZznXPztVZUPoHABw4TX90z Wm9YvrnciAnsMIPUBCe0Kg2ZIo2Z1F3kWmCEw6fhAAAAFQCRunrR7MAH/9RzM57qijQ1El7ybQAAAIEA lHLIvJnwg8czZv5JXIIL6vOO+GRSHNWeCbcw6auBZpJQWIDJQnCdq6kEMYZUXnBcb5QAxYPMMfD9FedU mxxuUJznlh4mnko9V0J4imMl28C8e1Lsjkh9TgH6a7jfB1RDOa8+if0speP2IyDxTuSLexJat8yuzClc lB9LnHu1Ep8AAACAa4ZphhcaCQlELcQao2YKu3br+B56Lj+apafFimLNQeiRY5kZQbAlGtBAVPs5gLpi 3w1kGLzTR3W9WNNwFzw8qpknbQyqSSs0GJmUrwL3PATBkvPn5cUSY+q/ZumCg54a14ooMB00CMQ5Vhup IpHX66hwXbTD9ja+W8XXJXejs8E= root@s03-db-0
     ```
 
-2.  From the SSH session on s03-db-1, create the directory **/root/.ssh/**, and paste the key you generated on s03-db-0 to a new file **/root/.ssh/authorized\_keys**:
-
+2.  From the SSH session on s03-db-1, create a directory named **/root/.ssh/**, use the vi editor to create and open a file named **/root/.ssh/authorized\_keys**, paste the key you generated on s03-db-0, save your changes, and close the file (by pressing the **Escape** key, typing `:wq!`, and pressing the **Enter** key):
+    ```
      s03-db-1:~ # mkdir /root/.ssh
 
      s03-db-1:~ # vi /root/.ssh/authorized_keys
-
-3.  From the SSH session on s03-db-1, generate passphrase-less SSH key by running **ssh-keygen --tdsa**. When prompted, press **Enter** three times and then run **cat /root/.ssh/id\_dsa.pub** to display the key.
+    ```
+    
+3.  From the SSH session on s03-db-1, generate passphrase-less SSH key by running `ssh-keygen -tdsa`. When prompted, press **Enter** three times and then run `cat /root/.ssh/id\_dsa.pub` to display the key.
     ```
      s03-db-1:~ # ssh-keygen -tdsa
 
@@ -797,24 +693,24 @@ In this exercise, you will configure operating system settings on Azure VMs runn
      ssh-dss AAAAB3NzaC1kc3MAAACBAMe+HQgU6RFqBK/VjnMIfJ2Qu/ZzGo6zS/Oteb957shR/DjUQsaBy8UFelpXLLmsSJ6FFzHQnA4ri8lGW4/EugmD3536s1Vi6O+zIxaxJF+LNQnKo6xvueLWqQ9sARfKaQgnUrMUusIBY9cxGrsXc3Zfo68NaPPT5aa1JyYdEsENAAAAFQCzyh/ooTuZRqwRI5/T7tFOINhsLwAAAIEAlyG92i4h5KDAZ+ftDnVRZJhLlIg7rJf8kFojr87WQ4PpXnR/zEjI2+UCH2T6Orwdq8J9g7q9dtTO7QWy3Wt9eak5HQA4mpik5ai/u+ftZf0BLuCdDxWVryFhAFg8CO2GYVrWiqCCP7AIAKs56DqQRsUu6twU5MHJ8f//gUjX//8AAACBALuwqBbfEpG0lkLFuczIyWDoKLPZJwjocIYXeVOwdYNWJk/LdQ+D/hv91MJ8GzVhcLUlKFYyCiuRknIjuuOfaEzTuZ+T5Giqvl2xBjkX1ZVMnrBqJSUNXMclem6IVUn0X/M3GqcFrhi5Jk5at26nH46MaYusw0OMCdNynq2aicHt root@s03-db-1
     ```
 
-4.  From the SSH session on s03-db-0, paste the key you generated on s03-db-1 to a new file:**/root/.ssh/authorized\_keys**
+4.  From the SSH session on s03-db-0, use the vi editor to create and open a new file:**/root/.ssh/authorized\_keys**, paste the key you generated on s03-db-1 into it, save your changes, and close the file (by pressing the **Escape** key, typing `:wq!`, and pressing the **Enter** key):
     ```
-     s03-db-1:~ # vi /root/.ssh/authorized_keys
+     s03-db-0:~ # vi /root/.ssh/authorized_keys
     ```
 
 5.  From the SSH session on s03-db-0, edit **/etc/ssh/sshd\_config** file:
     ```
-     s03-db-1:~ # vi /root/.ssh/authorized_keys
+     s03-db-0:~ # vi /etc/ssh/sshd\_config
     ```
 
-6.  In the **/etc/ssh/sshd\_config** file, locate the **PermitRootLogin** and **AuthorizedKeysFile** entries, and configure them as follows:
+6.  In the **/etc/ssh/sshd\_config** file, locate the **PermitRootLogin** and **AuthorizedKeysFile** entries, and configure them as follows (remove the leading **#** character, if present):
     ```
      PermitRootLogin yes
 
      AuthorizedKeysFile      /root/.ssh/authorized_keys
      ```
 
-7.  Restart sshd daemon by running **systemctl restart sshd**:
+7.  Save your changes, close the file, and restart sshd daemon by running `systemctl restart sshd`:
     ```
      s03-db-0:/ # systemctl restart sshd
      ```
@@ -823,230 +719,32 @@ In this exercise, you will configure operating system settings on Azure VMs runn
 
 ### Task 4: Configure storage 
 
-1.  From the SSH session on s03-db-0, create physical volumes for all data disks by running:
-    
-    -   **pvcreate /dev/sdc**
-
-    -   **pvcreate /dev/sdd**
-
-    -   **pvcreate /dev/sde**
-
-    -   **pvcreate /dev/sdf**
-    ```
-     s03-db-0:~ # pvcreate /dev/sdc
-
-       Physical volume "/dev/sdc" successfully created
-
-     s03-db-0:~ # pvcreate /dev/sdd
-
-       Physical volume "/dev/sdd" successfully created
-
-    s03-db-0:~ # pvcreate /dev/sde
-       Physical volume "/dev/sde" successfully created
-
-     s03-db-0:~ # pvcreate /dev/sdf
-
-       Physical volume "/dev/sdf" successfully created
-    ```   
-
-2.  From the SSH session on s03-db-0, create volume groups by running:
-
-    -   **vgcreate vg\_hana\_shared /dev/sdc**
-
-    -   **vgcreate vg\_hana\_data /dev/sdd /dev/sde**
-
-    -   **vgcreate vg\_hana\_log /dev/sdf**
-    ```
-     s03-db-0:~ # vgcreate vg_hana_shared /dev/sdc
-
-       Volume group "vg_hana_shared" successfully created
-
-     s03-db-0:~ # vgcreate vg_hana_data /dev/sdd /dev/sde
-
-       Volume group "vg_hana_data" successfully created
-
-     s03-db-0:~ # vgcreate vg_hana_log /dev/sdf
-
-       Volume group "vg_hana_log" successfully created
-    ```
-
-3.  From the SSH session on s03-db-0, create logical volumes by running:
-
-    -   **lvcreate --l 100%FREE --n hana\_shared vg\_hana\_shared**
-
-    -   **lvcreate --l 100%FREE --n hana\_data vg\_hana\_data**
-
-    -   **lvcreate --l 100%FREE --n hana\_log vg\_hana\_log**
-
-    -   **mkfs.xfs /dev/vg\_hana\_shared/hana\_shared**
-
-    -   **mkfs.xfs /dev/vg\_hana\_data/hana\_data**
-
-    -   **mkfs.xfs /dev/vg\_hana\_log/hana\_log**
-    ```
-     s03-db-0:~ # lvcreate -l 100%FREE -n hana_shared vg_hana_shared
-
-       Logical volume "hana_shared" created.
-
-     s03-db-0:~ # lvcreate -l 100%FREE -n hana_data vg_hana_data
-
-       Logical volume "hana_data" created.
-
-     s03-db-0:~ # lvcreate -l 100%FREE -n hana_log vg_hana_log
-
-       Logical volume "hana_log" created.
-
-
-              =                       crc=0        finobt=0, sparse=0
-
-     data     =                       bsize=4096   blocks=33553408, imaxpct=25
-
-              =                       sunit=0      swidth=0 blks
-
-     naming   =version 2              bsize=4096   ascii-ci=0 ftype=1
-
-     log      =internal log           bsize=4096   blocks=16383, version=2
-
-
-     s03-db-0:~ # mkfs.xfs /dev/vg_hana_data/hana_data
-
-     meta-data=/dev/vg_hana_data/hana_data isize=256    agcount=4, agsize=16776704 blks
-
-              =                       sectsz=4096  attr=2, projid32bit=1
-
-              =                       crc=0        finobt=0, sparse=0
-
-     data     =                       bsize=4096   blocks=67106816, imaxpct=25
-
-              =                       sunit=0      swidth=0 blks
-
-     naming   =version 2              bsize=4096   ascii-ci=0 ftype=1
-
-     log      =internal log           bsize=4096   blocks=32767, version=2
-
-              =                       sectsz=4096  sunit=1 blks, lazy-count=1
-
-     realtime =none                   extsz=4096   blocks=0, rtextents=0
-
-     s03-db-0:~ # mkfs.xfs /dev/vg_hana_log/hana_log
-
-     meta-data=/dev/vg_hana_log/hana_log isize=256    agcount=4, agsize=8388352 blks
-
-              =                       sectsz=4096  attr=2, projid32bit=1
-
-              =                       crc=0        finobt=0, sparse=0
-
-     data     =                       bsize=4096   blocks=33553408, imaxpct=25
-
-              =                       sunit=0      swidth=0 blks
-
-     naming   =version 2              bsize=4096   ascii-ci=0 ftype=1
-
-     log      =internal log           bsize=4096   blocks=16383, version=2
-
-              =                       sectsz=4096  sunit=1 blks, lazy-count=1
-
-     realtime =none                   extsz=4096   blocks=0, rtextents=0
-    ```
-
-4.  From the SSH session on s03-db-0, create the mount directories:
-
-    -   **mkdir --p /hana/shared**
-
-    -   **mkdir --p /hana/data**
-
-    -   **mkdir --p /hana/log**
-    ```
-     s03-db-0:~ # mkdir -p /hana/shared
-
-     s03-db-0:~ # mkdir -p /hana/data
-
-     s03-db-0:~ # mkdir -p /hana/log
-    ```
-
-5.  From the SSH session on s03-db-0, display the ids of:
-
-    -   **/dev/vg\_hana\_shared/hana\_shared**
-
-    -   **/dev/vg\_hana\_data/hana\_data**
-
-    -   **/dev/vg\_hana\_log/hana\_log**
-    ```
-     s03-db-0:~ # blkid
-
-     /dev/sda2: LABEL="ROOT" UUID="9bcf44e2-31a8-45f7-99ef-d5e589299b01" TYPE="ext4" PARTUUID="712a2bf3-02"
-
-     /dev/sda1: LABEL="BOOT" UUID="355e0bfc-6066-4b59-bb9a-4683f0a17f6f" TYPE="ext3" PARTUUID="712a2bf3-01"
-
-     /dev/sdb1: UUID="e38659f9-3399-4b6c-9596-1baa3023191c" TYPE="ext4" PARTUUID="bb515d16-01"
-
-     /dev/sdc: UUID="m9Sggn-VDl8-biZP-L37w-AsD6-vSOt-SK7WEo" TYPE="LVM2_member"
-
-     /dev/sdf: UUID="U56Ikg-qVho-ESly-6nDA-eda3-Qssl-OrCLIE" TYPE="LVM2_member"
-
-     /dev/sde: UUID="sGMDzY-KMJM-2TOX-Uazq-BSUS-3CY9-db7lDx" TYPE="LVM2_member"
-
-     /dev/sdd: UUID="kjFfGL-jWtU-XOIT-Se1P-u4w0-EjQ0-QIUoRq" TYPE="LVM2_member"
-
-     /dev/mapper/vg_hana_shared-hana_shared: UUID="84f4b3b2-8ee0-47ed-b9a3-8390d45df0e0" TYPE="xfs"
-
-     /dev/mapper/vg_hana_data-hana_data: UUID="c8840ee3-54ce-4113-a9dc-f62379df4df7" TYPE="xfs"
-
-     /dev/mapper/vg_hana_log-hana_log: UUID="fb394cf0-51bf-4fed-89f2-346b03d3d635" TYPE="xfs"
-    ```
-
-6.  From the SSH session on s03-db-0, edit **/etc/fstab**:
-    ```
-     s03-db-0:~ # vi /etc/fstab
-    ```
-
-7.  Add the following entries to **/etc/fstab**, where ***\<UUID of /dev/vg\_hana\_shared/hana\_shared\>***, ***\<UUID of /dev/vg\_hana\_data/hana\_data\>***, and ***\<UUID of /dev/vg\_hana\_log/hana\_log\>*** represent the ids you identified in step 5.
-    ```
-     /dev/disk/by-uuid/<UUID of /dev/vg_hana_shared/hana_shared> /hana/shared xfs  defaults,nofail  0  2
-
-     /dev/disk/by-uuid/<UUID of /dev/vg_hana_data/hana_data> /hana/data xfs  defaults,nofail  0  2
-
-     /dev/disk/by-uuid/<UUID of /dev/vg_hana_log/hana_log> /hana/log xfs  defaults,nofail  0  2
-    ```
-
-8.  From the SSH session on s03-db-0, mount the new volumes by running **mount --a**:
-    ```
-     s03-db-0:~ # mount -a
-    ```
-
-9.  From the SSH session on s03-db-0, verify that the mount was successful by running **df -h**:
+1.  From the SSH session on s03-db-0, list mounts by running **df -h**:
     ```
      s03-db-0:~ # df -h
-
-     Filesystem                              Size  Used Avail Use% Mounted on
-
-     devtmpfs                                3.9G  8.0K  3.9G   1% /dev
-
-     tmpfs                                   8.0G     0  8.0G   0% /dev/shm
-
-     tmpfs                                   3.9G   18M  3.9G   1% /run
-
-     tmpfs                                   3.9G     0  3.9G   0% /sys/fs/cgroup
-
-     /dev/sda2                                29G  2.4G   25G   9% /
-
-     /dev/sda1                               976M   81M  844M   9% /boot
-
-     /dev/sdb1                                16G   44M   15G   1% /mnt/resource
-
-     tmpfs                                   797M     0  797M   0% /run/user/1000
-
-     /dev/mapper/vg_hana_shared-hana_shared  128G   33M  128G   1% /hana/shared
-
-     /dev/mapper/vg_hana_data-hana_data     1024G   33M  1024G  1% /hana/data
+     
+     Filesystem                            Size  Used Avail Use% Mounted on
+     devtmpfs                              2.0G  8.0K  2.0G   1% /dev
+     tmpfs                                 2.9G     0  2.9G   0% /dev/shm
+     tmpfs                                 2.0G   18M  2.0G   1% /run
+     tmpfs                                 2.0G     0  2.0G   0% /sys/fs/cgroup
+     /dev/sda2                              29G  2.0G   25G   8% /
+     /dev/sdh1                             128G   33M  128G   1% /usr/sap
+     /dev/sdd1                             128G   33M  128G   1% /hana/shared
+     /dev/sda1                             976M   70M  856M   8% /boot
+     /dev/mapper/vg--log-lv--log--0        256G   33M  256G   1% /hana/log
+     /dev/mapper/vg--data-lv--data--0      256G   33M  256G   1% /hana/data
+     /dev/mapper/vg--backup-lv--backup--0  256G   33M  256G   1% /hana/backup
+     /dev/sdb1                              32G   48M   30G   1% /mnt/resource
+     tmpfs                                 394M     0  394M   0% /run/user/1000
     ```
 
-10. From the SSH session on s03-db-0, create a directory that will be used to host the SAP HANA installation media by running **mkdir --m 777 /hana/shared/media**:
+2. From the SSH session on s03-db-0, create a directory that will be used to host the SAP HANA installation media by running `mkdir --m 777 /hana/shared/media`
     ```
      s03-db-0:~ # mkdir ???m 777 /hana/shared/media
     ```
 
-11. Repeat steps 1-10 on **s03-db-1**.
+3. Repeat steps 1-2 on **s03-db-1**.
 
 ### Task 5: Configure name resolution
 
@@ -1069,7 +767,7 @@ In this exercise, you will configure clustering on Azure VMs running Linux.
 
 ### Task 1: Configure clustering
 
-1.  From the SSH session on **s03-db-0**, run **ha-cluster-init** and follow the prompts:
+1.  From the SSH session on **s03-db-0**, run `ha-cluster-init` and follow the prompts:
 
     -   Do you want to continue anyway (y/n)? **y**
 
@@ -1081,7 +779,7 @@ In this exercise, you will configure clustering on Azure VMs running Linux.
 
     -   Do you wish to use SBD (y/n)?: **n**
 
-    -   Do you wish to configure an administration IP (y/n)?:
+    -   Do you wish to configure an administration IP (y/n)?: **n**
     ```
      s03-db-0:~ # ha-cluster-init
 
@@ -1158,7 +856,7 @@ In this exercise, you will configure clustering on Azure VMs running Linux.
        Done (log saved to /var/log/ha-cluster-bootstrap.log)
     ```
 
-2.  From the SSH session on **s03-db-1**, run **ha-cluster-join** and follow the prompts:
+2.  From the SSH session on **s03-db-1**, run `ha-cluster-join` and follow the prompts:
 
     -   Do you want to continue anyway (y/n)? **y**
 
