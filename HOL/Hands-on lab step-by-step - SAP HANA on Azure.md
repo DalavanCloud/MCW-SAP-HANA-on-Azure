@@ -130,7 +130,7 @@ In this exercise, you will deploy Azure infrastructure prerequisites for impleme
 
 2.  If prompted, on the **Sign in to your account** page, type in the user name and the password of the work or school or personal Microsoft account with the owner role to the Azure subscription you will be using for this lab, and click **Sign in**.
 
-3.  In the Azure portal interface, click **+ New**.
+3.  In the Azure portal interface, click **+ Create a resource**.
 
 4.  On the **New** blade, click **Compute.** Then, on the **Compute** blade, click **Windows Server 2016 Datacenter**.
 
@@ -151,12 +151,16 @@ In this exercise, you will deploy Azure infrastructure prerequisites for impleme
     -   Resource group: *create a new resource group named* **hana-s03-RG**
 
     -   Location: *The Azure region you identified in the Before the Hands-on Lab section*
+    
+    -   Already have a Windows license?: **No**
 
 6.  On the **Choose a size** blade, click **View all**. Next, in the list of VM sizes, click **D1\_V2 Standard**. Then, click **Select**.
 
 7.  On the **Settings** blade, specify the following settings, and click **OK**:
 
-    -   High availability: **None**
+    -   Availability zone: **None**
+    
+    -   Availability set: **None**
 
     -   Use managed disks: **Yes**
 
@@ -174,7 +178,9 @@ In this exercise, you will deploy Azure infrastructure prerequisites for impleme
 
     -   Public IP address: *accept the default value*
 
-    -   Network security group: **None**
+    -   Network security group: **Basic**
+    
+    -   Select public inbound ports: **RDP (3389)**
 
     -   Extensions: **No extension**
 
@@ -183,6 +189,10 @@ In this exercise, you will deploy Azure infrastructure prerequisites for impleme
     -   Boot diagnostics: **Disabled**
 
     -   Guest OS diagnostics: **Disabled**
+    
+    -   Register with Azure Active Directory: **No**
+    
+    -   Backup: **Disabled**
 
 8.  On the **Summary** blade, click **Create**.
 
@@ -196,7 +206,7 @@ In this exercise, you will deploy Azure infrastructure prerequisites for impleme
 
 3.  On the **hana-s03-RG-vnet** blade, click **Subnets**.
 
-4.  On the **hana-s03-RG-vnet --** **Subnets** blade, click **+ Subnet**.
+4.  On the **hana-s03-RG-vnet - Subnets** blade, click **+ Subnet**.
 
 5.  On the **Add subnet** blade, specify the following, and click **OK**:
 
@@ -208,7 +218,7 @@ In this exercise, you will deploy Azure infrastructure prerequisites for impleme
 
     -   Route table: **None**
 
-    -   Service endpoints (Preview): **0 selected**
+    -   Service endpoints: **0 selected**
 
 ### Task 3: Deploy an Azure Resource Manager QuickStart template
 
@@ -216,11 +226,11 @@ In this exercise, you will deploy Azure infrastructure prerequisites for impleme
 
 2.  On the **SAP NetWeaver 3-tier multi SID DB (managed disks)** page, click **Deploy to Azure**.
 
-3.  If prompted, on the **Sign in to your account** page, type in the user name and the password of the work or school or personal Microsoft account with the owner role to the Azure subscription you will be using for this lab, and click **Sign in**. The Web browser window should automatically redirect to the Azure portal and display the **SAP NetWeaver 3-tier multi SID DB (managed disks)** blade.
+3.  If prompted, on the **Sign in to your account** page, type in the user name and the password of the work or school or personal Microsoft account with the owner role in the Azure subscription you will be using for this lab, and click **Sign in**. The Web browser window should automatically redirect to the Azure portal and display the **SAP NetWeaver 3-tier multi SID DB (managed disks)** blade.
 
 4.  On the **SAP NetWeaver 3-tier multi SID DB (managed disks)** blade, click **Edit template**.
 
-5.  On the **Edit template** blade, scroll down to the **"SLES 12 BYOS"** section, and change the value of the **sku** entry from **12-SP1** to **12-SP3**:
+5.  On the **Edit template** blade, scroll down to the **"SLES 12 BYOS"** object of the **images** variable, and change the value of the **sku** entry from **12-SP1** to **12-SP3**:
 
     ![Code from the Edit template blade displays. ](images/Hands-onlabstep-by-step-SAPHANAonAzureimages/media/image3.png "Edit template blade")
 
@@ -247,11 +257,13 @@ In this exercise, you will deploy Azure infrastructure prerequisites for impleme
     -   Admin Username: **demouser**
 
     -   Admin Password: **demo\@pass123**
+    
+    -   Ssh Key Data: leave blank
 
     -   Subnet id: *To identify the value of the subnet id parameter, run the following three commands from the Cloud Shell's Bash prompt to identify the value to enter here (use the value that ends with* **subnet-1**).
-    ```
-     az network vnet subnet list ???-resource-group hana-s03-RG ???-vnet-name hana-s03-RG-vnet -???query ???[?contains(id,???subnet-1???)].{id: id}???
-     ``` 
+   ```
+     az network vnet subnet list --resource-group hana-s03-RG --vnet-name hana-s03-RG-vnet --query "[?contains(id,'subnet-1')].{id: id}" --output tsv
+   ``` 
 
     -   \_artifacts Location: *accept the default value*
 
