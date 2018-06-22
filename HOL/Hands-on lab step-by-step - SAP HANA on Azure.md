@@ -1103,16 +1103,24 @@ In this exercise, you will install SAP HANA.
 
     ![The File Uploading window displays with a progress bar.](images/Hands-onlabstep-by-step-SAPHANAonAzureimages/media/image22.png "File Uploading window")
 
+
 ### Task 2: Run hdblcm on both Linux VMs
 
-1.  From the SSH session on s03-db-0, change the current directory to the location of the hdblcm binary:
+1.  From the SSH session on s03-db-0, change the current directory to the location of the media files and set permissions on its content:
     ```
-     s03-db-0:/ # cd /hana/shared/media/HANA_51051151/DATA_UNITS/HDB_SERVER_LINUX_X86_64
+     s03-db-0:/ # cd /hana/shared/media
 
-     s03-db-0:/hana/shared/media/HANA_51051151/DATA_UNITS/HDB_SERVER_LINUX_X86_64 #
+     s03-db-0:/hana/shared/media/ # chmod -R 744 *
     ```
 
-2.  From the SSH session on s03-db-0, run **./hdblcm** and follow prompts:
+2.  From the SSH session on s03-db-0, change the current directory to the location of the hdblcm binary:
+    ```
+     s03-db-0:/hana/shared/media # cd ./DATA_UNITS/HDB_SERVER_LINUX_X86_64
+
+     s03-db-0:/hana/shared/media/DATA_UNITS/HDB_SERVER_LINUX_X86_64 #
+    ```
+
+3.  From the SSH session on s03-db-0, run `./hdblcm --hdbinst_server_ignore=check_min_mem` and follow prompts:
 
     -   Enter selected system index \[3\]: **1**
 
@@ -1138,13 +1146,13 @@ In this exercise, you will install SAP HANA.
 
     -   Enter Certificate Host Name for Host \'s03-db-0\' \[s03-db-0\]: *accept the default*
 
-    -   Enter SAP Host Agent User (sapadm) Password: **demo\@pass123**
+    -   Enter SAP Host Agent User (sapadm) Password: **demo@pass123**
 
-    -   Confirm SAP Host Agent User (sapadm) Password: **demo\@pass123**
+    -   Confirm SAP Host Agent User (sapadm) Password: **demo@pass123**
 
-    -   Enter System Administrator (s03adm) Password: **demo\@pass123**
+    -   Enter System Administrator (s03adm) Password: **demo@pass123**
 
-    -   Confirm System Administrator (s03adm) Password: **demo\@pass123**
+    -   Confirm System Administrator (s03adm) Password: **demo@pass123**
 
     -   Enter System Administrator Home Directory \[/usr/sap/S03/home\]: *accept the default*
 
@@ -1154,11 +1162,16 @@ In this exercise, you will install SAP HANA.
 
     -   Enter ID of User Group (sapsys) \[79\]: *accept the default*
 
-    -   Enter Database User (SYSTEM) Password: **Demo\@pass123**
+    -   Enter Database User (SYSTEM) Password: **Demo@pass123**
 
-    -   Confirm Database User (SYSTEM) Password: **Demo\@pass123**
+    -   Confirm Database User (SYSTEM) Password: **Demo@pass123**
 
     -   Restart system after machine reboot? \[n\]: *accept the default*
+    
+    -   Enter Installation Path for Address Directories and Reference Data [/hana/shared/S03/global/hdb/IM/reference_data]: *accept the default*
+    
+    -   Do you want to continue? (y/n): **y**
+    
     ```
      s03-db-0:/hana/shared/media/HANA_51051151/DATA_UNITS/HDB_SERVER_LINUX_X86_64 # ./hdblcm
 
@@ -1529,7 +1542,7 @@ In this exercise, you will install SAP HANA.
      Log file written to '/var/tmp/hdb_S03_hdblcm_install_2017-11-12_00.07.22/hdblcm.log' on host 's03-db-0'.
     ```
 
-3.  Repeat steps 1-2 on s03-db-1 using the same custom values and accepting the same default values.
+4.  Repeat steps 1-3 on s03-db-1 using the same custom values and accepting the same default values.
 
 ## Exercise 5: Configure SAP HANA replication 
 
