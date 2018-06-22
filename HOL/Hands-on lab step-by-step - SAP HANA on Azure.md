@@ -851,6 +851,10 @@ In this exercise, you will configure clustering on Azure VMs running Linux.
 1.  From the SSH session on **s03-db-0**, run `ha-cluster-init` and follow the prompts:
 
     -   Do you want to continue anyway (y/n)? **y**
+    
+    -   csync2 is already configured - overwrite (y/n)? y
+    
+    -   /etc/corosync/authkey already exists - overwrite (y/n)? y
 
     -   Network address to bind to (e.g.: 192.168.1.0) \[172.16.1.0\]: **ENTER**
 
@@ -871,7 +875,16 @@ In this exercise, you will configure clustering on Azure VMs running Linux.
      Do you want to continue anyway (y/n)? y
 
        Generating SSH key
+       
+       Configuring csync2
+       
+       csync2 is already configured - overwrite (y/n)? y
+       
+       Generating csync2 shared key (this may take a while)...done
+       
        csync2 checking files...done
+       
+       /etc/corosync/authkey already exists - overwrite (y/n)? y
 
      Configure Corosync:
 
@@ -943,7 +956,10 @@ In this exercise, you will configure clustering on Azure VMs running Linux.
 
     -   IP address or hostname of existing node (e.g.: 192.168.1.1) \[\]: **s03-db-0**
 
+    -   /root/.ssh/id\_rsa already exists - overwrite (y/n)? **y**
+    
     -   /root/.ssh/id\_dsa already exists - overwrite (y/n)? **y**
+        
     ```
      s03-db-1:/ # ha-cluster-join
     
@@ -962,10 +978,13 @@ In this exercise, you will configure clustering on Azure VMs running Linux.
        passwordless ssh between nodes, you will be prompted for the root
 
        password of the existing node.
+       
        IP address or hostname of existing node (e.g.: 192.168.1.1) []s03-db-0
 
        Retrieving SSH keys - This may prompt for root@s03-db-0:
 
+     /root/.ssh/id_rsa already exists - overwrite (y/n)? y
+     
      /root/.ssh/id_dsa already exists - overwrite (y/n)? y
 
        2 new SSH keys installed
@@ -1010,7 +1029,8 @@ In this exercise, you will configure clustering on Azure VMs running Linux.
      s03-db-1:~ # vi /etc/corosync/corosync.conf
     ```
 
-2.  Add the following bolded content to the file.
+2.  Add the following content to the file (add the **transport** entry to the **interface** section and add the entire **nodelist** section)
+
     ```
      [...]
 
