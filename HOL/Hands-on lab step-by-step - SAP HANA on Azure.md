@@ -132,7 +132,7 @@ In this exercise, you will deploy Azure infrastructure prerequisites for impleme
 
 3.  In the Azure portal interface, click **+ Create a resource**.
 
-4.  On the **New** blade, click **Compute.** Then, on the **Compute** blade, click **Windows Server 2016 Datacenter**.
+4.  On the **New** blade, click **Compute** and then click **Windows Server 2016 Datacenter**.
 
 5.  On the **Basics** blade, specify the following settings, and click **OK**:
 
@@ -271,7 +271,7 @@ In this exercise, you will deploy Azure infrastructure prerequisites for impleme
 
 8.  Enable the checkbox labeled **I agree to the terms and conditions stated above**, and click **Purchase**.
 
-9.  Wait for the deployment to complete. This might take about 30 minutes.
+9.  Wait for the deployment to complete. This might take about 10 minutes.
 
 ### Task 4: Configure IP settings of Azure VMs running Linux
 
@@ -598,7 +598,7 @@ aa
 
 ### Task 3: Enable cross-node password-less SSH access 
 
-1.  From the SSH session on s03-db-0, generate passphrase-less SSH key by running `ssh-keygen -tdsa`. When prompted, press **Enter** three times and then run `cat /root/.ssh/id\_dsa.pub` to display the key.
+1.  From the SSH session on s03-db-0, generate passphrase-less DSA SSH key by running `ssh-keygen -tdsa`. When prompted, press **Enter** three times and then run `cat /root/.ssh/id\_dsa.pub` to display the key.
     ```
      s03-db-0:~ # ssh-keygen -tdsa
 
@@ -623,25 +623,15 @@ aa
      The key's randomart image is:
 
      +---[DSA 1024]----+
-
      |    ..           |
-
      |   .  .          |
-
      |  .  + .         |
-
      | .    =.     . . |
-
      |  o   ..S . . +  |
-
      | o o  .= + o . . |
-
      |. *   o.O = .    |
-
      | = . ..X.@..     |
-
      |  . ..B*EOB      |
-
      +----[SHA256]-----+
 
      s03-db-0:~ # cat /root/.ssh/id_dsa.pub
@@ -649,14 +639,7 @@ aa
      ssh-dss AAAAB3NzaC1kc3MAAACBALZjoS47twSwRPzEeCFtCl2QH/Az5m7HC9tJPavdocjx0RG0CBDj qdLiQ7IKrEL0FnupoE7LtVYNxXWN8lO1fEEmi4pJxIknLtKC/UgnSmkmqeZznXPztVZUPoHABw4TX90z Wm9YvrnciAnsMIPUBCe0Kg2ZIo2Z1F3kWmCEw6fhAAAAFQCRunrR7MAH/9RzM57qijQ1El7ybQAAAIEA lHLIvJnwg8czZv5JXIIL6vOO+GRSHNWeCbcw6auBZpJQWIDJQnCdq6kEMYZUXnBcb5QAxYPMMfD9FedU mxxuUJznlh4mnko9V0J4imMl28C8e1Lsjkh9TgH6a7jfB1RDOa8+if0speP2IyDxTuSLexJat8yuzClc lB9LnHu1Ep8AAACAa4ZphhcaCQlELcQao2YKu3br+B56Lj+apafFimLNQeiRY5kZQbAlGtBAVPs5gLpi 3w1kGLzTR3W9WNNwFzw8qpknbQyqSSs0GJmUrwL3PATBkvPn5cUSY+q/ZumCg54a14ooMB00CMQ5Vhup IpHX66hwXbTD9ja+W8XXJXejs8E= root@s03-db-0
     ```
 
-2.  From the SSH session on s03-db-1, create a directory named **/root/.ssh/**, use the vi editor to create and open a file named **/root/.ssh/authorized\_keys**, paste the key you generated on s03-db-0, save your changes, and close the file (by pressing the **Escape** key, typing `:wq!`, and pressing the **Enter** key):
-    ```
-     s03-db-1:~ # mkdir /root/.ssh
-
-     s03-db-1:~ # vi /root/.ssh/authorized_keys
-    ```
-    
-3.  From the SSH session on s03-db-1, generate passphrase-less SSH key by running `ssh-keygen -tdsa`. When prompted, press **Enter** three times and then run `cat /root/.ssh/id\_dsa.pub` to display the key.
+2.  From the SSH session on s03-db-1, generate passphrase-less DSA SSH key by running `ssh-keygen -tdsa`. When prompted, press **Enter** three times and then run `cat /root/.ssh/id\_dsa.pub` to display the key.
     ```
      s03-db-1:~ # ssh-keygen -tdsa
 
@@ -679,25 +662,15 @@ aa
      The key's randomart image is:
 
      +---[DSA 1024]----+
-
      |        E+       |
-
      |        +.o      |
-
      |       . . o     |
-
      |          +.  . =|
-
      |      . S.+. . B+|
-
      |       + = .o..oB|
-
      |        = .  o=*+|
-
      |       ..o+ ..===|
-
      |        .*++..=*=|
-
      +----[SHA256]-----+
 
      s03-db-1:~ # cat /root/.ssh/id_dsa.pub
@@ -705,31 +678,140 @@ aa
      ssh-dss AAAAB3NzaC1kc3MAAACBAMe+HQgU6RFqBK/VjnMIfJ2Qu/ZzGo6zS/Oteb957shR/DjUQsaBy8UFelpXLLmsSJ6FFzHQnA4ri8lGW4/EugmD3536s1Vi6O+zIxaxJF+LNQnKo6xvueLWqQ9sARfKaQgnUrMUusIBY9cxGrsXc3Zfo68NaPPT5aa1JyYdEsENAAAAFQCzyh/ooTuZRqwRI5/T7tFOINhsLwAAAIEAlyG92i4h5KDAZ+ftDnVRZJhLlIg7rJf8kFojr87WQ4PpXnR/zEjI2+UCH2T6Orwdq8J9g7q9dtTO7QWy3Wt9eak5HQA4mpik5ai/u+ftZf0BLuCdDxWVryFhAFg8CO2GYVrWiqCCP7AIAKs56DqQRsUu6twU5MHJ8f//gUjX//8AAACBALuwqBbfEpG0lkLFuczIyWDoKLPZJwjocIYXeVOwdYNWJk/LdQ+D/hv91MJ8GzVhcLUlKFYyCiuRknIjuuOfaEzTuZ+T5Giqvl2xBjkX1ZVMnrBqJSUNXMclem6IVUn0X/M3GqcFrhi5Jk5at26nH46MaYusw0OMCdNynq2aicHt root@s03-db-1
     ```
 
+3.  From the SSH session on s03-db-1, use the vi editor to create and open a file named **/root/.ssh/authorized\_keys**, paste the key you generated on s03-db-0, save your changes, and close the file (by pressing the **Escape** key, typing `:wq!`, and pressing the **Enter** key):
+    ```
+     s03-db-1:~ # vi /root/.ssh/authorized_keys
+    ```
+    
 4.  From the SSH session on s03-db-0, use the vi editor to create and open a new file:**/root/.ssh/authorized\_keys**, paste the key you generated on s03-db-1 into it, save your changes, and close the file (by pressing the **Escape** key, typing `:wq!`, and pressing the **Enter** key):
     ```
      s03-db-0:~ # vi /root/.ssh/authorized_keys
     ```
 
-5.  From the SSH session on s03-db-0, edit **/etc/ssh/sshd\_config** file:
+5.   From the SSH session on s03-db-0, generate passphrase-less RSA SSH key by running `ssh-keygen`. When prompted, press **Enter** three times and then run `cat /root/.ssh/id\_rsa.pub` to display the key.
+
     ```
-     s03-db-0:~ # vi /etc/ssh/sshd\_config
+     s03-db-0:~ # ssh-keygen
+     
+     Generating public/private rsa key pair.
+
+     Enter file in which to save the key (/root/.ssh/id_rsa):
+
+     Enter passphrase (empty for no passphrase):
+
+     Enter same passphrase again:
+
+     Your identification has been saved in /root/.ssh/id_rsa.
+
+     Your public key has been saved in /root/.ssh/id_rsa.pub.
+
+     The key fingerprint is:
+
+     SHA256:iJZAGeFPa7sIr1ENCsmnW6XaaCLtNNcIpnT8SrjFo9U root@s03-db-0
+
+     The key's randomart image is:
+
+     +---[RSA 2048]----+
+     |  ++             |
+     |.+.              |
+     |o.+...           |
+     |..+*o+ .         |
+     |.o+=O . S        |
+     |.=X+o+           |
+     |**+B+E.          |
+     |+**+o.           |
+     |.++..            |
+     +----[SHA256]-----+
+
+     s03-db-0:~ # cat /root/.ssh/id_rsa.pub
+
+     ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDXf3fFwe4qBmyI88xaorItLGXs8wmJsFRg3BaUD/phBE9Hajxu4pzwLIERyBT+DMW8sbXx6OmVe9bONr+s4GLF9fJ8fDcPlJmiGA5SpooaC33c1IxP1Fa0Hsva295rz6AkVSu+yw89aaImxs37bjpId2wvjbjGmWhujdKBsfxNkzrwisr+WnFnyPGD0vtP7pZ0YhNzPgHN/3IlfRfyILtLtFrFaSoQdJWzjt87Sj9C+SqyIR/R++kX2l55/q7zuHNXDQ4W4wVXawNC1NVS3UubgSJnwaBbqqZkF0Ijdu0gyM0hczdRA9mcp/gQ9NFkHYu4GTGLoYT6z2WyV4JyVNtt root@s03-db-0
     ```
 
-6.  In the **/etc/ssh/sshd\_config** file, locate the **PermitRootLogin** and **AuthorizedKeysFile** entries, and configure them as follows (remove the leading **#** character, if present):
+6.  From the SSH session on s03-db-1, generate passphrase-less RSA SSH key by running `ssh-keygen`. When prompted, press **Enter** three times and then run `cat /root/.ssh/id\_rsa.pub` to display the key.
+    ```
+     s03-db-1:~ # ssh-keygen
+
+     Generating public/private dsa key pair.
+
+     Enter file in which to save the key (/root/.ssh/id_dsa):
+
+     Enter passphrase (empty for no passphrase):
+
+     Enter same passphrase again:
+
+     Your identification has been saved in /root/.ssh/id_rsa.
+
+     Your public key has been saved in /root/.ssh/id_rsa.pub.
+
+     The key fingerprint is:
+
+     SHA256:BGv5NCePmzP/aHMr5MhMHe75to/cKUG6RAmzrgicBlY root@s03-db-1
+
+     The key's randomart image is:
+     
+     +---[RSA 2048]----+
+     |      .          |
+     |   E   +o        |
+     |  .   + =+..     |
+     |..   . +.*+ .    |
+     |.o .   .S+.+     |
+     |  =     oo* .    |
+     | . . . ==* o .   |
+     |    . . ++Oo+o . |
+     |         .oBB=+  |
+     +----[SHA256]-----+
+
+     s03-db-1:~ # cat /root/.ssh/id_dsa.pub
+
+     ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCyisn1Le0o491/Rw/99W1zuySWmR3iqMeAYG8XwQ5My6wt9zFHdADQwmw3atd5EgpZjlp/DZb7zk4wBgRhVaqLwEFfcmlqoTSdS4CG3oLuM8JJNYdKnD4asngWi98q7/+jwR78HmOZ36VK7+qWKb8l3cecMRsjlDJQF+MRYWknslMRoJgf9O42JG6GcNZ4RtMfq1FZZ8Qy73oKKIydUynSMBtQnPa38g+u/ypxtzv4wsVQL16LWA5UW2XylR9qK3VurZA6wrqfSY9jX1nO8pxaZOnVyPDIgW7EhUgdt95MuL0RWLYCqaHfOeeKDhPwcC3tLyZysZ7dKu2tLbUQJ3kF root@s03-db-1
+    ```
+
+7.  From the SSH session on s03-db-1, use the vi editor to open the file named **/root/.ssh/authorized\_keys**, paste the RSA SSH key you generated on s03-db-0 to a new line at the end of the file, save your changes, and close the file (by pressing the **Escape** key, typing `:wq!`, and pressing the **Enter** key):
+    ```
+     s03-db-1:~ # vi /root/.ssh/authorized_keys
+    ```
+    
+8.  From the SSH session on s03-db-0, use the vi editor to open the file named **/root/.ssh/authorized\_keys**, paste the RSA key you generated on s03-db-1 to a new line at the end of the file, save your changes, and close the file (by pressing the **Escape** key, typing `:wq!`, and pressing the **Enter** key):
+    ```
+     s03-db-0:~ # vi /root/.ssh/authorized_keys
+    ```
+
+9.  From the SSH session on s03-db-0, edit **/etc/ssh/sshd\_config** file:
+    ```
+     s03-db-0:~ # vi /etc/ssh/sshd_config
+    ```
+
+10.  In the **/etc/ssh/sshd\_config** file, locate the **PermitRootLogin** and **AuthorizedKeysFile** entries, and configure them as follows (remove the leading **#** character, if present):
     ```
      PermitRootLogin yes
 
      AuthorizedKeysFile      /root/.ssh/authorized_keys
-     ```
+    ```
 
-7.  Save your changes, close the file, and restart sshd daemon by running `systemctl restart sshd`:
+11.  Save your changes, close the file, and restart sshd daemon by running `systemctl restart sshd`:
     ```
      s03-db-0:/ # systemctl restart sshd
-     ```
+    ```
 
-8.  Repeat steps 5-8 on **s03-db-1**.
+12.  Repeat steps 9-11 on **s03-db-1**.
 
-### Task 4: Configure storage 
+
+### Task 4: Configure name resolution
+
+1.  From the SSH session on s03-db-0, add an entry to the **/etc/hosts** file that provides the name resolution for both hosts within the virtual network:
+
+    -   **172.16.1.10 s03-db-0**
+
+    -   **172.16.1.11 s03-db-1**
+    ```
+     s03-db-1:~ # vi /etc/hosts
+    ```
+
+2.  Repeat step 1 on **s03-db-1**.
+
+
+### Task 5: Configure storage 
 
 1.  From the SSH session on s03-db-0, list mounts by running **df -h**:
     ```
@@ -753,23 +835,10 @@ aa
 
 2. From the SSH session on s03-db-0, create a directory that will be used to host the SAP HANA installation media by running `mkdir --m 777 /hana/shared/media`
     ```
-     s03-db-0:~ # mkdir ???m 777 /hana/shared/media
+     s03-db-0:~ # mkdir --m 777 /hana/shared/media
     ```
 
 3. Repeat steps 1-2 on **s03-db-1**.
-
-### Task 5: Configure name resolution
-
-1.  From the SSH session on s03-db-0, add an entry to the **/etc/hosts** file that provides the name resolution for both hosts within the virtual network:
-
-    -   **172.16.1.10 s03-db-0**
-
-    -   **172.16.1.11 s03-db-1**
-    ```
-     s03-db-1:~ # vi /etc/hosts
-    ```
-
-2.  Repeat step 1 on **s03-db-1**.
 
 ## Exercise 3: Configure clustering on Azure VMs running Linux
 
