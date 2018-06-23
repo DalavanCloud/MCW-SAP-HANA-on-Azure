@@ -1123,6 +1123,8 @@ In this exercise, you will install SAP HANA.
 3.  From the SSH session on s03-db-0, run `./hdblcm --hdbinst_server_ignore=check_min_mem` and follow prompts:
 
     -   Enter selected system index \[3\]: **1**
+    
+    -   Restrict maximum memory allocation? [n]: *accept the default*
 
     -   Enter comma-separated list of the selected indices \[3\]: **1**
 
@@ -1557,6 +1559,7 @@ In this exercise, you will configure SAP HANA replication.
     -   **cd /**
 
     -   **PATH=\"\$PATH:/usr/sap/S03/HDB00/exe\"**
+    
     ```
      s03-db-0:/hana/shared/media/HANA_51051151/DATA_UNITS/HDB_SERVER_LINUX_X86_64 # cd /
 
@@ -1640,8 +1643,6 @@ In this exercise, you will configure SAP HANA replication.
 
 4.  From the SSH session on s03-db-1, stop the HANA DB instance by running **sapcontrol -nr 00 -function StopWait 600 10**:
     ```
-     s03-db-1:/ # su - s03adm
-
      s03adm@s03-db-1:/usr/sap/S03/HDB00> sapcontrol -nr 00 -function StopWait 600 10
 
      12.11.2017 01:09:23
@@ -1691,30 +1692,21 @@ In this exercise, you will configure cluster framework.
 
 2.  From the SSH session on s03-db-0, create a new file named **crm-defaults.txt** with the following content:
     ```
-     property $id="cib-bootstrap-options" \
-
-       no-quorum-policy="ignore" \
-
-       stonith-enabled="true" \
-
-       stonith-action="reboot" \
-
-       stonith-timeout="150s"
-
-     rsc_defaults $id="rsc-options" \
-
-       resource-stickiness="1000" \
-
-       migration-threshold="5000"
-
-     op_defaults $id="op-options" \
-
-       timeout="600"
+property $id="cib-bootstrap-options" \
+no-quorum-policy="ignore" \
+stonith-enabled="true" \
+stonith-action="reboot" \
+stonith-timeout="150s"
+rsc_defaults $id="rsc-options" \
+resource-stickiness="1000" \
+migration-threshold="5000"
+op_defaults $id="op-options" \
+timeout="600"
     ```
 
-3.  From the SSH session on s03-db-0, apply the settings in the file by running **crm configure load update crm-defaults.txt**
+3.  From the SSH session on s03-db-0, apply the settings in the file by running **crm configure load update ./crm-defaults.txt**
     ```
-     s03-db-0:/ # crm configure load update crm-defaults.txt
+     s03-db-0:/ # crm configure load update ./crm-defaults.txt
     ```
 
 ### Task 2: Create an Azure AD application for the STONITH device
@@ -1751,7 +1743,7 @@ In this exercise, you will configure cluster framework.
 
     ![The Application ID displays in the Registered Apps blade.](images/Hands-onlabstep-by-step-SAPHANAonAzureimages/media/image27.png "Registered Apps blade")
 
-9.  On the **Settings** blade, click **Keys**:
+9.  Click **Settings** and, on the **Settings** blade, click **Keys**:
 
     ![The Settings blade displays.](images/Hands-onlabstep-by-step-SAPHANAonAzureimages/media/image28.png "Settings blade")
 
@@ -1781,7 +1773,7 @@ In this exercise, you will configure cluster framework.
 
     -   Assign access to: **Azure AD user, group, or application**
 
-    -   Select: **Stonith App**
+    -   Select: **Stonith app**
 
         ![Fields in the Add permissions blade are set to the previously defined settings.](images/Hands-onlabstep-by-step-SAPHANAonAzureimages/media/image32.png "Add permissions blade")
 
@@ -1791,105 +1783,71 @@ In this exercise, you will configure cluster framework.
 
 1.  From the SSH session on s03-db-0, create a new file named **crm-fencing.txt** with the following content (where *subscription\_id, resource\_group, tenant\_id, login\_id,* and *password* are placeholders for the values you identified in Exercise 5 Task 2:
     ```
-     primitive rsc_st_azure_1 stonith:fence_azure_arm \
-
-         params subscriptionId=???subscription_id??? resourceGroup="hana-s03-RG" tenantId="tenant _id" login="login_id" passwd="password"
-
-     primitive rsc_st_azure_2 stonith:fence_azure_arm \
-
-         params subscriptionId="subscription_id" resourceGroup="hana-s03-RG" tenantId="tenant _id" login="login_id" passwd="password"
-
-     colocation col_st_azure -2000: rsc_st_azure_1:Started rsc_st_azure_2:Started
+primitive rsc_st_azure_1 stonith:fence_azure_arm \
+params subscriptionId="subscription_id" resourceGroup="hana-s03-RG" tenantId="tenant _id" login="login_id" passwd="password"
+primitive rsc_st_azure_2 stonith:fence_azure_arm \
+params subscriptionId="subscription_id" resourceGroup="hana-s03-RG" tenantId="tenant _id" login="login_id" passwd="password"
+colocation col_st_azure -2000: rsc_st_azure_1:Started rsc_st_azure_2:Started
     ```
 
-2.  From the SSH session on s03-db-0, apply the settings in the file by running **crm configure load update crm-fencing.txt**:
+2.  From the SSH session on s03-db-0, apply the settings in the file by running **crm configure load update ./crm-fencing.txt**:
     ```
-     s03-db-0:/ # crm configure load update crm-fencing.txt
+     s03-db-0:/ # crm configure load update ./crm-fencing.txt
     ```
 
 ### Task 5: Create SAPHanaTopology cluster resource agent
 
 1.  From the SSH session on s03-db-0, create a new file named **crm-saphanatop.txt** with the following content:
     ```
-     primitive rsc_SAPHanaTopology_S03_HDB00 ocf:suse:SAPHanaTopology \
-
-         operations $id="rsc_sap2_S03_HDB00-operations" \
-
-         op monitor interval="10" timeout="600" \
-
-         op start interval="0" timeout="600" \
-
-         op stop interval="0" timeout="300" \
-
-         params SID="S03" InstanceNumber="00"
-
-     clone cln_SAPHanaTopology_S03_HDB00 rsc_SAPHanaTopology_S03_HDB00 \
-
-         meta is-managed="true" clone-node-max="1" target-role="Started" interleave="true"
+primitive rsc_SAPHanaTopology_S03_HDB00 ocf:suse:SAPHanaTopology \
+operations $id="rsc_sap2_S03_HDB00-operations" \
+op monitor interval="10" timeout="600" \
+op start interval="0" timeout="600" \
+op stop interval="0" timeout="300" \
+params SID="S03" InstanceNumber="00"
+clone cln_SAPHanaTopology_S03_HDB00 rsc_SAPHanaTopology_S03_HDB00 \
+meta is-managed="true" clone-node-max="1" target-role="Started" interleave="true"
     ```
 
-2.  From the SSH session on s03-db-0, apply the settings in the file by running **crm configure load update crm-saphanatop.txt**:
+2.  From the SSH session on s03-db-0, apply the settings in the file by running **crm configure load update ./crm-saphanatop.txt**:
     ```
-     s03-db-0:/ # crm configure load update crm-saphanatop.txt
+     s03-db-0:/ # crm configure load update ./crm-saphanatop.txt
     ```
 
 ### Task 6: Create SAPHana cluster resource agent
 
 1.  From the SSH session on s03-db-0, create a new file named **crm-saphana.txt** with the following content:
     ```
-     primitive rsc_SAPHana_S03_HDB00 ocf:suse:SAPHana \
-
-         operations $id="rsc_sap_S03_HDB00-operations" \
-
-         op start interval="0" timeout="3600" \
-
-         op stop interval="0" timeout="3600" \
-
-         op promote interval="0" timeout="3600" \
-
-         op monitor interval="60" role="Master" timeout="700" \
-
-         op monitor interval="61" role="Slave" timeout="700" \
-
-         params SID="S03" InstanceNumber="00" PREFER_SITE_TAKEOVER="true" \
-
-         DUPLICATE_PRIMARY_TIMEOUT="7200" AUTOMATED_REGISTER="false"
-
-     ms msl_SAPHana_S03_HDB00 rsc_SAPHana_S03_HDB00 \
-
-         meta is-managed="true" notify="true" clone-max="2" clone-node-max="1" \
-
-         target-role="Started" interleave="true"
-
-     primitive rsc_ip_S03_HDB00 ocf:heartbeat:IPaddr2 \ 
-
-         meta target-role="Started" is-managed="true" \ 
-
-         operations $id="rsc_ip_S03_HDB00-operations" \ 
-
-         op monitor interval="10s" timeout="20s" \ 
-
-         params ip="172.16.1.4" 
-
-     primitive rsc_nc_S03_HDB00 anything \ 
-
-         params binfile="/usr/bin/nc" cmdline_options="-l -k 62500" \ 
-
-         op monitor timeout=20s interval=10 depth=0 
-
-     group g_ip_S03_HDB00 rsc_ip_S03_HDB00 rsc_nc_S03_HDB00
-
-     colocation col_saphana_ip_S03_HDB00 2000: g_ip_S03_HDB00:Started \ 
-
-         msl_SAPHana_S03_HDB00:Master  
-
-     order ord_SAPHana_S03_HDB00 2000: cln_SAPHanaTopology_S03_HDB00 \ 
-
-         msl_SAPHana_S03_HDB00
+primitive rsc_SAPHana_S03_HDB00 ocf:suse:SAPHana \
+operations $id="rsc_sap_S03_HDB00-operations" \
+op start interval="0" timeout="3600" \
+op stop interval="0" timeout="3600" \
+op promote interval="0" timeout="3600" \
+op monitor interval="60" role="Master" timeout="700" \
+op monitor interval="61" role="Slave" timeout="700" \
+params SID="S03" InstanceNumber="00" PREFER_SITE_TAKEOVER="true" \
+DUPLICATE_PRIMARY_TIMEOUT="7200" AUTOMATED_REGISTER="false"
+ms msl_SAPHana_S03_HDB00 rsc_SAPHana_S03_HDB00 \
+meta is-managed="true" notify="true" clone-max="2" clone-node-max="1" \
+target-role="Started" interleave="true"
+primitive rsc_ip_S03_HDB00 ocf:heartbeat:IPaddr2 \ 
+meta target-role="Started" is-managed="true" \ 
+operations $id="rsc_ip_S03_HDB00-operations" \ 
+op monitor interval="10s" timeout="20s" \ 
+params ip="172.16.1.4" 
+primitive rsc_nc_S03_HDB00 anything \ 
+params binfile="/usr/bin/nc" cmdline_options="-l -k 62500" \ 
+op monitor timeout=20s interval=10 depth=0 
+group g_ip_S03_HDB00 rsc_ip_S03_HDB00 rsc_nc_S03_HDB00
+colocation col_saphana_ip_S03_HDB00 2000: g_ip_S03_HDB00:Started \ 
+msl_SAPHana_S03_HDB00:Master  
+order ord_SAPHana_S03_HDB00 2000: cln_SAPHanaTopology_S03_HDB00 \ 
+msl_SAPHana_S03_HDB00
     ```
-2.  From the SSH session on s03-db-0, apply the settings in the file by running **crm configure load update crm-saphana.txt**:
+    
+2.  From the SSH session on s03-db-0, apply the settings in the file by running **crm configure load update ./crm-saphana.txt**:
     ```
-     s03-db-0:/ # crm configure load update crm-saphana.txt
+     s03-db-0:/ # crm configure load update ./crm-saphana.txt
     ```
 
 ## Exercise 7: Test the deployment
@@ -1902,9 +1860,9 @@ In this exercise, you will test the HANA deployment.
 
 1.  From the Azure portal, establish a Remote Desktop session to the s03-hana-0 Azure VM.
 
-2.  Use the drive redirection feature of Remote Desktop session to copy the DATA\_UNITS\\HDB\_STUDIO\_WINDOWS\_X86\_64 folder from the installation media to the s03-hana-0 Azure VM.
+2.  Use the drive redirection feature of Remote Desktop session to copy the **DATA\_UNITS\\HDB\_STUDIO\_WINDOWS\_X86\_64** folder from the installation media to the s03-hana-0 Azure VM.
 
-3.  From the Remote Desktop session to s03-hana-0 Azure VM, navigate to the DATA\_UNITS\\HDB\_STUDIO\_WINDOWS\_X86\_64 folder and run hdbsetup.exe. This will start the SAP HANA Studio Installation wizard.
+3.  From the Remote Desktop session to s03-hana-0 Azure VM, navigate to the **DATA\_UNITS\\HDB\_STUDIO\_WINDOWS\_X86\_64** folder and run **hdbsetup.exe**. This will start the SAP HANA Studio Installation wizard.
 
     ![File Explorer displays the contents of the HDB\_STUDIO\_WINDOWS\_X86\_64 folder, including the hdbsetup.exe file.](images/Hands-onlabstep-by-step-SAPHANAonAzureimages/media/image33.png "File Explorer")
 
@@ -1930,29 +1888,25 @@ The template-based deployment of Azure components that form the SAP HANA infrast
 
     ![The Load balancer blade displays details for the hana-s03-RG resource group.](images/Hands-onlabstep-by-step-SAPHANAonAzureimages/media/image38.png "Load balancer blade")
 
-2.  On the **s03-lb-db -- Health Probes** blade, click **lb03ProbePortDB**:
+2.  On the **s03-lb-db -- Health Probes** blade, click **probe**:
 
-    ![In the Load balancer blade, under name, Ib03ProbePortDB displays.](images/Hands-onlabstep-by-step-SAPHANAonAzureimages/media/image39.png "Load balancer blade")
+    ![In the Load balancer blade, under name, probe displays.](images/Hands-onlabstep-by-step-SAPHANAonAzureimages/media/image39.png "Load balancer blade")
 
-3.  On the **lb03ProbePortDB** blade, set the port to **62500**, and click **Save**:
+3.  On the **probe** blade, set the port to **62500**, and click **Save**:
 
     ![Fields in the lb03ProbePortDB blade display the previously defined settings.](images/Hands-onlabstep-by-step-SAPHANAonAzureimages/media/image40.png "lb03ProbePortDB blade")
 
-4.  On the **lb03ProbePortDB**, click the link to the **lb03Rule30315**. This will display the **l03Rule30315** blade.
+4.  On the **probe** blade, click the link to the **lb03Rule30315**. This will display the **l03Rule30315** blade.
 
 5.  On the **lb03Rule30315** blade, change the name of the rule to **lb03Rule30015**, set both the port and the backend port entries to **30015**, and click **Save**:
 
     ![The lb03Rule30315 blade displays with the previously defined settings.](images/Hands-onlabstep-by-step-SAPHANAonAzureimages/media/image41.png "lb03Rule30315 blade")
 
-6.  Navigate back to the **lb03ProbePortDB**, click the link to the **lb03Rule30317**. This will display the **l03Rule30317** blade.
-
-7.  On the **lb03Rule30317** blade, change the name of the rule to **lb03Rule30017**, set both the port and the backend port entries to **30017**, and click **Save**:
-
-    ![The lb03Rule30317 blade displays with the previously defined settings.](images/Hands-onlabstep-by-step-SAPHANAonAzureimages/media/image42.png "lb03Rule30317 blade")
+6.  Repeat steps 4 - 5 for the remaining rules **lb03Rule30313**, **lb03Rule30340**, **lb03Rule30341**, and **lb03Rule30342**, replacing for each **03** to **00**.
 
 ### Task 3: Connect to HANA cluster by using SAP HANA Studio Administration
 
-1.  From the Remote Desktop session, start **Notepad**, and open the **hosts** file located in **C:\\Windows\\System32\\drivers\\etc**.
+1.  From the Remote Desktop session to s03-hana-0, start **Notepad**, and open the **hosts** file located in **C:\\Windows\\System32\\drivers\\etc**.
 
 2.  Add the following entries to the host file, save your changes, and close the file:
     ```
