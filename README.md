@@ -34,6 +34,8 @@ This Hands-on Lab guides you through implementation of a highly available SAP HA
 
 -   Configure SAP HANA system replication
 
+-   Test failover scenarios
+
 
 ## Azure services and related products
 - SAP on Azure
