@@ -323,80 +323,6 @@ In this exercise, you will deploy Azure infrastructure prerequisites for impleme
 
 -   A resource group named **s03-hana-RG** containing two Linux VMs named **s03-db-0** and **s03-db-1** with DNS name label and static IP addresses of 172.16.0.10 and 172.16.0.11 assigned to each (respectively).
 
-### Task 5: Configure storage of Azure VMs
-
-#### Tasks to complete
-
--   Configure storage of Azure VMs
-
-    -   Add the following managed disks to s03-db-0:
-
-        -   Name: **s03-db-0-data0**
-
-            -   Resource group: **hana-s03-RG**
-
-            -   Account type: **Premium (SSD)**
-
-            -   Source type: **None (empty disk)**
-
-            -   Size (GiB): **512**
-
-        -   Name: **s03-db-0-data1**
-
-            -   Resource group: **hana-s03-RG**
-
-            -   Account type: **Premium (SSD)**
-
-            -   Source type: **None (empty disk)**
-
-            -   Size (GiB): **512**
-
-        -   Name: **s03-db-0-logs0**
-
-            -   Resource group: **hana-s03-RG**
-
-            -   Account type: **Premium (SSD)**
-
-            -   Source type: **None (empty disk)**
-
-            -   Size (GiB): **128**
-
-    -   Add the following managed disks to s03-db-1:
-
-        -   Name: **s03-db-1-data0**
-
-            -   Resource group: **hana-s03-RG**
-
-            -   Account type: **Premium (SSD)**
-
-            -   Source type: **None (empty disk)**
-
-            -   Size (GiB): **512**
-
-        -   Name: **s03-db-1-data1**
-
-            -   Resource group: **hana-s03-RG**
-
-            -   Account type: **Premium (SSD)**
-
-            -   Source type: **None (empty disk)**
-
-            -   Size (GiB): **512**
-
-        -   Name: **s03-db-1-logs0**
-
-            -   Resource group: **hana-s03-RG**
-
-            -   Account type: **Premium (SSD)**
-
-            -   Source type: **None (empty disk)**
-
-            -   Size (GiB): **128**
-
-#### Exit criteria 
-
--   A resource group named **s03-hana-RG** containing two Linux VMs named **s03-db-0** and **s03-db-1** with 4 managed data disks each.
-
 ## Exercise 2: Configure operating system on Azure VMs running Linux
 
 In this exercise, you will configure operating system settings on Azure VMs running SUSE Linux Enterprise Server to accommodate subsequent clustered installation of SAP HANA
@@ -439,61 +365,13 @@ In this exercise, you will configure operating system settings on Azure VMs runn
 
 #### Tasks to complete
 
--   Generate passphrase-less key pair on each Linux VM and store the resulting public keys from each VM in the **/root/.ssh/authorized\_keys** file on the other VM
+-   Generate passphrase-less key pairs on each Linux VM and store the resulting public keys from each VM in the **/root/.ssh/authorized\_keys** file on the other VM
 
 #### Exit criteria 
 
 -   The ability to establish SSH session from each of the two VMs to the other VM without being prompted for a password.
 
-### Task 4: Configure storage
-
-#### Tasks to complete
-
--   On each of the two Linux VMs, s03-db-0 and s03-db-1, create the following:
-
-    -   Physical volumes:
-
-        -   **/dev/sdc**
-
-        -   **/dev/sdd**
-
-        -   **/dev/sde**
-
-        -   **/dev/sdf**
-
-    -   Volume groups:
-
-        -   **vg\_hana\_shared** for **/dev/sdc**
-
-        -   **vg\_hana\_data** for **/dev/sdd /dev/sde**
-
-        -   **vg\_hana\_log** for **/dev/sdf**
-
-    -   Logical volumes:
-
-        -   **hana\_shared** for **vg\_hana\_shared**
-
-        -   **hana\_data** for **vg\_hana\_data**
-
-        -   **hana\_log** for **vg\_hana\_log**
-
-    -   mount directories:
-
-        -   **/hana/shared**
-
-        -   **/hana/data**
-
-        -   **/hana/log**
-
-    -   Update **/etc/fstab** to automatically mount the volumes (with **nofail** parameter)
-
-    -   Mount the volumes
-
-#### Exit criteria 
-
--   Use **df --h** to verify that all volumes were successfully mounted.
-
-### Task 5: Configure name resolution
+### Task 4: Configure name resolution
 
 #### Tasks to complete
 
@@ -502,6 +380,17 @@ In this exercise, you will configure operating system settings on Azure VMs runn
 #### Exit criteria 
 
 -   Successful name resolution of s03-db-0 and s03-db-1 names to their respective IP addresses from both VMs
+
+### Task 5: Configure storage
+
+#### Tasks to complete
+
+-   On each of the two Linux VMs, s03-db-0 and s03-db-1, create s03-db-0, create a directory that will be used to host the SAP HANA installation media in /hana/shared/media
+
+#### Exit criteria 
+
+-   Use **ls** to verify that the directory was successfully created.
+
 
 ## Exercise 3: Configure clustering on Azure VMs running Linux
 
