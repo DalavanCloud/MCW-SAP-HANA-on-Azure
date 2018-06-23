@@ -2105,7 +2105,7 @@ The template-based deployment of Azure components that form the SAP HANA infrast
 3.  To remediate this, switch to the SSH session on s03-db-1, and reconfigure the HANA instance as secondary by running the following sequence of commands:
 
     ```
-    su  s03adm (switch to the s03adm security context)
+    su - s03adm (switch to the s03adm security context)
 
     sapcontrol --nr 00 --function StopWait 600 10 (stop the HANA instance in case it is running)
 
@@ -2190,23 +2190,19 @@ The template-based deployment of Azure components that form the SAP HANA infrast
 
     ![the Virtual machines blade displays with the status results for three virtual machines. One is updating, and two are running.](images/Hands-onlabstep-by-step-SAPHANAonAzureimages/media/image70.png "Virtual machines blade")
 
-3.  From the Remote Desktop session, to s03-hana-0 Azure VM, start **Internet Explorer**, and browse to **https://s03-db-1:7630**. On the **SUSE Hawk Sign in** page, sign in as **hacluster** with the password **demo\@pass123**:
-
-    ![The SUSE Hawk Sign-in webpage displays with the previously defined sign-in information..](images/Hands-onlabstep-by-step-SAPHANAonAzureimages/media/image71.png "SUSE Hawk Sign in webpage")
-
-4.  Wait until the status of the resource changes from the question mark to a blue circle, and verify its location changed to **s03-db-1**:
+3.  From the Remote Desktop session, switch to the *Internet Explorer** window displaying connection to **https://s03-db-1:7630**. Wait until the status of the resource changes from the question mark to a blue circle, and verify its location changed to **s03-db-1**:
 
     ![On the Resources tab, the status of the resource has a blue dot, and its location is s03-db-1.](images/Hands-onlabstep-by-step-SAPHANAonAzureimages/media/image72.png "Status page")
 
-5.  Switch to **SAP HANA Administration Console**, and refresh the Overview tab in the **Configuration and Monitoring** view. Note that SAP HANA is running at this point on the **s03-db-0** node:
+4.  Switch to **SAP HANA Administration Console**, and refresh the Overview tab in the **Configuration and Monitoring** view. Note that SAP HANA is running at this point on the **s03-db-1** node:
 
     ![In the Configuration and Monitoring view, on the Overview tab, details display for SAP HANA.](images/Hands-onlabstep-by-step-SAPHANAonAzureimages/media/image73.png "SAP HANA Administration Console, Overview tab")
 
-6.  From the Azure portal, verify the s03-db-0 virtual machine is running:
+5.  From the Azure portal, verify the s03-db-0 virtual machine is running:
 
     ![the Virtual machines blade displays with the status results for three virtual machines. This time, all three are running.](images/Hands-onlabstep-by-step-SAPHANAonAzureimages/media/image74.png "Virtual machines blade")
 
-7.  Restart the SSH session to s03-db-0, and run the following commands in order to restore its operational status:
+6.  Restart the SSH session to s03-db-0, and run the following commands in order to restore its operational status:
 
     ```
     su s03adm (switch to the s03adm security context)
@@ -2262,15 +2258,15 @@ The template-based deployment of Azure components that form the SAP HANA infrast
      Waiting for 1 replies from the CRMd. OK
     ```
     
-8.  Switch to the **SUSE Hawk Status** page, and note that the **SAPHana** clustered resource is operational on both s03-db-0 and s03-db-1 with s03-db-1 as the primary:
+7.  Switch to the **SUSE Hawk Status** page, and note that the **SAPHana** clustered resource is operational on both s03-db-0 and s03-db-1 with s03-db-1 as the primary:
 
     ![The Resources tab shows that the SAPHana resource is now running.](images/Hands-onlabstep-by-step-SAPHANAonAzureimages/media/image75.png "Resources tab")
 
-9.  Switch to **SAP HANA Administration Console,** and on the **Overview** tab in the **Configuration and Monitoring** view, click the **System Replication Status** link.
+8.  Switch to **SAP HANA Administration Console,** and on the **Overview** tab in the **Configuration and Monitoring** view, click the **System Replication Status** link.
 
     ![On the SAP HANA Administration Console Overview tab, in the Configuration and Monitoring view, the System Replication Status link is selected.](images/Hands-onlabstep-by-step-SAPHANAonAzureimages/media/image76.png "SAP HANA Administration Console, Overview tab ")
 
-10. From the System Replication tab, verify the replication status is active:
+9. From the System Replication tab, verify the replication status is active:
 
     ![On the SAP HANA Administration Console Landscape tab, on the System Replication sub-tab, the replication status for the three listed hosts is active.](images/Hands-onlabstep-by-step-SAPHANAonAzureimages/media/image77.png "SAP HANA Administration Console, Landscape tab")
 
