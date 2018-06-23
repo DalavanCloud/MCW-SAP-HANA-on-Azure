@@ -2205,15 +2205,15 @@ The template-based deployment of Azure components that form the SAP HANA infrast
 6.  Restart the SSH session to s03-db-0, and run the following commands in order to restore its operational status:
 
     ```
-    su s03adm (switch to the s03adm security context)
+    su - s03adm (switch to the s03adm security context)
 
     sapcontrol --nr 00 --function StopWait 600 10 (stop the HANA instance in case it is running)
 
-    hdbnsutil -sr\_register \--remoteHost=s03-db-1 \--remoteInstance=00 \--replicationMode=sync \--name=SITE1** (register the local instance as secondary)
+    hdbnsutil -sr_register --remoteHost=s03-db-1 --remoteInstance=00 --replicationMode=sync --name=SITE1 (register the local instance as secondary)
 
     exit(switch back to the root)
 
-    crm resource cleanup msl\_SAPHana\_S03\_HDB00 s03-db-0** (clean up the failed state)
+    crm resource cleanup msl_SAPHana_S03_HDB00 s03-db-0** (clean up the failed state)
     
      s03-db-0:~ # su - s03adm
 
