@@ -4,7 +4,7 @@ Contoso, a pharmaceutical company, wants to migrate its SAP HANA deployment to A
 
 # Target audience
 
-- SAP Basis professionals
+- SAP Basis Professionals
 
 # Abstract
 
