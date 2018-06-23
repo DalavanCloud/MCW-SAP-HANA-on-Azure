@@ -1692,16 +1692,16 @@ In this exercise, you will configure cluster framework.
 
 2.  From the SSH session on s03-db-0, create a new file named **crm-defaults.txt** with the following content:
     ```
-property $id="cib-bootstrap-options" \
-no-quorum-policy="ignore" \
-stonith-enabled="true" \
-stonith-action="reboot" \
-stonith-timeout="150s"
-rsc_defaults $id="rsc-options" \
-resource-stickiness="1000" \
-migration-threshold="5000"
-op_defaults $id="op-options" \
-timeout="600"
+     property $id="cib-bootstrap-options" \
+     no-quorum-policy="ignore" \
+     stonith-enabled="true" \
+     stonith-action="reboot" \
+     stonith-timeout="150s"
+     rsc_defaults $id="rsc-options" \
+     resource-stickiness="1000" \
+     migration-threshold="5000"
+     op_defaults $id="op-options" \
+     timeout="600"
     ```
 
 3.  From the SSH session on s03-db-0, apply the settings in the file by running **crm configure load update ./crm-defaults.txt**
@@ -1783,11 +1783,11 @@ timeout="600"
 
 1.  From the SSH session on s03-db-0, create a new file named **crm-fencing.txt** with the following content (where *subscription\_id, resource\_group, tenant\_id, login\_id,* and *password* are placeholders for the values you identified in Exercise 5 Task 2:
     ```
-primitive rsc_st_azure_1 stonith:fence_azure_arm \
-params subscriptionId="subscription_id" resourceGroup="hana-s03-RG" tenantId="tenant _id" login="login_id" passwd="password"
-primitive rsc_st_azure_2 stonith:fence_azure_arm \
-params subscriptionId="subscription_id" resourceGroup="hana-s03-RG" tenantId="tenant _id" login="login_id" passwd="password"
-colocation col_st_azure -2000: rsc_st_azure_1:Started rsc_st_azure_2:Started
+     primitive rsc_st_azure_1 stonith:fence_azure_arm \
+     params subscriptionId="subscription_id" resourceGroup="hana-s03-RG" tenantId="tenant _id" login="login_id" passwd="password"
+     primitive rsc_st_azure_2 stonith:fence_azure_arm \
+     params subscriptionId="subscription_id" resourceGroup="hana-s03-RG" tenantId="tenant _id" login="login_id" passwd="password"
+     colocation col_st_azure -2000: rsc_st_azure_1:Started rsc_st_azure_2:Started
     ```
 
 2.  From the SSH session on s03-db-0, apply the settings in the file by running **crm configure load update ./crm-fencing.txt**:
@@ -1799,14 +1799,14 @@ colocation col_st_azure -2000: rsc_st_azure_1:Started rsc_st_azure_2:Started
 
 1.  From the SSH session on s03-db-0, create a new file named **crm-saphanatop.txt** with the following content:
     ```
-primitive rsc_SAPHanaTopology_S03_HDB00 ocf:suse:SAPHanaTopology \
-operations $id="rsc_sap2_S03_HDB00-operations" \
-op monitor interval="10" timeout="600" \
-op start interval="0" timeout="600" \
-op stop interval="0" timeout="300" \
-params SID="S03" InstanceNumber="00"
-clone cln_SAPHanaTopology_S03_HDB00 rsc_SAPHanaTopology_S03_HDB00 \
-meta is-managed="true" clone-node-max="1" target-role="Started" interleave="true"
+     primitive rsc_SAPHanaTopology_S03_HDB00 ocf:suse:SAPHanaTopology \
+     operations $id="rsc_sap2_S03_HDB00-operations" \
+     op monitor interval="10" timeout="600" \
+     op start interval="0" timeout="600" \
+     op stop interval="0" timeout="300" \
+     params SID="S03" InstanceNumber="00"
+     clone cln_SAPHanaTopology_S03_HDB00 rsc_SAPHanaTopology_S03_HDB00 \
+     meta is-managed="true" clone-node-max="1" target-role="Started" interleave="true"
     ```
 
 2.  From the SSH session on s03-db-0, apply the settings in the file by running **crm configure load update ./crm-saphanatop.txt**:
@@ -1818,31 +1818,31 @@ meta is-managed="true" clone-node-max="1" target-role="Started" interleave="true
 
 1.  From the SSH session on s03-db-0, create a new file named **crm-saphana.txt** with the following content:
     ```
-primitive rsc_SAPHana_S03_HDB00 ocf:suse:SAPHana \
-operations $id="rsc_sap_S03_HDB00-operations" \
-op start interval="0" timeout="3600" \
-op stop interval="0" timeout="3600" \
-op promote interval="0" timeout="3600" \
-op monitor interval="60" role="Master" timeout="700" \
-op monitor interval="61" role="Slave" timeout="700" \
-params SID="S03" InstanceNumber="00" PREFER_SITE_TAKEOVER="true" \
-DUPLICATE_PRIMARY_TIMEOUT="7200" AUTOMATED_REGISTER="false"
-ms msl_SAPHana_S03_HDB00 rsc_SAPHana_S03_HDB00 \
-meta is-managed="true" notify="true" clone-max="2" clone-node-max="1" \
-target-role="Started" interleave="true"
-primitive rsc_ip_S03_HDB00 ocf:heartbeat:IPaddr2 \ 
-meta target-role="Started" is-managed="true" \ 
-operations $id="rsc_ip_S03_HDB00-operations" \ 
-op monitor interval="10s" timeout="20s" \ 
-params ip="172.16.1.4" 
-primitive rsc_nc_S03_HDB00 anything \ 
-params binfile="/usr/bin/nc" cmdline_options="-l -k 62500" \ 
-op monitor timeout=20s interval=10 depth=0 
-group g_ip_S03_HDB00 rsc_ip_S03_HDB00 rsc_nc_S03_HDB00
-colocation col_saphana_ip_S03_HDB00 2000: g_ip_S03_HDB00:Started \ 
-msl_SAPHana_S03_HDB00:Master  
-order ord_SAPHana_S03_HDB00 2000: cln_SAPHanaTopology_S03_HDB00 \ 
-msl_SAPHana_S03_HDB00
+     primitive rsc_SAPHana_S03_HDB00 ocf:suse:SAPHana \
+     operations $id="rsc_sap_S03_HDB00-operations" \
+     op start interval="0" timeout="3600" \
+     op stop interval="0" timeout="3600" \
+     op promote interval="0" timeout="3600" \
+     op monitor interval="60" role="Master" timeout="700" \
+     op monitor interval="61" role="Slave" timeout="700" \
+     params SID="S03" InstanceNumber="00" PREFER_SITE_TAKEOVER="true" \
+     DUPLICATE_PRIMARY_TIMEOUT="7200" AUTOMATED_REGISTER="false"
+     ms msl_SAPHana_S03_HDB00 rsc_SAPHana_S03_HDB00 \
+     meta is-managed="true" notify="true" clone-max="2" clone-node-max="1" \
+     target-role="Started" interleave="true"
+     primitive rsc_ip_S03_HDB00 ocf:heartbeat:IPaddr2 \ 
+     meta target-role="Started" is-managed="true" \ 
+     operations $id="rsc_ip_S03_HDB00-operations" \ 
+     op monitor interval="10s" timeout="20s" \ 
+     params ip="172.16.1.4" 
+     primitive rsc_nc_S03_HDB00 anything \ 
+     params binfile="/usr/bin/nc" cmdline_options="-l -k 62500" \ 
+     op monitor timeout=20s interval=10 depth=0 
+     group g_ip_S03_HDB00 rsc_ip_S03_HDB00 rsc_nc_S03_HDB00
+     colocation col_saphana_ip_S03_HDB00 2000: g_ip_S03_HDB00:Started \ 
+     msl_SAPHana_S03_HDB00:Master  
+     order ord_SAPHana_S03_HDB00 2000: cln_SAPHanaTopology_S03_HDB00 \ 
+     msl_SAPHana_S03_HDB00
     ```
     
 2.  From the SSH session on s03-db-0, apply the settings in the file by running **crm configure load update ./crm-saphana.txt**:
@@ -1995,30 +1995,34 @@ The template-based deployment of Azure components that form the SAP HANA infrast
 
     ![The same page displays with the SAPHana resource details.](images/Hands-onlabstep-by-step-SAPHANAonAzureimages/media/image58.png "SAPHana Resource details page")
 
-    Switch to the SSH session on s03-db-0, and stop the pacemaker service by running **service pacemaker start** (This will trigger the failover of the **SAPHana** clustered resource.):
+    Switch to the SSH session on s03-db-0, and stop the pacemaker service by running **service pacemaker stop** (This will trigger the failover of the **SAPHana** clustered resource.):
 
-     s03-db-0:~ # service pacemaker start
+     s03-db-0:~ # service pacemaker stop
 
-2.  Wait until the status of the resource changes from the question mark to a blue circle and verify that its location changed to **s03-db-1**:
+2.  Wait until the status of the resource changes from the question mark. 
 
     ![On the Status page, the Resources tab displays, with a resource selected whose status has a question mark.](images/Hands-onlabstep-by-step-SAPHANAonAzureimages/media/image59.png "Resources tab")
 
+3.  Start **Internet Explorer**, and browse to **https://s03-db-1:7630**. On the **SUSE Hawk Sign in** page, sign in as **hacluster** with the password **demo\@pass123**.
+
+4.  In the Internet Explorer window displaying the **SUSE Hawk** page, from the **msl\_SAPHana\_S03\_HDB00** page, identify the system currently serving the master role. Verify that its location changed to **s03-db-1**:
+
     ![The resource selected now has a blue dot under Status.](images/Hands-onlabstep-by-step-SAPHANAonAzureimages/media/image60.png "Resources tab")
 
-3.  Switch to **SAP HANA Administration Console**, and refresh the Overview tab in the **Configuration and Monitoring** view. Note that SAP HANA is running at this point on the **s03-db-1** node, and it is operational:
+5.  Switch to **SAP HANA Administration Console**, and refresh the Overview tab in the **Configuration and Monitoring** view. Note that SAP HANA is running at this point on the **s03-db-1** node, and it is operational:
 
     ![In the Configuration and Monitoring view, the Overview tab displays information for the s03-db-1 node.](images/Hands-onlabstep-by-step-SAPHANAonAzureimages/media/image61.png "SAP HANA Administration Console Overview tab")
 
-4.  After the failover, switch to the SSH session on s03-db-0, and start the pacemaker service by running **service pacemaker start**:
+6.  After the failover, switch to the SSH session on s03-db-0, and start the pacemaker service by running **service pacemaker start**:
     ```
-     s03-db-0:~ # service pacemaker stop
+     s03-db-0:~ # service pacemaker start
     ```
 
-5.  Switch to the **SUSE Hawk Status** page, and note that the **SAPHana** clustered resource on s03-db-0 failed to start as secondary (This is because **AUTOMATED\_REGISTER** property was set to **false** in Exercise 6 Task 6.):
+7.  Switch to the **SUSE Hawk Status** page, and note that the **SAPHana** clustered resource on s03-db-0 failed to start as secondary (This is because **AUTOMATED\_REGISTER** property was set to **false** in Exercise 6 Task 6.):
 
     ![On the Status page, an Error message displays.](images/Hands-onlabstep-by-step-SAPHANAonAzureimages/media/image62.png "Status Page")
 
-6.  To remediate this, switch to the SSH session on s03-db-0, and reconfigure the HANA instance as secondary by running the following sequence of commands:
+8.  To remediate this, switch to the SSH session on s03-db-0, and reconfigure the HANA instance as secondary by running the following sequence of commands:
 
     -   **su -- s03adm** (switch to the s03adm security context)
 
@@ -2073,7 +2077,7 @@ The template-based deployment of Azure components that form the SAP HANA infrast
      Waiting for 1 replies from the CRMd. OK
     ```
 
-7.  Switch to the **SUSE Hawk Status** page, and note the **SAPHana** clustered resource is operational on both s03-db-0 and s03-db-1 with s03-db-1 as the primary:
+9.  Switch to the **SUSE Hawk Status** page, and note the **SAPHana** clustered resource is operational on both s03-db-0 and s03-db-1 with s03-db-1 as the primary:
 
     ![On the Resources tab, the SAPHana line now displays a blue dot.](images/Hands-onlabstep-by-step-SAPHANAonAzureimages/media/image63.png "Resources tab")
 
