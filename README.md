@@ -1,9 +1,16 @@
+# Implement Highly Available SAP HANA Deployment in Azure IaaS
+
+Contoso, a pharmaceutical company, wants to migrate its SAP HANA deployment to Azure. In order to evaluate Azure IaaS capabilities, Contoso needs to set up a highly available deployment of SAP HANA on Azure VMs running SUSE Linux Enterprise Edition. 
+
+# Target audience
+
+- SAP Basis professionals
+
 # Abstract
 
 ## Workshop
 
-
-
+In this workshop, you will learn how to provision a highly avilable deployment of SAP HANA in Azure. Throughout the whiteboard design session and the hands-on lab, you will look at the planning process for SAP HANA migration and deployment. You will identify and implement Azure infrastructure components necessary to support a clustered deployment of SAP HANA. You will also step through installing SAP HANA and configuring SAP HANA system replication. Finally, you will review and test different scenarios that involve manual and automatic failover between cluster nodes. 
 
 ## Whiteboard Design Session
 Architecting SAP HANA on Azure VMs
@@ -35,7 +42,7 @@ This Hands-on Lab guides you through implementation of a highly available SAP HA
 - Azure Active Directory
 - Azure Virtual Networks
 - Load Balancers
-- Failover Clustering
+- Linux Clustering
 
 
 
