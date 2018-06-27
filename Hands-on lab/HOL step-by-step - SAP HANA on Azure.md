@@ -691,7 +691,9 @@ aa
 5.   From the SSH session on s03-db-0, generate passphrase-less RSA SSH key by running `ssh-keygen`. When prompted, press **Enter** three times and then run `cat /root/.ssh/id\_rsa.pub` to display the key:
     ```
      s03-db-0:~ # ssh-keygen
-     
+    ```
+    
+    ```
      Generating public/private rsa key pair.
 
      Enter file in which to save the key (/root/.ssh/id_rsa):
