@@ -690,7 +690,7 @@ aa
 
 5.  From the SSH session on s03-db-0, generate passphrase-less RSA SSH key by running `ssh-keygen`. When prompted, press **Enter** three times and then run `cat /root/.ssh/id\_rsa.pub` to display the key.
     ```
-     s03-db-1:~ # ssh-keygen
+     s03-db-0:~ # ssh-keygen
 
      Generating public/private dsa key pair.
 
@@ -722,9 +722,9 @@ aa
      |         .oBB=+  |
      +----[SHA256]-----+
 
-     s03-db-1:~ # cat /root/.ssh/id_dsa.pub
+     s03-db-0:~ # cat /root/.ssh/id_dsa.pub
 
-     ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCyisn1Le0o491/Rw/99W1zuySWmR3iqMeAYG8XwQ5My6wt9zFHdADQwmw3atd5EgpZjlp/DZb7zk4wBgRhVaqLwEFfcmlqoTSdS4CG3oLuM8JJNYdKnD4asngWi98q7/+jwR78HmOZ36VK7+qWKb8l3cecMRsjlDJQF+MRYWknslMRoJgf9O42JG6GcNZ4RtMfq1FZZ8Qy73oKKIydUynSMBtQnPa38g+u/ypxtzv4wsVQL16LWA5UW2XylR9qK3VurZA6wrqfSY9jX1nO8pxaZOnVyPDIgW7EhUgdt95MuL0RWLYCqaHfOeeKDhPwcC3tLyZysZ7dKu2tLbUQJ3kF root@s03-db-1
+     ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDXf3fFwe4qBmyI88xaorItLGXs8wmJsFRg3BaUD/phBE9Hajxu4pzwLIERyBT+DMW8sbXx6OmVe9bONr+s4GLF9fJ8fDcPlJmiGA5SpooaC33c1IxP1Fa0Hsva295rz6AkVSu+yw89aaImxs37bjpId2wvjbjGmWhujdKBsfxNkzrwisr+WnFnyPGD0vtP7pZ0YhNzPgHN/3IlfRfyILtLtFrFaSoQdJWzjt87Sj9C+SqyIR/R++kX2l55/q7zuHNXDQ4W4wVXawNC1NVS3UubgSJnwaBbqqZkF0Ijdu0gyM0hczdRA9mcp/gQ9NFkHYu4GTGLoYT6z2WyV4JyVNtt root@s03-db-0
     ```
 
 6.  From the SSH session on s03-db-1, generate passphrase-less RSA SSH key by running `ssh-keygen`. When prompted, press **Enter** three times and then run `cat /root/.ssh/id\_rsa.pub` to display the key.
