@@ -688,7 +688,7 @@ aa
      s03-db-0:~ # vi /root/.ssh/authorized_keys
     ```
 
-5.   From the SSH session on s03-db-0, generate passphrase-less RSA SSH key by running `ssh-keygen`. When prompted, press **Enter** three times and then run `cat /root/.ssh/id\_rsa.pub` to display the key:  
+5.   From the SSH session on s03-db-0, generate passphrase-less RSA SSH key by running `ssh-keygen`. When prompted, press **Enter** three times and then run `cat /root/.ssh/id\_rsa.pub` to display the key.
     ```
      s03-db-0:~ # ssh-keygen
 
