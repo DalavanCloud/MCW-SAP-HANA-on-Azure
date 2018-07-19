@@ -371,7 +371,7 @@ Directions: With all participants at your table, respond to the following questi
 
 2.  What Azure VM sizes do you intend to use?
 
-3.  What other Azure resources will be part of your solution
+3.  What other Azure resources will be part of your solution?
 
 *Solution cost:*
 
