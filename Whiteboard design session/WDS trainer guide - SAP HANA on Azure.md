@@ -522,49 +522,49 @@ Azure virtual machines - BW on HANA with HA/DR
 
 1.  ECC remains on-premises until Dec CY18. How can we maintain integrations between ECC and BW?
 
--   Microsoft supports a hybrid solution, with symmetry between on-premises applications and those on the public cloud
+    -   Microsoft supports a hybrid solution, with symmetry between on-premises applications and those on the public cloud
 
--   Windows Azure Virtual Network allows to create a logically isolated section in Azure and securely connect it to on premises datacenters
+    -   Windows Azure Virtual Network allows to create a logically isolated section in Azure and securely connect it to on premises datacenters
 
--   ExpressRoute provides secure, high-bandwidth, low-latency connectivity between Azure and on-premises datacenters
+    -   ExpressRoute provides secure, high-bandwidth, low-latency connectivity between Azure and on-premises datacenters
 
 2.  How much does Azure cost? Give us a few options (e.g. HA and non-HA, DR and non-DR).
 
--   The proposed design offers three options:
+    -   The proposed design offers three options:
 
-    -   Non-HA
+        -   Non-HA
 
-    -   HA with no DR
+        -   HA with no DR
 
-    -   HA and DR
+        -   HA and DR
 
--   For mission-critical SAP applications using SAP HANA, high availability can be achieved through a highly resilient architecture with active and standby systems that have databases running with data replication. If a deployment is non-mission critical, it is possible to ensure high availability for just the data and spin up necessary compute on-demand in the event of a failure.
+    -   For mission-critical SAP applications using SAP HANA, high availability can be achieved through a highly resilient architecture with active and standby systems that have databases running with data replication. If a deployment is non-mission critical, it is possible to ensure high availability for just the data and spin up necessary compute on-demand in the event of a failure.
 
--   Disaster recovery can leverage:
+    -   Disaster recovery can leverage:
 
-    -   Azure Site Recovery Services (A2A scenario)
+        -   Azure Site Recovery Services (A2A scenario)
 
-        -   Replicates SAP application instance VMs and ASCS/SCS VMs to second SAP Azure region
+            -   Replicates SAP application instance VMs and ASCS/SCS VMs to second SAP Azure region
 
-        -   VMs in DR region regions are not up and running (no compute costs)
+            -   VMs in DR region regions are not up and running (no compute costs)
 
-    -   SAP HANA System Replication in asynchronous replication mode
+        -   SAP HANA System Replication in asynchronous replication mode
 
 3.  Do I have to pay for virtual machines when they are stopped?
 
--   Azure VM must be in the stopped (deallocated) state in order to avoid compute charges. If the VM is stopped it will continue to incur charges.
+    -   Azure VM must be in the stopped (deallocated) state in order to avoid compute charges. If the VM is stopped it will continue to incur charges.
 
--   Deallocating does not mean deleting the VM as it still exists in storage.
+    -   Deallocating does not mean deleting the VM as it still exists in storage.
 
--   You will still incur storage charge even if the VM is deallocated.
+    -   You will still incur storage charge even if the VM is deallocated.
 
 4.  Can I automate the shutdown of virtual machines at periodic times of day?
 
--   Yes, this functionality is available directly from the Azure portal. Alternatively, you can use Azure Automation runbooks or custom Azure PowerShell and Azure CLI scripts to stop and deallocate any instance.
+    -   Yes, this functionality is available directly from the Azure portal. Alternatively, you can use Azure Automation runbooks or custom Azure PowerShell and Azure CLI scripts to stop and deallocate any instance.
 
--   The same tools can be used to start the instance on a scheduled time.
+    -   The same tools can be used to start the instance on a scheduled time.
 
--   Note that the built-in platform auto-shutdown functionality does not provide the draining functionality of application servers, so it is important to verify that these servers do not have any active tasks before initiating shutdown. This can be implemented by using Azure Automation or Azure functions.
+    -   Note that the built-in platform auto-shutdown functionality does not provide the draining functionality of application servers, so it is important to verify that these servers do not have any active tasks before initiating shutdown. This can be implemented by using Azure Automation or Azure functions.
 
 ## Customer quote (to be read back to the attendees at the end)
 
