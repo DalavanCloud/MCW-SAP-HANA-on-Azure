@@ -1,4 +1,4 @@
-﻿![](https://github.com/Microsoft/MCW-Template-Cloud-Workshop/raw/master/Media/ms-cloud-workshop.png "Microsoft Cloud Workshops")
+![Microsoft Cloud Workshops](https://github.com/Microsoft/MCW-Template-Cloud-Workshop/raw/master/Media/ms-cloud-workshop.png "Microsoft Cloud Workshops")
 
 <div class="MCWHeader1">
 SAP HANA on Azure
@@ -18,6 +18,7 @@ Information in this document, including URL and other Internet Web site referenc
 Microsoft may have patents, patent applications, trademarks, copyrights, or other intellectual property rights covering subject matter in this document. Except as expressly provided in any written license agreement from Microsoft, the furnishing of this document does not give you any license to these patents, trademarks, copyrights, or other intellectual property.
 
 The names of manufacturers, products, or URLs are provided for informational purposes only and Microsoft makes no representations and warranties, either expressed, implied, or statutory, regarding these manufacturers or the use of the products with any Microsoft technologies. The inclusion of a manufacturer or product does not imply endorsement of Microsoft of the manufacturer or product. Links may be provided to third party sites. Such sites are not under the control of Microsoft and Microsoft is not responsible for the contents of any linked site or any link contained in a linked site, or any changes or updates to such sites. Microsoft is not responsible for webcasting or any other form of transmission received from any linked site. Microsoft is providing these links to you only as a convenience, and the inclusion of any link does not imply endorsement of Microsoft of the site or the products contained therein.
+
 © 2018 Microsoft Corporation. All rights reserved.
 
 Microsoft and the trademarks listed at https://www.microsoft.com/en-us/legal/intellectualproperty/Trademarks/Usage/General.aspx are trademarks of the Microsoft group of companies. All other trademarks are property of their respective owners.
@@ -27,7 +28,7 @@ Microsoft and the trademarks listed at https://www.microsoft.com/en-us/legal/int
 <!-- TOC -->
 
 - [SAP HANA on Azure hands-on lab unguided](#sap-hana-on-azure-hands-on-lab-unguided)
-    - [Abstract and Learning Objectives](#abstract-and-learning-objectives)
+    - [Abstract and learning objectives](#abstract-and-learning-objectives)
     - [Overview](#overview)
     - [Requirements](#requirements)
     - [Exercise 1: Provision Azure infrastructure](#exercise-1-provision-azure-infrastructure)
@@ -139,7 +140,7 @@ Microsoft and the trademarks listed at https://www.microsoft.com/en-us/legal/int
 
 # SAP HANA on Azure hands-on lab unguided
 
-## Abstract and Learning Objectives 
+## Abstract and learning objectives 
 
 This Hands-on Lab guides you through implementation of a highly available SAP HANA deployment on Microsoft Azure virtual machines running SUSE Linux Enterprise Server. After its completion, students should be able to:
 
@@ -155,7 +156,7 @@ This Hands-on Lab guides you through implementation of a highly available SAP HA
 
 ## Overview
 
-In this Hands-on Lab, you are working with Contoso to develop a process of implementing a highly available deployment of SAP HANA on Azure virtual machines (VMs). Your tasks will include provisioning of Azure infrastructure components of the deployment, setting up a clustered pair of Azure Linux VMs running SUSE Linux Enterprise Server to support SAP HANA, installing SAP HANA instance on each of the Azure VMs, and configuring SAP HANA system replication between them.
+In this Hands-on lab, you are working with Contoso to develop a process of implementing a highly available deployment of SAP HANA on Azure virtual machines (VMs). Your tasks will include provisioning of Azure infrastructure components of the deployment, setting up a clustered pair of Azure Linux VMs running SUSE Linux Enterprise Server to support SAP HANA, installing SAP HANA instance on each of the Azure VMs, and configuring SAP HANA system replication between them.
 
 ## Requirements
 
@@ -183,7 +184,6 @@ In this exercise, you will deploy Azure infrastructure prerequisites for impleme
 |----------|:-------------:|
 | **Description** | **Links** |
 | High Availability of SAP HANA on Azure Virtual Machines (VMs) | <https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/sap-hana-high-availability/> |
-|
 
 ### Task 1: Deploy an Azure virtual machine running Windows
 
@@ -321,7 +321,7 @@ In this exercise, you will deploy Azure infrastructure prerequisites for impleme
 
 #### Exit criteria 
 
--   A resource group named **s03-hana-RG** containing two Linux VMs named **s03-db-0** and **s03-db-1** with DNS name label and static IP addresses of 172.16.0.10 and 172.16.0.11 assigned to each (respectively).
+-   A resource group named **s03-hana-RG** containing two Linux VMs named **s03-db-0** and **s03-db-1** with DNS name label and static IP addresses of 172.16.0.10 and 172.16.0.11 assigned to each (respectively)
 
 ## Exercise 2: Configure operating system on Azure VMs running Linux
 
@@ -333,7 +333,6 @@ In this exercise, you will configure operating system settings on Azure VMs runn
 |----------|:-------------:|
 | **Description** | **Links** |
 | High Availability of SAP HANA on Azure Virtual Machines (VMs) | <https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/sap-hana-high-availability/> |
-|
 
 ### Task 1: Connect to Azure Linux VMs and register SUSE Linux Enterprise Server image
 
@@ -369,13 +368,13 @@ In this exercise, you will configure operating system settings on Azure VMs runn
 
 #### Exit criteria 
 
--   The ability to establish SSH session from each of the two VMs to the other VM without being prompted for a password.
+-   The ability to establish SSH session from each of the two VMs to the other VM without being prompted for a password
 
 ### Task 4: Configure name resolution
 
 #### Tasks to complete
 
--   Add entries to **/etc/hosts** on both Linux VM s03-db-0 and s03-db-1 to facilitate resolution of their names to their respective private IP addresses.
+-   Add entries to **/etc/hosts** on both Linux VM s03-db-0 and s03-db-1 to facilitate resolution of their names to their respective private IP addresses
 
 #### Exit criteria 
 
@@ -389,7 +388,7 @@ In this exercise, you will configure operating system settings on Azure VMs runn
 
 #### Exit criteria 
 
--   Use **ls** to verify that the directory was successfully created.
+-   Use **ls** to verify that the directory was successfully created
 
 
 ## Exercise 3: Configure clustering on Azure VMs running Linux
@@ -402,7 +401,6 @@ In this exercise, you will configure clustering on Azure VMs running Linux.
 |----------|:-------------:|
 | **Description** | **Links** |
 | High Availability of SAP HANA on Azure Virtual Machines (VMs) | <https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/sap-hana-high-availability/> |
-|
 
 ### Task 1: Configure clustering
 
@@ -428,7 +426,7 @@ In this exercise, you will configure clustering on Azure VMs running Linux.
 
 #### Exit criteria 
 
--   Corosync reconfigured to include references to both cluster nodes.
+-   Corosync reconfigured to include references to both cluster nodes
 
 ## Exercise 4: Install SAP HANA
 
@@ -454,7 +452,7 @@ In this exercise, you will install SAP HANA.
 
 ### Task 2: Run hdblcm on both Linux VMs
 
-Tasks to complete
+####Tasks to complete
 
 -   Run hdblcm on both s03-db-0 and s03-db-1 with the following settings:
 
@@ -518,7 +516,6 @@ In this exercise, you will configure SAP HANA replication.
 |----------|:-------------:|
 | **Description** | **Links** |
 | High Availability of SAP HANA on Azure Virtual Machines (VMs) | <https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/sap-hana-high-availability/> |
-|
 
 ### Task 1: Create HANA DATA ADMIN user account
 
@@ -568,7 +565,6 @@ In this exercise, you will configure SAP HANA replication.
 |----------|:-------------:|
 | **Description** | **Links** |
 | High Availability of SAP HANA on Azure Virtual Machines (VMs) | <https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/sap-hana-high-availability/> |
-|
 
 ### Task 1: Configure STONITH clustering options
 
@@ -644,7 +640,7 @@ In this exercise, you will configure SAP HANA replication.
 
 -   From s03-db-0, create the SAPHanaTopology cluster resource agent
 
-E#### xit criteria 
+#### Exit criteria 
 
 -   Create SAPHanaTopology cluster resource agent successfully added to the cluster
 
@@ -668,7 +664,6 @@ In this exercise, you will test the HANA deployment.
 |----------|:-------------:|
 | **Description** | **Links** |
 | High Availability of SAP HANA on Azure Virtual Machines (VMs) | <https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/sap-hana-high-availability/> |
-|
 
 ### Task 1: Install SAP HANA Studio Administration on the Azure VM running Windows
 
@@ -718,7 +713,7 @@ In this exercise, you will test the HANA deployment.
 
 #### Tasks to complete
 
--   From the s03-hana-0 Azure VM, start Internet Explorer and browse to **https://s03-db-0:7630**. On the **SUSE Hawk Sign in** page, sign in as **hacluster** with the password **demo\@pass123**
+-   From the s03-hana-0 Azure VM, start Internet Explorer and browse to **https://s03-db-0:7630**. On the **SUSE Hawk Sign in** page, sign in as **hacluster** with the password **demo\@pass123**.
 
 #### Exit criteria 
 
@@ -728,21 +723,21 @@ In this exercise, you will test the HANA deployment.
 
 #### Tasks to complete
 
--   From an SSH session to s03-db-0, stop the pacemaker service.
+-   From an SSH session to s03-db-0, stop the pacemaker service
 
--   Use Hawk to verify that a failover took place and ensure that you can connect to the cluster via SAP HANA Administration Console.
+-   Use Hawk to verify that a failover took place and ensure that you can connect to the cluster via SAP HANA Administration Console
 
--   Restart the pacemaker service on s03-db-0.
+-   Restart the pacemaker service on s03-db-0
 
--   Use Hawk to verify that the SAPHana clustered resource on s03-db-0 failed to start.
+-   Use Hawk to verify that the SAPHana clustered resource on s03-db-0 failed to start
 
--   From the SSH session to s03-db-0, re-establish HANA system replication and clean up the failed state.
+-   From the SSH session to s03-db-0, re-establish HANA system replication and clean up the failed state
 
 -   Use Hawk to verify that the SAPHana clustered resource on s03-db-0 started successfully
 
 #### Exit criteria 
 
--   In the SUSE Hawk interface, verify that SAPHANA clustered resource is operational, with s03-db-1 as master and s03-db-0 as slave.
+-   In the SUSE Hawk interface, verify that SAPHANA clustered resource is operational, with s03-db-1 as master and s03-db-0 as slave
 
 ### Task 6: Test a migration (from s03-db-1 to s03-db-0)
 
@@ -756,7 +751,7 @@ In this exercise, you will test the HANA deployment.
 
 -   Use Hawk to remove all location constraints
 
--   From the SSH session to s03-db-1, clean up the failed state.
+-   From the SSH session to s03-db-1, clean up the failed state
 
 -   Use Hawk to verify that the SAPHana clustered resource is operational on both nodes with s03-db-0 as the master
 
@@ -764,7 +759,7 @@ In this exercise, you will test the HANA deployment.
 
 #### Exit criteria 
 
-In the SUSE Hawk interface, verify that SAPHANA clustered resource is operational, with s03-db-0 as master and s03-db-1 as slave.
+-   In the SUSE Hawk interface, verify that SAPHANA clustered resource is operational, with s03-db-0 as master and s03-db-1 as slave.
 
 ### Task 7: Test fencing
 
@@ -788,7 +783,7 @@ In the SUSE Hawk interface, verify that SAPHANA clustered resource is operationa
 
 #### Exit criteria
 
-Use SAP HANA Administration Console to verify that the SAP HANA system replication status is active.
+-   Use SAP HANA Administration Console to verify that the SAP HANA system replication status is active.
 
 ## After the hands-on lab 
 
@@ -798,11 +793,14 @@ After completing the hands-on lab, you will remove the resource group and all of
 
 ### Task 1: Remove the resource group containing all Azure resources deployed in this lab
 
-1.  From the lab computer, in the Azure portal at <http://portal.azure.com> , click the **Cloud Shell** icon.
+1.  From the lab computer, in the Azure portal at <http://portal.azure.com> , click the **Cloud Shell** icon
 
-2.  If prompted, in the **Welcome to Azure Cloud Shell** window, click **Bash (Linux)**.
+2.  If prompted, in the **Welcome to Azure Cloud Shell** window, click **Bash (Linux)**
 
 3.  At the Bash prompt, run the following:
+
 ```
 az group delete \--name s03-hana-RG \--no-wait \--yes
 ```
+
+You should follow all steps provided *after* the Hands-on lab.
