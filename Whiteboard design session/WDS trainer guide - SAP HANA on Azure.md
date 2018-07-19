@@ -1,4 +1,4 @@
-﻿![](https://github.com/Microsoft/MCW-Template-Cloud-Workshop/raw/master/Media/ms-cloud-workshop.png "Microsoft Cloud Workshops")
+![Microsoft Cloud Workshops](https://github.com/Microsoft/MCW-Template-Cloud-Workshop/raw/master/Media/ms-cloud-workshop.png "Microsoft Cloud Workshops")
 
 
 <div class="MCWHeader1">
@@ -20,6 +20,7 @@ Information in this document, including URL and other Internet Web site referenc
 Microsoft may have patents, patent applications, trademarks, copyrights, or other intellectual property rights covering subject matter in this document. Except as expressly provided in any written license agreement from Microsoft, the furnishing of this document does not give you any license to these patents, trademarks, copyrights, or other intellectual property.
 
 The names of manufacturers, products, or URLs are provided for informational purposes only and Microsoft makes no representations and warranties, either expressed, implied, or statutory, regarding these manufacturers or the use of the products with any Microsoft technologies. The inclusion of a manufacturer or product does not imply endorsement of Microsoft of the manufacturer or product. Links may be provided to third party sites. Such sites are not under the control of Microsoft and Microsoft is not responsible for the contents of any linked site or any link contained in a linked site, or any changes or updates to such sites. Microsoft is not responsible for webcasting or any other form of transmission received from any linked site. Microsoft is providing these links to you only as a convenience, and the inclusion of any link does not imply endorsement of Microsoft of the site or the products contained therein.
+
 © 2018 Microsoft Corporation. All rights reserved.
 
 Microsoft and the trademarks listed at https://www.microsoft.com/en-us/legal/intellectualproperty/Trademarks/Usage/General.aspx are trademarks of the Microsoft group of companies. All other trademarks are property of their respective owners.
@@ -65,25 +66,25 @@ Thank you for taking time to support the whiteboard design sessions as a trainer
 
 An amazing trainer:
 
--   Creates a safe environment in which learning can take place.
+-   Creates a safe environment in which learning can take place
 
--   Stimulates the participant's thinking.
+-   Stimulates the participant's thinking
 
--   Involves the participant in the learning process.
+-   Involves the participant in the learning process
 
--   Manages the learning process (on time, on topic, and adjusting to benefit participants).
+-   Manages the learning process (on time, on topic, and adjusting to benefit participants)
 
--   Ensures individual participant accountability.
+-   Ensures individual participant accountability
 
--   Ties it all together for the participant.
+-   Ties it all together for the participant
 
--   Provides insight and experience to the learning process.
+-   Provides insight and experience to the learning process
 
--   Effectively leads the whiteboard design session discussion.
+-   Effectively leads the whiteboard design session discussion
 
--   Monitors quality and appropriateness of participant deliverables.
+-   Monitors quality and appropriateness of participant deliverables
 
--   Effectively leads the feedback process.
+-   Effectively leads the feedback process
 
 ## Whiteboard design session flow 
 
@@ -91,7 +92,7 @@ Each whiteboard design session uses the following flow:
 
 **Step 1: Review the customer case study (15 minutes)**
 
-Outcome: Analyze your customer's needs
+Outcome: Analyze your customer's needs.
 
 -   Customer's background, situation, needs and technical requirements
 
@@ -101,7 +102,7 @@ Outcome: Analyze your customer's needs
 
 **Step 2: Design a proof of concept solution (60 minutes)**
 
-Outcome: Prepare to present a solution for your target customer audience
+Outcome: Design a solution and prepare to present the solution to the target customer audience in a 15-minute chalk-talk format.
 
 -   Determine your target customer audience
 
@@ -113,7 +114,7 @@ Outcome: Prepare to present a solution for your target customer audience
 
 **Step 3: Present the solution (30 minutes)**
 
-Outcome: Present solution to your customer
+Outcome: Present solution to your customer.
 
 -   Present solution
 
@@ -129,15 +130,15 @@ Outcome: Present solution to your customer
 
 Before conducting your first whiteboard design session:
 
--   Read the Attendee guide (including the case study) and Trainer guide
+-   Read the Student guide (including the case study) and Trainer guide
 
--   Become familiar with all key points and activities.
+-   Become familiar with all key points and activities
 
--   Plan the point you want to stress, which questions you want to drive, transitions, and be ready to answer questions.
+-   Plan the point you want to stress, which questions you want to drive, transitions, and be ready to answer questions
 
--   Prior to the whiteboard design session, discuss the case study to pick up more ideas.
+-   Prior to the whiteboard design session, discuss the case study to pick up more ideas
 
--   Make notes for later.
+-   Make notes for later
 
 ## During the whiteboard design session: Tips for an effective whiteboard design session
 
@@ -147,7 +148,7 @@ Before conducting your first whiteboard design session:
 
 When participants are doing activities, you can **look ahead to refresh your memory**.
 
--   **Adjust activity and whiteboard design session pace** as needed to allow time for presenting, feedback, and sharing.
+-   **Adjust activity and whiteboard design session pace** as needed to allow time for presenting, feedback, and sharing
 
 -   **Add examples, points, and stories** from your own experience. Think about stories you can share that help you make your points clearly and effectively.
 
@@ -167,7 +168,9 @@ When participants are doing activities, you can **look ahead to refresh your mem
 
 ## Abstract and learning objectives 
 
-Architecting SAP HANA on Azure VMs
+In this workshop, you will look at what is involved in deploying SAP HANA on Azure with the goals of designing for high availability, disaster recovery as well as supportability.
+
+At the end of this workshop, you will be able to better design and deploy SAP HANA on Azure.
 
 Learning objectives:
 
@@ -178,15 +181,19 @@ Learning objectives:
 
 ## Step 1: Review the customer case study 
 
-**Outcome** 
+**Outcome**
 
-Analyze your customer’s needs.
-Time frame: 15 minutes 
-Directions: With all participants in the session, the facilitator/SME presents an overview of the customer case study along with technical tips. 
-1.  Meet your table participants and trainer 
-2.  Read all of the directions for steps 1–3 in the student guide 
+Analyze your customer's needs.
+
+Timeframe: 15 minutes
+
+Directions: With all participants in the session, the facilitator/SME presents an overview of the customer case study along with technical tips.
+
+1.  Meet your table participants and trainer
+
+2.  Read all of the directions for steps 1--3 in the student guide
+
 3.  As a table team, review the following customer case study
-
 
 ### Customer situation
 
@@ -216,79 +223,79 @@ Before migrating the production environment, Contoso wants to test its new deplo
 
 1.  Design scope:
 
-    a.  BW migration to HANA in Azure VMs
+    -   BW migration to HANA in Azure VMs
 
-    -   Go-live date: March 2018
+        -   Go-live date: March 2018
 
-    -   Current BW (ABAP Unicode) on-premises with HP-UX/Oracle and application layer on Linux
+        -   Current BW (ABAP Unicode) on-premises with HP-UX/Oracle and application layer on Linux
 
-    -   Customer requests flexible VM solution within Cloud to accommodate the BW workloads
+        -   Customer requests flexible VM solution within Cloud to accommodate the BW workloads
 
-        1.  Use 1-year Reserved VM Instance option for Production VMs
+            -   Use 1-year Reserved VM Instance option for Production VMs
 
-    b.  ERP is kept on-premises (with HP-UX/Oracle) until December 2018
+    -   ERP is kept on-premises (with HP-UX/Oracle) until December 2018
 
-    -   Data is transferred from ERP (on-premises) to BW (in Cloud) every hour
+        -   Data is transferred from ERP (on-premises) to BW (in Cloud) every hour
 
-    c.  (Option) Need to start to prepare for ERP migration to Cloud
+    -   (Option) Need to start to prepare for ERP migration to Cloud
 
 2.  Target environment:
 
-    a.  Sizing
+    -   Sizing
 
-    -   Production (3-tier) with latest OS/DB fully certified and supported by SAP
+        -   Production (3-tier) with latest OS/DB fully certified and supported by SAP
 
-        1.  HANA sizing memory requirement 1.2 TB, estimate 1.9 TB in 3 years
+            -   HANA sizing memory requirement 1.2 TB, estimate 1.9 TB in 3 years
 
-        2.  Throughput DB files at least 400MB/s \[/hana/data\]
+            -   Throughput DB files at least 400MB/s \[/hana/data\]
 
-        3.  Throughput DB Log files at least 250MB/s \[/hana/log\]
+            -   Throughput DB Log files at least 250MB/s \[/hana/log\]
 
-        4.  BW application servers: 15K SAPS
+            -   BW application servers: 15K SAPS
 
-    -   Certification is NOT required for non-Prod
+        -   Certification is NOT required for non-Prod
 
-        5.  QA (2-tier) HANA database server: 800 GB
+            -   QA (2-tier) HANA database server: 800 GB
 
-        6.  Dev, Test (both 2-tier) HANA database server(s): 256 GB
+            -   Dev, Test (both 2-tier) HANA database server(s): 256 GB
 
-    b.  Uptime -- Prod: 24x7, 744 hours/month, QA - 50 hours/month, DEV/Test - 200 hours/month
+    -   Uptime -- Prod: 24x7, 744 hours/month, QA - 50 hours/month, DEV/Test - 200 hours/month
 
 3.  High availability and disaster recovery
 
-    a.  Availability
+    -   Availability
 
-    -   Both HA and Non-HA options need to be proposed
+        -   Both HA and Non-HA options need to be proposed
 
-    -   With HA option, in case of server/storage issues, auto failover to complete within a few minutes, in case of a disaster recovery within 1 day
+        -   With HA option, in case of server/storage issues, auto failover to complete within a few minutes, in case of a disaster recovery within 1 day
 
-    b.  Backup
+    -   Backup
 
-    -   Long term backup -- use reasonable backup storage in Cloud
+        -   Long term backup -- use reasonable backup storage in Cloud
 
-    -   Data loss not allowed
+        -   Data loss not allowed
 
-    -   HANA DB log backup taken every 30 minutes
+        -   HANA DB log backup taken every 30 minutes
 
-    -   DB log backup to be kept for 1 day (DB restore to be fast)
+        -   DB log backup to be kept for 1 day (DB restore to be fast)
 
-    -   HANA DB full backup every night
+        -   HANA DB full backup every night
 
-    -   Daily HANA DB full backup to be retained for 1 month
+        -   Daily HANA DB full backup to be retained for 1 month
 
-    -   Monthly HANA DB full backup for 1 year, annual for 3 years
+        -   Monthly HANA DB full backup for 1 year, annual for 3 years
 
 4.  End user access
 
-    a.  User locations -- 300 from US, 50 LATAM, 50 Europe, 30 Asia - all intranet
+    -   User locations -- 300 from US, 50 LATAM, 50 Europe, 30 Asia - all intranet
 
-    b.  Currently ExpressRoute is set up to Azure East US 2
+    -   Currently ExpressRoute is set up to Azure East US 2
 
-    c.  Response time needs to be minimized
+    -   Response time needs to be minimized
 
 ### Customer objections 
 
-1.  ECC remains on-premises until Dec CY18 -- how can we maintain integrations between ECC and BW?
+1.  ECC remains on-premises until Dec CY18. How can we maintain integrations between ECC and BW?
 
 2.  How much does Azure cost? Give us a few options (e.g. HA and non-HA, DR and non-DR).
 
@@ -326,18 +333,22 @@ SAP Certified Azure VMs
 
 ## Step 2: Design a proof of concept solution
 
-**Outcome** 
-Design a solution and prepare to present the solution to the target customer audience in a 15-minute chalk-talk format. 
+**Outcome**
 
-Time frame: 60 minutes
+Design a solution and prepare to present the solution to the target customer audience in a 15-minute chalk-talk format.
+
+Timeframe: 60 minutes
 
 **Business needs**
 
-Directions: With all participants at your table, answer the following questions and list the answers on a flip chart. 
-1.  Who should you present this solution to? Who is your target customer audience? Who are the decision makers? 
+Directions: With all participants at your table, answer the following questions and list the answers on a flip chart.
+
+1.  Who should you present this solution to? Who is your target customer audience? Who are the decision makers?
+
 2.  What customer business needs do you need to address with your solution?
 
-**Design** 
+**Design**
+
 Directions: With all participants at your table, respond to the following questions on a flip chart.
 
 *High-level solution architecture:*
@@ -370,18 +381,15 @@ Directions: With all participants at your table, respond to the following questi
 
 3.  What is the estimated cost of your solution with HA/DR?
 
-
 **Prepare**
 
 Directions: With all participants at your table: 
 
-1.  Identify any customer needs that are not addressed with the proposed solution. 
-2.  Identify the benefits of your solution. 
-3.  Determine how you will respond to the customer’s objections. 
+1.  Identify any customer needs that are not addressed with the proposed solution
+2.  Identify the benefits of your solution
+3.  Determine how you will respond to the customer’s objections
 
 Prepare a 15-minute chalk-talk style presentation to the customer. 
-
-
 
 ## Step 3: Present the solution
 
@@ -389,25 +397,24 @@ Prepare a 15-minute chalk-talk style presentation to the customer.
  
 Present a solution to the target customer audience in a 15-minute chalk-talk format.
 
-Time frame: 30 minutes
+Timeframe: 30 minutes
 
 **Presentation** 
 
 Directions:
-1.  Pair with another table.
-2.  One table is the Microsoft team and the other table is the customer.
-3.  The Microsoft team presents their proposed solution to the customer.
-4.  The customer makes one of the objections from the list of objections.
-5.  The Microsoft team responds to the objection.
-6.  The customer team gives feedback to the Microsoft team. 
-7.  Tables switch roles and repeat Steps 2–6.
-
+1.  Pair with another table
+2.  One table is the Microsoft team and the other table is the customer
+3.  The Microsoft team presents their proposed solution to the customer
+4.  The customer makes one of the objections from the list of objections
+5.  The Microsoft team responds to the objection
+6.  The customer team gives feedback to the Microsoft team.
+7.  Tables switch roles and repeat Steps 2–6
 
 ##  Wrap-up 
 
-Time frame: 15 minutes
+Timeframe: 15 minutes
 
--   Tables reconvene with the larger group to hear a SME share the preferred solution for the case study.
+Directions: Tables reconvene with the larger group to hear the facilitator/SME share the preferred solution for the case study.
 
 ##  Additional references
 
@@ -423,47 +430,43 @@ Time frame: 15 minutes
 
 ## Step 1: Review the customer case study
 
--   Check in with your table participants to introduce yourself as the trainer.
+-   Check in with your table participants to introduce yourself as the trainer
 
 -   Ask, "What questions do you have about the customer case study?"
 
--   Briefly review the steps and timeframes of the whiteboard design session.
+-   Briefly review the steps and timeframes of the whiteboard design session
 
--   Ready, set, go! Let the table participants begin.
+-   Ready, set, go! Let the table participants begin
 
 ## Step 2: Design a proof of concept solution
 
--   Check in with your tables to ensure that they are transitioning from step to step on time.
+-   Check in with your tables to ensure that they are transitioning from step to step on time
 
--   Provide some feedback on their responses to the business needs and design.
+-   Provide some feedback on their responses to the business needs and design
 
-    -   Try asking questions first that will lead the participants to discover the answers on their own.
+    -   Try asking questions first that will lead the participants to discover the answers on their own
 
--   Provide feedback for their responses to the customer's objections.
+-   Provide feedback for their responses to the customer's objections
 
-    -   Try asking questions first that will lead the participants to discover the answers on their own.
-
+    -   Try asking questions first that will lead the participants to discover the answers on their own
+    
 ## Step 3: Present the solution
 
--   Determine which table will be paired with your table before Step 3 begins.
+-   Determine which table will be paired with your table before Step 3 begins
 
--   For the first round, assign one table as the Microsoft team and the other table as the customer.
+-   For the first round, assign one table as the presenting team and the other table as the customer
 
--   Have the Microsoft team present their solution to the customer team.
+-   Have the presenting team present their solution to the customer team
 
-    -   Have the customer team provide one objection for the Microsoft team to respond to.
+    -   Have the customer team provide one objection for the presenting team to respond to
 
-    -   The presentation and objections should be no longer than 10-minutes.
+    -   The presentation, objections, and feedback should take no longer than 15 minutes
 
--   Have participants on the customer team give feedback to the Microsoft team.
-
-    -   The feedback should be no longer than 5 minutes.
-
-    -   If needed, the trainer may also provide feedback.
+    -   If needed, the trainer may also provide feedback
 
 ## Wrap-up
 
--   Have the table participants reconvene with the larger session group to hear a SME share the following preferred solution.
+-   Have the table participants reconvene with the larger session group to hear the facilitator/SME share the following preferred solution
 
 ##  Preferred target audience
 
@@ -517,15 +520,15 @@ Azure virtual machines - BW on HANA with HA/DR
 
 ## Checklist of preferred objection handling
 
-ECC remains on-premises until Dec CY18 -- how can we maintain integrations between ECC and BW?
+1.  ECC remains on-premises until Dec CY18. How can we maintain integrations between ECC and BW?
 
--   Microsoft supports a hybrid solution, with symmetry between on-premises applications and those on the public cloud.
+-   Microsoft supports a hybrid solution, with symmetry between on-premises applications and those on the public cloud
 
--   Windows Azure Virtual Network allows to create a logically isolated section in Azure and securely connect it to on premises datacenters.
+-   Windows Azure Virtual Network allows to create a logically isolated section in Azure and securely connect it to on premises datacenters
 
--   ExpressRoute provides secure, high-bandwidth, low-latency connectivity between Azure and on-premises datacenters.
+-   ExpressRoute provides secure, high-bandwidth, low-latency connectivity between Azure and on-premises datacenters
 
-How much does Azure cost? Give us a few options (e.g. HA and non-HA, DR and non-DR).
+2.  How much does Azure cost? Give us a few options (e.g. HA and non-HA, DR and non-DR).
 
 -   The proposed design offers three options:
 
@@ -547,7 +550,7 @@ How much does Azure cost? Give us a few options (e.g. HA and non-HA, DR and non-
 
     -   SAP HANA System Replication in asynchronous replication mode
 
-Do I have to pay for virtual machines when they are stopped?
+3.  Do I have to pay for virtual machines when they are stopped?
 
 -   Azure VM must be in the stopped (deallocated) state in order to avoid compute charges. If the VM is stopped it will continue to incur charges.
 
@@ -555,7 +558,7 @@ Do I have to pay for virtual machines when they are stopped?
 
 -   You will still incur storage charge even if the VM is deallocated.
 
-Can I automate the shutdown of virtual machines at periodic times of day?
+4.  Can I automate the shutdown of virtual machines at periodic times of day?
 
 -   Yes, this functionality is available directly from the Azure portal. Alternatively, you can use Azure Automation runbooks or custom Azure PowerShell and Azure CLI scripts to stop and deallocate any instance.
 
