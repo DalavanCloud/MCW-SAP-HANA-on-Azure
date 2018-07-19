@@ -163,13 +163,13 @@ In this exercise, you will deploy Azure infrastructure prerequisites for impleme
 
     -   Network: click **(new) hana-s03-RG-vnet**. On the **Create virtual network** blade, specify the following settings, and click **OK**:
 
-        i.  Name: **hana-s03-RG-vnet**
+        -   Name: **hana-s03-RG-vnet**
+        
+        -   Address space: **172.16.0.0/20**
 
-        ii. Address space: **172.16.0.0/20**
+        -   Subnet name: **subnet-0**
 
-        iii. Subnet name: **subnet-0**
-
-        iv. Subnet address range: **172.16.0.0/24**
+        -   Subnet address range: **172.16.0.0/24**
 
     -   Subnet: **subnet-0 (172.16.0.0/24)**
 
@@ -421,7 +421,7 @@ In this exercise, you will configure operating system settings on Azure VMs runn
 
     ![In the YaST Control Center, Add-On Products is selected.](images/Hands-onlabstep-by-step-SAPHANAonAzureimages/media/image10.png "YaST Control Center")
 
-3.  In the **Package Manager** interface, click **Add**:
+3.  In the **Package Manager** interface, click **Add**
 
     ![On the Installed Add-on Products screen, Add is selected.](images/Hands-onlabstep-by-step-SAPHANAonAzureimages/media/image11.png "Installed Add-on Products")
 
@@ -438,7 +438,7 @@ In this exercise, you will configure operating system settings on Azure VMs runn
     ![In the YaST Control Center, Accept is selected.](images/Hands-onlabstep-by-step-SAPHANAonAzureimages/media/image14.png "YaST Control Center")
 
 7.  On the **Automatic Changes** screen, click **OK**
-aa
+
     ![The Automatic Changes screen displays, with OK selected.](images/Hands-onlabstep-by-step-SAPHANAonAzureimages/media/image15.png "Automatic Changes screen")
 
 8.  Once the installation has completed, click **Finish**
@@ -1995,7 +1995,7 @@ The template-based deployment of Azure components that form the SAP HANA infrast
 
     ![On the Systems node toolbar, the System Monitor icon is selected.](images/Hands-onlabstep-by-step-SAPHANAonAzureimages/media/image49.png "Systems toolbar")
 
-11. Review the **System Monitor** status. 
+11. Review the **System Monitor** status
 
     ![The SAP HANA Administration Console System Monitor tab displays the System Monitor status.](images/Hands-onlabstep-by-step-SAPHANAonAzureimages/media/image50.png "SAP HANA Administration Console, System Monitor tab")
 
@@ -2203,11 +2203,11 @@ The template-based deployment of Azure components that form the SAP HANA infrast
 
     ![The Constraints tab is selected on the Edit Configuration page.](images/Hands-onlabstep-by-step-SAPHANAonAzureimages/media/image65.png "Edit Configuration page")
 
-5.  From the **Constraints** page, delete the **cli-prefer-g\_ip\_S03\_HDB00** constraint.
+5.  From the **Constraints** page, delete the **cli-prefer-g\_ip\_S03\_HDB00** constraint
 
     ![Under Operations, the Delete constraint icon is selected for cli-prefer-g\_ip\_S03\_HDB00.](images/Hands-onlabstep-by-step-SAPHANAonAzureimages/media/image66.png "Delete constraint")
 
-6.  From the **Constraints** page, delete the **cli-prefer-msl\_SAPHana\_S03\_HDB00** constraint.
+6.  From the **Constraints** page, delete the **cli-prefer-msl\_SAPHana\_S03\_HDB00** constraint
 
     ![Under Operations, the Delete constraint icon is selected for cli-prefer-msl\_SAPHana\_S03\_HDB00.](images/Hands-onlabstep-by-step-SAPHANAonAzureimages/media/image67.png "Delete constraint")
 
@@ -2337,5 +2337,5 @@ After completing the hands-on lab, you will remove the resource group and all it
 
     az group delete --name s03-hana-RG --no-wait --yes
     
-    You should follow all steps provided *after* the Hands-on lab.
+You should follow all steps provided *after* the Hands-on lab.
 
