@@ -18,7 +18,7 @@ In this workshop, you will look at what is involved in deploying SAP HANA on Azu
 At the end of this workshop, you will be able to better design and deploy SAP HANA on Azure.
 
 
-### Hand-on Lab
+### Hands-on Lab
 In this hands-on lab, you will step through the implementation of a highly available SAP HANA deployment on Microsoft Azure virtual machines running SUSE Linux Enterprise Server. After its completion, you will be able to:
 
 -   Provision Azure infrastructure components necessary to support highly available SAP HANA deployments
@@ -34,7 +34,7 @@ In this hands-on lab, you will step through the implementation of a highly avail
 -   Test failover scenarios
 
 
-### Azure services and related products
+## Azure services and related products
 - SAP on Azure
 - SAP HANA
 - Azure VMs
@@ -42,4 +42,11 @@ In this hands-on lab, you will step through the implementation of a highly avail
 - Azure Virtual Networks
 - Load Balancers
 - Linux Clustering
+
+## Azure solutions
+TBD
+
+## Related references
+- [MCW](https://github.com/Microsoft/MCW)
+
 
