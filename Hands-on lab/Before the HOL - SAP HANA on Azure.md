@@ -24,6 +24,16 @@ The names of manufacturers, products, or URLs are provided for informational pur
 
 Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/intellectualproperty/Trademarks/Usage/General.aspx> are trademarks of the Microsoft group of companies. All other trademarks are property of their respective owners.
 
+<!-- TOC -->
+
+- [SAP HANA on Azure before the hands-on-lab setup guide](#sap-hana-on-azure-before-the-hands-on-lab-setup-guide)
+    - [Requirements](#requirements)
+    - [Before the hands-on lab](#before-the-hands-on-lab)
+        - [Task 1: Validate the owner role membership in the Azure subscription](#task-1-validate-the-owner-role-membership-in-the-azure-subscription)
+        - [Task 2: Validate availability of the SUSE Linux Enterprise Server image](#task-2-validate-availability-of-the-suse-linux-enterprise-server-image)
+
+<!-- /TOC -->
+
 # SAP HANA on Azure before the hands-on-lab setup guide
 
 ## Requirements

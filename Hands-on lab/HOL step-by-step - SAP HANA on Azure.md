@@ -37,13 +37,12 @@ Microsoft and the trademarks listed at https://www.microsoft.com/en-us/legal/int
         - [Task 2: Create a virtual network subnet for the HANA database tier](#task-2-create-a-virtual-network-subnet-for-the-hana-database-tier)
         - [Task 3: Deploy an Azure Resource Manager QuickStart template](#task-3-deploy-an-azure-resource-manager-quickstart-template)
         - [Task 4: Configure IP settings of Azure VMs running Linux](#task-4-configure-ip-settings-of-azure-vms-running-linux)
-        - [Task 5: Configure storage of Azure VMs](#task-5-configure-storage-of-azure-vms)
     - [Exercise 2: Configure operating system on Azure VMs running Linux](#exercise-2-configure-operating-system-on-azure-vms-running-linux)
         - [Task 1: Connect to Azure Linux VMs and register SUSE Linux Enterprise Server image](#task-1-connect-to-azure-linux-vms-and-register-suse-linux-enterprise-server-image)
         - [Task 2: Add YaST packages, update the Linux operating system, and install HA Extensions](#task-2-add-yast-packages-update-the-linux-operating-system-and-install-ha-extensions)
         - [Task 3: Enable cross-node password-less SSH access](#task-3-enable-cross-node-password-less-ssh-access)
-        - [Task 4: Configure storage](#task-4-configure-storage)
-        - [Task 5: Configure name resolution](#task-5-configure-name-resolution)
+        - [Task 4: Configure name resolution](#task-4-configure-name-resolution)
+        - [Task 5: Configure storage](#task-5-configure-storage)
     - [Exercise 3: Configure clustering on Azure VMs running Linux](#exercise-3-configure-clustering-on-azure-vms-running-linux)
         - [Task 1: Configure clustering](#task-1-configure-clustering)
         - [Task 2: Configure corosync](#task-2-configure-corosync)
@@ -793,7 +792,7 @@ In this exercise, you will configure operating system settings on Azure VMs runn
      s03-db-0:~ # vi /etc/ssh/sshd_config
     ```
 
-10.  In the **/etc/ssh/sshd\_config** file, locate the **PermitRootLogin** and **AuthorizedKeysFile** entries, and configure them as follows (remove the leading **#** character, if present):
+10. In the **/etc/ssh/sshd\_config** file, locate the **PermitRootLogin** and **AuthorizedKeysFile** entries, and configure them as follows (remove the leading **#** character, if present):
 
     ```
      PermitRootLogin yes
@@ -801,7 +800,7 @@ In this exercise, you will configure operating system settings on Azure VMs runn
      AuthorizedKeysFile      /root/.ssh/authorized_keys
     ```
 
-11.  Save your changes, close the file, and restart sshd daemon by running `systemctl restart sshd`:
+11. Save your changes, close the file, and restart sshd daemon by running `systemctl restart sshd`:
 
     ```
      s03-db-0:/ # systemctl restart sshd
