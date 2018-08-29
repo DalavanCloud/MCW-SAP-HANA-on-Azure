@@ -45,15 +45,9 @@ Microsoft and the trademarks listed at https://www.microsoft.com/en-us/legal/int
 
 ## Abstract and learning objectives 
 
-In this workshop, you will look at what is involved in deploying SAP HANA on Azure with the goals of designing for high availability, disaster recovery as well as supportability.
+In this Whiteboard Design Session, you will look at what is involved in deploying SAP HANA on Azure with the goals of designing for high availability, disaster recovery as well as supportability.
 
-At the end of this workshop, you will be able to better design and deploy SAP HANA on Azure.
-
-Learning objectives:
-
--   Design high availability for SAP HANA workloads on Azure VMs
-
--   Design disaster recovery for SAP HANA workloads on Azure VMs
+At the end of this whiteboard design session you will be able to better design and deploy SAP HANA on Azure.
 
 ## Step 1: Review the customer case study 
 
