@@ -868,9 +868,7 @@ In this exercise, you will configure clustering on Azure VMs running Linux.
 
     -   Do you want to continue anyway (y/n)? **y**
     
-    -   csync2 is already configured - overwrite (y/n)? **y**
-    
-    -   /etc/corosync/authkey already exists - overwrite (y/n)? **y**
+    -   /root/.ssh/id_rsa already exists - overwrite (y/n)? **n**
 
     -   Network address to bind to (e.g.: 192.168.1.0) \[172.16.1.0\]: **ENTER**
 
@@ -886,85 +884,51 @@ In this exercise, you will configure clustering on Azure VMs running Linux.
      s03-db-0:~ # ha-cluster-init
 
      ! NTP is not configured to start at system boot.
-
      ! No watchdog device found. If SBD is used, the cluster will be unable to start without a watchdog.
-
      Do you want to continue anyway (y/n)? y
-
-       Generating SSH key
-       
+     /root/.ssh/id_rsa already exists - overwrite (y/n)? n
        Configuring csync2
-       
-       csync2 is already configured - overwrite (y/n)? y
-       
        Generating csync2 shared key (this may take a while)...done
-       
        csync2 checking files...done
-       
-       /etc/corosync/authkey already exists - overwrite (y/n)? y
 
      Configure Corosync:
-
        This will configure the cluster messaging layer.  You will need
-
        to specify a network address over which to communicate (default
-
        is eth0's network, but you can use the network address of any
-
        active interface).
 
        Network address to bind to (e.g.: 192.168.1.0) [172.16.1.0]
-
-       Multicast address (e.g.: 239.x.x.x) [239.119.57.183]
-
+       Multicast address (e.g.: 239.x.x.x) [239.97.16.230]
+       Multicast port [5405]
 
      Configure SBD:
-
        If you have shared storage, for example a SAN or iSCSI target,
-
        you can use it avoid split-brain scenarios by configuring SBD.
-
        This requires a 1 MB partition, accessible to all nodes in the
-
        cluster.  The device path must be persistent and consistent
-
        across all nodes in the cluster, so /dev/disk/by-id/* devices
-
        are a good choice.  Note that all data on the partition you
-
        specify here will be destroyed.
 
      Do you wish to use SBD (y/n)? n
-
      ! Not configuring SBD - STONITH will be disabled.
-
          Hawk cluster interface is now running. To see cluster status, open:
-
            https://172.16.1.10:7630/
-
          Log in with username 'hacluster', password 'linux'
-
      ! You should change the hacluster password to something more secure!
-
        Waiting for cluster........done
-
        Loading initial cluster configuration
 
      Configure Administration IP Address:
-
        Optionally configure an administration virtual IP
-
        address. The purpose of this IP address is to
-
        provide a single IP that can be used to interact
-
        with the cluster, rather than using the IP address
-
        of any specific cluster node.
 
      Do you wish to configure an administration IP (y/n)? n
-
        Done (log saved to /var/log/ha-cluster-bootstrap.log)
+
     ```
 
 2.  From the SSH session on **s03-db-1**, run `ha-cluster-join` and follow the prompts:
