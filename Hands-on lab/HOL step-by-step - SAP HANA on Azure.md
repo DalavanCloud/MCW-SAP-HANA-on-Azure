@@ -251,14 +251,15 @@ In this exercise, you will deploy Azure infrastructure prerequisites for impleme
     
     -   Ssh Key Data: leave blank
 
-    -   Subnet id: *To identify the value of the subnet id parameter, run the following three commands from the Cloud Shell's Bash prompt to identify the value to enter here (use the value that ends with* **subnet-1**).
+    -   Subnet id: *To identify the value of the subnet id parameter, run the following three commands from the Cloud Shell's Bash prompt to identify the value to enter here (use the value that ends with* **subnet-1**):
+
    ```
    az network vnet subnet list --resource-group hana-s03-RG --vnet-name hana-s03-RG-vnet --query "[?contains(id,'subnet-1')].{id: id}" --output tsv
    ``` 
 
-    -   &#95;_artifacts Location: *accept the default value*
+    -   \_artifacts Location: *accept the default value*
 
-    -   &#95;_artifacts Location SaS Token: *accept the default value*
+    -   \_artifacts Location SaS Token: *accept the default value*
 
 8.  Enable the checkbox labeled **I agree to the terms and conditions stated above**, and click **Purchase**.
 
