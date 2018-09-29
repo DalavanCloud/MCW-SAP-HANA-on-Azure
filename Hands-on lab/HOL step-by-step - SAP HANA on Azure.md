@@ -219,15 +219,7 @@ In this exercise, you will deploy Azure infrastructure prerequisites for impleme
 
 3.  If prompted, on the **Sign in to your account** page, type in the user name and the password of the work or school or personal Microsoft account with the owner role in the Azure subscription you will be using for this lab, and click **Sign in**. The Web browser window should automatically redirect to the Azure portal and display the **SAP NetWeaver 3-tier multi SID DB (managed disks)** blade.
 
-4.  On the **SAP NetWeaver 3-tier multi SID DB (managed disks)** blade, click **Edit template**
-
-5.  On the **Edit template** blade, scroll down to the **"SLES 12 BYOS"** object of the **images** variable, and change the value of the **sku** entry from **12-SP1** to **12-SP3**:
-
-    ![Code from the Edit template blade displays. ](images/Hands-onlabstep-by-step-SAPHANAonAzureimages/media/image3.png "Edit template blade")
-
-6.  On the **Edit template** blade, click **Save**
-
-7.  Back on the **SAP NetWeaver 3-tier multi SID DB (managed disks)** blade, specify the following settings:
+4.  On the **SAP NetWeaver 3-tier multi SID DB (managed disks)** blade, specify the following settings:
 
     -   Subscription: *the name of your Azure subscription*
 
@@ -260,9 +252,9 @@ In this exercise, you will deploy Azure infrastructure prerequisites for impleme
 
     -   \_artifacts Location SaS Token: *accept the default value*
 
-8.  Enable the checkbox labeled **I agree to the terms and conditions stated above**, and click **Purchase**.
+5.  Enable the checkbox labeled **I agree to the terms and conditions stated above**, and click **Purchase**.
 
-9.  Wait for the deployment to complete. This might take about 10 minutes.
+6.  Wait for the deployment to complete. This might take about 10 minutes.
 
 ### Task 4: Configure IP settings of Azure VMs running Linux
 
