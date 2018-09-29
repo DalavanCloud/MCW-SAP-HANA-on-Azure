@@ -833,11 +833,8 @@ In this exercise, you will configure clustering on Azure VMs running Linux.
 
     ```
      s03-db-0:/ # passwd hacluster
-
      New password:
-
      Retype new password:
-
      passwd: password updated successfully
     ```
 
@@ -851,7 +848,7 @@ In this exercise, you will configure clustering on Azure VMs running Linux.
      s03-db-1:~ # vi /etc/corosync/corosync.conf
     ```
 
-2.  Add the following content to the file (add the **transport** entry to the **interface** section and add the entire **nodelist** section):
+2.  Add the following content to the file (add the **transport** entry following the **interface** section and add the entire **nodelist** section):
 
     ```
      [...]
