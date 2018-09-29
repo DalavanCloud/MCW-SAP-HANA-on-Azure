@@ -129,11 +129,11 @@ In this exercise, you will deploy Azure infrastructure prerequisites for impleme
 
     -   Subscription: *the name of your Azure subscription*
 
-    -   Resource group: *create a new resource group named* **hana-s03-RG**
+    -   Resource group: *the name of a new resource group* **hana-s03-RG**
 
     -   Virtual machine name: **s03-hana-0**
 
-    -   Region: *The Azure region you identified in the Before the Hands-on Lab section*
+    -   Region: *the name of the Azure region you identified in the Before the Hands-on Lab section*
 
     -   Availability Options: **No infrastructure redundancy required**
     
