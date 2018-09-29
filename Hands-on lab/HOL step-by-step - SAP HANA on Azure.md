@@ -257,7 +257,7 @@ In this exercise, you will deploy Azure infrastructure prerequisites for impleme
     -   Subnet id: *To identify the value of the subnet id parameter, run the following three commands from the Cloud Shell's Bash prompt to identify the value to enter here (use the value that ends with* **subnet-1**):
     
     ```
-    az network vnet subnet list --resource-group hana-s03-RG --vnet-name hana-s03-RG-vnet --query "[?contains(id,'subnet-1')].{id: id}"
+    az network vnet subnet list --resource-group hana-s03-RG --vnet-name hana-s03-RG-vnet --query "[?contains(id,'subnet-1')].{id: id}" --output tsv
     ```
     -   Location: [resourceGroup().location]
 
