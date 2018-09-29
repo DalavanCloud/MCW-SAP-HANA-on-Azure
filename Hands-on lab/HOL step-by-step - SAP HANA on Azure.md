@@ -1556,9 +1556,9 @@ In this exercise, you will configure SAP HANA replication.
 
 1.  From the SSH session on s03-db-0, change the current directory to the root, and modify the path environment variable to include reference to the HANA binaries
    
-   -   **cd /**
+    -   **cd /**
 
-   -   **PATH="$PATH:/usr/sap/S03/HDB00/exe"**
+    -   **PATH="$PATH:/usr/sap/S03/HDB00/exe"**
  
     ```
      s03-db-0:/hana/shared/media/HANA_51051151/DATA_UNITS/HDB_SERVER_LINUX_X86_64 # cd /
