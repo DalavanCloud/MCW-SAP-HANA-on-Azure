@@ -125,37 +125,43 @@ In this exercise, you will deploy Azure infrastructure prerequisites for impleme
 
 4.  On the **New** blade, click **Compute** and then click **Windows Server 2016 Datacenter**
 
-5.  On the **Basics** blade, specify the following settings, and click **OK**:
-
-    -   Name: **s03-hana-0**
-
-    -   VM disk type: **HDD**
-
-    -   User name: **demouser**
-
-    -   Password: **demo\@pass123**
-
-    -   Confirm password: **demo\@pass123**
+5.  On the **Create a virtual machine** blade, on the **Basics** tab, specify the following settings, and click **Next: Disks >**:
 
     -   Subscription: *the name of your Azure subscription*
 
     -   Resource group: *create a new resource group named* **hana-s03-RG**
 
-    -   Location: *The Azure region you identified in the Before the Hands-on Lab section*
+    -   Virtual machine name: **s03-hana-0**
+
+    -   Region: *The Azure region you identified in the Before the Hands-on Lab section*
+
+    -   Availability Options: **No infrastructure redundancy required**
+    
+    -   Image: **Windows Server 2016 Datacenter**
+    
+    -   Size: **Standard DS1 v2**
+    
+    -   Username: **demouser**
+
+    -   Password: **demo\@pass123**
+
+    -   Confirm password: **demo\@pass123**
+
+    -   Public inbound ports: **Allow selected ports**
+    
+    -   Select inbound ports: **RDP**
     
     -   Already have a Windows license?: **No**
 
-6.  On the **Choose a size** blade, click **View all**. Next, in the list of VM sizes, click **D1\_V2 Standard**. Then, click **Select**.
+6.  On the **Create a virtual machine** blade, on the **Disks** tab, specify the following settings, and click **Next: Networking >**:
 
-7.  On the **Settings** blade, specify the following settings, and click **OK**:
-
-    -   Availability zone: **None**
+    -   OS disk type: **Standard HDD**
     
-    -   Availability set: **None**
+    -   Use unmanaged disks: **No**
 
-    -   Use managed disks: **Yes**
+7.  On the **Create a virtual machine** blade, on the **Networking** tab, specify the following settings, and click **Next: Management >**:
 
-    -   Network: click **(new) hana-s03-RG-vnet**. On the **Create virtual network** blade, specify the following settings, and click **OK**:
+    -   Virtual network: click **(new) hana-s03-RG-vnet**. On the **Create virtual network** blade, specify the following settings, and click **OK**:
 
         -   Name: **hana-s03-RG-vnet**
         
@@ -165,29 +171,36 @@ In this exercise, you will deploy Azure infrastructure prerequisites for impleme
 
         -   Subnet address range: **172.16.0.0/24**
 
-    -   Subnet: **subnet-0 (172.16.0.0/24)**
+    -   Subnet: **subnet-0**
 
-    -   Public IP address: *accept the default value*
+    -   Public IP: *accept the default value*
 
     -   Network security group: **Basic**
     
-    -   Select public inbound ports: **RDP (3389)**
-
-    -   Extensions: **No extension**
-
-    -   Auto-shutdown: **Off**
-
-    -   Boot diagnostics: **Disabled**
-
-    -   Guest OS diagnostics: **Disabled**
+    -   Public inbound ports: **Allow selected ports**
     
-    -   Register with Azure Active Directory: **No**
+    -   Select inbound ports: **RDP**
     
-    -   Backup: **Disabled**
+    -   Accelerated networking: **Off**
+    
+8.  On the **Create a virtual machine** blade, on the **Management** tab, specify the following settings, and click **Next: Guest config >**:   
 
-8.  On the **Summary** blade, click **Create**
+    -   Boot diagnostics: **Off**
 
-9.  Wait for the deployment to complete. This should take a few minutes.
+    -   OS guest diagnostics: **Off**
+    
+    -   Managed service identity: **Off**
+    
+    -   Enable auto-shutdown: **Off**
+        
+    -   Enable backup: **Off**
+
+9.  On the **Create a virtual machine** blade, on the **Guest config** tab, accept the default settings and click **Next: Tags >**.
+
+10.  On the **Create a virtual machine** blade, on the **Tags** tab, accept the default settings and click **Next: Review + create >**.   
+11.  On the **Create a virtual machine** blade, on the **Review + create** tab, review the settings and click **Create**.   
+
+12.  Wait for the deployment to complete. This should take a few minutes.
 
 ### Task 2: Create a virtual network subnet for the HANA database tier
 
