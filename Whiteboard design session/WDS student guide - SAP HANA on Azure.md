@@ -73,7 +73,7 @@ Contoso has been using SAP ERP and BW on HANA for its Finance/Logistics/Analytic
 
 Contoso Leadership and Planning Groups wants to drastically reduce server and storage hardware in their own datacenters to minimize IT related costs. Contoso has already a number of their non-SAP systems migrated to Azure. The leadership asked Contoso IT to look into the possibility of migrating its SAP HANA environment to cloud.
 
-Contoso IT decided to leverage its knowledge of the Microsoft cloud platform and existing ExpressRoute connectivity and host its SAP landscape in Azure. The intention is to migrate the BW system first (go live in August CY18), and migrate ECC in Q4 of CY18. The multi-stage approach is supposed to minimize potential migration risks.
+Contoso IT decided to leverage its knowledge of the Microsoft cloud platform and existing ExpressRoute connectivity and host its SAP landscape in Azure. The intention is to migrate the BW system first (go live in March CY19), and migrate ECC in Q4 of CY19. The multi-stage approach is supposed to minimize potential migration risks.
 
 Considering that Contoso management team often uses BW to support their management decisions, the systems should be highly available, and their performance must be predictable and consistent. In addition, the management team wants to leverage disaster recovery capabilities offered by Azure in order to ensure resiliency of the migrated environment in case the primary region hosting the new deployment becomes unavailable.
 
@@ -164,7 +164,7 @@ Before migrating the production environment, Contoso wants to test its new deplo
 
 ### Customer objections 
 
-1.  ECC remains on-premises until Dec CY18. How can we maintain integrations between ECC and BW?
+1.  ECC remains on-premises until Dec CY19. How can we maintain integrations between ECC and BW?
 
 2.  How much does Azure cost? Give us a few options (e.g. HA and non-HA, DR and non-DR).
 
