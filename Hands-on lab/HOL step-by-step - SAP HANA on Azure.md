@@ -267,7 +267,7 @@ In this exercise, you will deploy Azure infrastructure prerequisites for impleme
 
 5.  Enable the checkbox labeled **I agree to the terms and conditions stated above**, and click **Purchase**.
 
-6.  Wait for the deployment to complete. This might take about 10 minutes.
+6.  Wait for the deployment to complete. This might take about 5 minutes.
 
 ### Task 4: Configure IP settings of Azure VMs running Linux
 
@@ -295,9 +295,9 @@ In this exercise, you will deploy Azure infrastructure prerequisites for impleme
 
 7.  On the **s03-db-0** blade, click **Configure** under the **DNS name** label
 
-8.  In the **DNS name label** text box, type a unique name you will use to connect to the **s03-db-0** Azure VM from your lab computer (the name will be in the format ***custom-name.Azure-region.*cloudapp.azure.com**), and click **Save**
+8.  In the **DNS name label** text box, type a unique name you will use to connect to the **s03-db-0** Azure VM from your lab computer (the name will be in the format ***custom-name-0.Azure-region.*cloudapp.azure.com**), and click **Save**
 
-    ![In the Configuration blade, Assignment is Dynamic, and Idle timeout is 4 minutes.](images/Hands-onlabstep-by-step-SAPHANAonAzureimages/media/image5.png "Configuration blade")
+    ![In the Configuration blade, Assignment is Dynamic, Idle timeout is 4 minutes, and DNS name label is set to a custom value](images/Hands-onlabstep-by-step-SAPHANAonAzureimages/media/image5.png "Configuration blade")
 
     Now configure equivalent settings for the second Azure Linux VM
 
@@ -323,9 +323,9 @@ In this exercise, you will deploy Azure infrastructure prerequisites for impleme
 
 14. On the **s03-db-1** blade, click **Configure** under the **DNS name** label
 
-15. In the **DNS name label** text box, type a unique name you will use to connect to the **s03-db-1** Azure VM from your lab computer (the name will be in the format ***custom-name.Azure-region.*cloudapp.azure.com**), and click **Save**
+15. In the **DNS name label** text box, type a unique name you will use to connect to the **s03-db-1** Azure VM from your lab computer (the name will be in the format ***custom-name-1.Azure-region.*cloudapp.azure.com**), and click **Save**
 
-    ![In the Configuration blade, Assignment is Dynamic, and Idle timeout is 4 minutes.](images/Hands-onlabstep-by-step-SAPHANAonAzureimages/media/image7.png "Configuration blade")
+    ![In the Configuration blade, Assignment is Dynamic, Idle timeout is 4 minutes, and DNS name label is set to a custom value.](images/Hands-onlabstep-by-step-SAPHANAonAzureimages/media/image7.png "Configuration blade")
 
 
 ## Exercise 2: Configure operating system on Azure VMs running Linux
