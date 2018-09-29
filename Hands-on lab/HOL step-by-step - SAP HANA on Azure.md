@@ -256,9 +256,9 @@ In this exercise, you will deploy Azure infrastructure prerequisites for impleme
    az network vnet subnet list --resource-group hana-s03-RG --vnet-name hana-s03-RG-vnet --query "[?contains(id,'subnet-1')].{id: id}" --output tsv
    ``` 
 
-    -   \_artifacts Location: *accept the default value*
+    -   &#95;_artifacts Location: *accept the default value*
 
-    -   \_artifacts Location SaS Token: *accept the default value*
+    -   &#95;_artifacts Location SaS Token: *accept the default value*
 
 8.  Enable the checkbox labeled **I agree to the terms and conditions stated above**, and click **Purchase**.
 
