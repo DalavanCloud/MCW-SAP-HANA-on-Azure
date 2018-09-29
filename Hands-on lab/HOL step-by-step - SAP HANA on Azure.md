@@ -804,51 +804,28 @@ In this exercise, you will configure clustering on Azure VMs running Linux.
         
     ```
      s03-db-1:/ # ha-cluster-join
-    
      ! NTP is not configured to start at system boot.
-
      ! No watchdog device found. If SBD is used, the cluster will be unable to start without a watchdog.
-
      Do you want to continue anyway (y/n)? y
-
        Join This Node to Cluster:
-
        You will be asked for the IP address of an existing node, from which
-
        configuration will be copied.  If you have not already configured
-
        passwordless ssh between nodes, you will be prompted for the root
-
        password of the existing node.
        
        IP address or hostname of existing node (e.g.: 192.168.1.1) []s03-db-0
-
        Retrieving SSH keys - This may prompt for root@s03-db-0:
-
      /root/.ssh/id_rsa already exists - overwrite (y/n)? y
-     
      /root/.ssh/id_dsa already exists - overwrite (y/n)? y
-
        2 new SSH keys installed
-
        Configuring csync2
-
        Merging known_hosts
-
        Probing for new partitions...done
-
-     Call cib_query failed (-6): No such device or address
-
          Hawk cluster interface is now running. To see cluster status, open:
-
            https://172.16.1.11:7630/
-
          Log in with username 'hacluster', password 'linux'
-
      ! You should change the hacluster password to something more secure!
-
        Waiting for cluster........done
-
        Done (log saved to /var/log/ha-cluster-bootstrap.log)
     ```
 
