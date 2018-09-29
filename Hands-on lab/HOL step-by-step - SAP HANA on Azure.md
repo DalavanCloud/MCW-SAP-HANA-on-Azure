@@ -806,11 +806,12 @@ In this exercise, you will configure operating system settings on Azure VMs runn
 
 ### Task 4: Configure name resolution
 
-1.  From the SSH session on s03-db-0, add an entry to the **/etc/hosts** file that provides the name resolution for both hosts within the virtual network:
+1.  From the SSH session on s03-db-0, add two entries to the **/etc/hosts** file that provide the name resolution for both hosts within the virtual network:
 
-    -   **172.16.1.10 s03-db-0**
-
-    -   **172.16.1.11 s03-db-1**
+    ```
+    172.16.1.10 s03-db-0
+    172.16.1.11 s03-db-1
+    ```
     
     ```
      s03-db-1:~ # vi /etc/hosts
