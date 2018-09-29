@@ -94,7 +94,7 @@ Before migrating the production environment, Contoso wants to test its new deplo
 
     -   BW migration to HANA in Azure VMs
 
-        -   Go-live date: March 2018
+        -   Go-live date: March 2019
 
         -   Current BW (ABAP Unicode) on-premises with HP-UX/Oracle and application layer on Linux
 
@@ -102,7 +102,7 @@ Before migrating the production environment, Contoso wants to test its new deplo
 
             -   Use 1-year Reserved VM Instance option for Production VMs
 
-    -   ERP is kept on-premises (with HP-UX/Oracle) until December 2018
+    -   ERP is kept on-premises (with HP-UX/Oracle) until December 2019
 
         -   Data is transferred from ERP (on-premises) to BW (in Cloud) every hour
 
