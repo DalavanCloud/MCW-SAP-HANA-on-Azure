@@ -181,54 +181,68 @@ In this exercise, you will deploy Azure infrastructure prerequisites for impleme
 
 #### Tasks to complete
 
--   Deploy an Azure virtual machine running Windows with the following settings:
-
-    -   Name: **s03-hana-0**
-
-    -   VM disk type: **HDD**
-
-    -   User name: **demouser**
-
-    -   Password: **demo\@pass123**
-
-    -   Confirm password: **demo\@pass123**
+-   Deploy an Azure virtual machine with the following settings:
 
     -   Subscription: *the name of your Azure subscription*
 
-    -   Resource group: *create a new resource group named* **hana-s03-RG**
+    -   Resource group: *the name of a new resource group* **hana-s03-RG**
 
-    -   Location: *the Azure region you identified in the Before the Hands-on Lab section*
+    -   Virtual machine name: **s03-hana-0**
 
-    -   Size: **D1\_V2 Standard**
+    -   Region: *the Azure region you identified in the Before the Hands-on Lab section*
 
-    -   High availability: **None**
+    -   Availability Options: **No infrastructure redundancy required**
+    
+    -   Image: **Windows Server 2016 Datacenter**
+    
+    -   Size: **Standard DS1 v2**
+    
+    -   Username: **demouser**
 
-    -   Use managed disks: **Yes**
+    -   Password: **demo\@pass123**
 
-    -   Network: click **(new) hana-s03-RG-vnet**. On the **Create virtual network** blade, specify the following settings and click **OK**:
+    -   Public inbound ports: **Allow selected ports**
+    
+    -   Select inbound ports: **RDP**
+    
+    -   Already have a Windows license?: **No**
+
+    -   OS disk type: **Standard HDD**
+    
+    -   Use unmanaged disks: **No**
+
+    -   Virtual network: create a new virtual network named **(new) hana-s03-RG-vnet** with the following settings:
 
         -   Name: **hana-s03-RG-vnet**
-
+        
         -   Address space: **172.16.0.0/20**
 
         -   Subnet name: **subnet-0**
 
         -   Subnet address range: **172.16.0.0/24**
 
-    -   Subnet: **subnet-0 (172.16.0.0/24)**
+    -   Subnet: **subnet-0**
 
-    -   Public IP address: *accept the default value*
+    -   Public IP: *accept the default value*
 
-    -   Network security group: **None**
+    -   Network security group: **Basic**
+    
+    -   Public inbound ports: **Allow selected ports**
+    
+    -   Select inbound ports: **RDP**
+    
+    -   Accelerated networking: **Off**
+    
+    -   Boot diagnostics: **Off**
 
-    -   Extensions: **No extension**
-
-    -   Auto-shutdown: **Off**
-
-    -   Boot diagnostics: **Disabled**
-
-    -   Guest OS diagnostics: **Disabled**
-
+    -   OS guest diagnostics: **Off**
+    
+    -   Managed service identity: **Off**
+    
+    -   Enable auto-shutdown: **Off**
+        
+    -   Enable backup: **Off**
+ 
 #### Exit criteria 
 
 -   A resource group named **s03-hana-RG** containing a Windows VM **s03-hana-0** on **subnet-0** of a virtual network named **hana-s03-RG-vnet**
@@ -264,8 +278,6 @@ In this exercise, you will deploy Azure infrastructure prerequisites for impleme
 -   Deploy an Azure Resource Manager QuickStart template
 
     -   Use the template <https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-marketplace-image-multi-sid-db-md>
-
-    -   Edit the template to reference the **12-SP3** sku of **SLES 12 BYOS** image
 
     -   Use the following deployment parameters
 
