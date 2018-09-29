@@ -299,7 +299,7 @@ In this exercise, you will deploy Azure infrastructure prerequisites for impleme
 
         -   Admin Username: **demouser**
         
-        -   Authentication Type: password
+        -   Authentication Type: **password**
 
         -   Admin Password Or Key: **demo\@pass123**
 
