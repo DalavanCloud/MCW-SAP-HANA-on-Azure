@@ -283,7 +283,7 @@ In this exercise, you will deploy Azure infrastructure prerequisites for impleme
 
         -   Subscription: *the name of your Azure subscription*
 
-        -   Resource group: **s03-hana-RG**
+        -   Resource group: **hana-s03-RG**
 
         -   Location: *the Azure region you identified in the Before the Hands-on Lab section*
 
