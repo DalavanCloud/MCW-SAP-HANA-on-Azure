@@ -806,7 +806,7 @@ In this exercise, you will configure operating system settings on Azure VMs runn
 
 ### Task 4: Configure name resolution
 
-1.  From the SSH session on s03-db-0, add two entries to the **/etc/hosts** file that provide the name resolution for both hosts within the virtual network:
+1.  From the SSH session on s03-db-0, add two entries to the **/etc/hosts** file in order to provide name resolution for both hosts within the virtual network:
 
     ```
     172.16.1.10 s03-db-0
@@ -863,9 +863,9 @@ In this exercise, you will configure clustering on Azure VMs running Linux.
 
     -   Do you want to continue anyway (y/n)? **y**
     
-    -   csync2 is already configured - overwrite (y/n)? y
+    -   csync2 is already configured - overwrite (y/n)? **y**
     
-    -   /etc/corosync/authkey already exists - overwrite (y/n)? y
+    -   /etc/corosync/authkey already exists - overwrite (y/n)? **y**
 
     -   Network address to bind to (e.g.: 192.168.1.0) \[172.16.1.0\]: **ENTER**
 
@@ -1048,39 +1048,22 @@ In this exercise, you will configure clustering on Azure VMs running Linux.
 
     ```
      [...]
-
         interface { 
-
             [...] 
-
         }
-
         transport:      udpu
-
      } 
-
      nodelist {
-
         node {
-
           ring0_addr:     172.16.1.10
-
           nodeid:     1
-
         }
-
         node {
-
           ring0_addr:     172.16.1.11 
-
           nodeid:     2
-
         } 
-
      }
-
       logging {
-
         [...]
     ```
 
@@ -1127,7 +1110,6 @@ In this exercise, you will install SAP HANA.
 
     ```
      s03-db-0:/ # cd /hana/shared/media
-
      s03-db-0:/hana/shared/media/ # chmod -R 744 *
     ```
 
@@ -1135,7 +1117,6 @@ In this exercise, you will install SAP HANA.
 
     ```
      s03-db-0:/hana/shared/media # cd ./DATA_UNITS/HDB_SERVER_LINUX_X86_64
-
      s03-db-0:/hana/shared/media/DATA_UNITS/HDB_SERVER_LINUX_X86_64 #
     ```
 
@@ -1574,11 +1555,7 @@ In this exercise, you will configure SAP HANA replication.
 ### Task 1: Create HANA DATA ADMIN user account
 
 1.  From the SSH session on s03-db-0, change the current directory to the root, and modify the path environment variable to include reference to the HANA binaries
-
-    -   **cd /**
-
-    -   **PATH=\"\$PATH:/usr/sap/S03/HDB00/exe\"**
-    
+ 
     ```
      s03-db-0:/hana/shared/media/HANA_51051151/DATA_UNITS/HDB_SERVER_LINUX_X86_64 # cd /
 
