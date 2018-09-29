@@ -298,10 +298,12 @@ In this exercise, you will deploy Azure infrastructure prerequisites for impleme
         -   System Availability: **HA**
 
         -   Admin Username: **demouser**
+        
+        -   Authentication Type: password
 
-        -   Admin Password: **demo\@pass123**
+        -   Admin Password Or Key: **demo\@pass123**
 
-        -   Subnet id: reference the **subnet-1** you created in the previous task
+        -   Subnet id: the resource ID of **subnet-1** you created in the previous task
 
         -   \_artifacts Location: *accept the default value*
 
