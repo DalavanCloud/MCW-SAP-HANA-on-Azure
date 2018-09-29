@@ -348,19 +348,14 @@ In this exercise, you will configure operating system settings on Azure VMs runn
 
     ```
      login as: demouser
-
      Using keyboard-interactive authentication.
-
      Password:
-
      SUSE Linux Enterprise Server 12 SP3 for SAP Applications x86_64 (64-bit)
 
      Please register this image using your existing SUSE entitlement.
 
      As "root" (sudo or sudo -i) use either one of the following commands:
-
       - SUSEConnect --url=https://scc.suse.com  -e company@example.com -r YOUR_CODE
-
       - yast scc
 
      to register the instance with SCC
@@ -368,11 +363,11 @@ In this exercise, you will configure operating system settings on Azure VMs runn
      Without registration this instance does not have access to updates and security fixes.
 
      If you are using extensions consider to enable the auto-update feature of the extension agent and restarting the service. As root execute:
-
        - sed -i s/AutoUpdate.Enabled=n/AutoUpdate.Enabled=y/ /etc/waagent.conf
-
        - rcwaagent restart
 
+     Management and Config: https://www.suse.com/suse-in-the-cloud-basics
+     Documentation: https://www.suse.com/documentation/sles-12/
      Forum: https://forums.suse.com/forumdisplay.php?93-SUSE-Public-Cloud
 
      Have a lot of fun...
@@ -386,9 +381,7 @@ In this exercise, you will configure operating system settings on Azure VMs runn
     We trust you have received the usual lecture from the local System Administrator. It usually boils down to these three things:
 
     #1) Respect the privacy of others.
-
     #2) Think before you type.
-
     #3) With great power comes great responsibility.
 
     [sudo] password for demouser: s03-db-0:~ #
@@ -398,11 +391,8 @@ In this exercise, you will configure operating system settings on Azure VMs runn
 
     ```
      s03-db-0:~ # SUSEConnect --url=https://scc.suse.com -e your-user-name@your-company-name -r registration-code
-
      Registered SLES_SAP 12.3 x86_64
-
      To server: https://scc.suse.com
-
      Using E-Mail: your-user-name@your-company-name
     ```
 
@@ -452,88 +442,29 @@ In this exercise, you will configure operating system settings on Azure VMs runn
 
     ```
      s03-db-0:~ # zypper update
-
      Refreshing service 'Public_Cloud_Module_12_x86_64'.
-
      Refreshing service 'SUSE_Linux_Enterprise_Server_for_SAP_Applications_12_SP3_x86_64'.
-
      Loading repository data...
-
      Reading installed packages...
 
-     The following 19 NEW packages are going to be installed:
+     The following 11 NEW packages are going to be installed:
+       bash-completion crash-kmp-default crda grub2-systemd-sleep-plugin kernel-default-4.4.155-
+       systemd-bash-completion wireless-regdb zypper-lifecycle-plugin zypper-log
 
-       bash-completion crash-kmp-default gdk-pixbuf-lang grub2-systemd-sleep-plugin
+     The following 49 packages are going to be upgraded:
+       ca-certificates-mozilla cloud-netconfig-azure cluster-glue cpp48 crmsh crmsh-scripts curl
+       java-1_7_1-ibm kdump ldirectord libXcursor1 libcurl4 libglue2 libgnutls28 libldap-2_4-2 l
+       libpacemaker3 libstorage-ruby libstorage7 libsystemd0 libtiff5 libudev1 libzypp lsof make
+       openssl pacemaker pacemaker-cli polkit-default-privs python-configobj resource-agents sap
+       systemd-sysvinit tuned udev xfsprogs yast2-auth-client yast2-bootloader yast2-network yas
 
-       kernel-default-4.4.92-6.18.1 kernel-firmware liblcms1 libmng1
-
-       libqt5-qtimageformats libqt5-qttranslations libwebp5 libwebpdemux1
-
-       libyui-qt-pkg7 openssh-askpass openssh-helpers plymouth-dracut postfix
-
-       sed-lang systemd-bash-completion
-
-     The following 135 packages are going to be upgraded:
-
-       Mesa Mesa-libEGL1 Mesa-libGL1 Mesa-libglapi0 SuSEfirewall2 at audit autofs
-
-       autoyast2 autoyast2-installation binutils corosync cpp48 ctdb curl cyrus-sasl
-
-       cyrus-sasl-digestmd5 cyrus-sasl-gssapi cyrus-sasl-plain cyrus-sasl-saslauthd
-
-       dbus-1 dbus-1-x11 desktop-data-SLE device-mapper dracut drbd-utils expat
-
-       gdk-pixbuf-query-loaders hyper-v insserv-compat iproute2 iptables
-
-       java-1_7_1-ibm javapackages-tools kexec-tools kpartx krb5 krb5-client
-
-       ldirectord libQt5Core5 libQt5DBus5 libQt5Gui5 libQt5Network5 libQt5Widgets5
-
-       libXvnc1 libaudit1 libauparse0 libcorosync4 libcurl4 libdbus-1-3
-
-       libdcerpc-binding0 libdcerpc0 libexpat1 libfreebl3 libgbm1 libgcrypt20
-
-       libgdk_pixbuf-2_0-0 libicu52_1 libicu52_1-data libiptc0 liblua5_1 libncurses5
-
-       libncurses6 libndr-krb5pac0 libndr-nbt0 libndr-standard0 libndr0 libnetapi0
-
-       libopenssl1_0_0 libpcre1 libpcre16-0 libprocps3 librados2
-
-       libsamba-credentials0 libsamba-errors0 libsamba-hostconfig0 libsamba-passdb0
-
-       libsamba-util0 libsamdb0 libsasl2-3 libsgutils2-2 libsmbconf0 libsmbldap0
-
-       libsoftokn3 libsystemd0 libtevent-util0 libtiff5 libudev1 libvirt-client
-
-       libvirt-libs libwbclient0 libxml2-2 libxtables10 logrotate lsscsi lvm2
-
-       lvm2-clvm lvm2-cmirrord mozilla-nss mozilla-nss-certs multipath-tools
-
-       ncurses-utils netcat-openbsd openssh openssl permissions procps
-
-       python-azure-agent python-pycrypto python-requests release-notes-sles
-
-       resource-agents samba-libs sed sg3_utils shadow supportutils
-
-       supportutils-plugin-suse-public-cloud systemd systemd-sysvinit tcpdump tcsh
-
-       terminfo terminfo-base udev xen-libs xinetd xorg-x11-Xvnc xtables-plugins
-
-       yast2-bootloader yast2-ca-management yast2-packager yast2-sap-scp-prodlist
-
-       yast2-storage yast2-xml
-
-     135 packages to upgrade, 19 new.
-
-     Overall download size: 239.0 MiB. Already cached: 0 B. After the operation,
-
-     additional 376.6 MiB will be used.
-
+     49 packages to upgrade, 11 new.
+     Overall download size: 186.1 MiB. Already cached: 0 B. After the operation, additional 359.
      Continue? [y/n/...? shows all options] (y): y
-
-     Retrieving package python-pycrypto-2.6.1-10.3.1.x86_64
-
-    (1/154), 371.8 KiB (  2.0 MiB unpacked)
+     Retrieving package libopenssl0_9_8-0.9.8j-106.6.1.x86_64                              (1/60
+     Retrieving: libopenssl0_9_8-0.9.8j-106.6.1.x86_64.rpm .....................................
+     Retrieving package libdlm-4.0.7-1.28.x86_64                                           (2/60
+     Retrieving: libdlm-4.0.7-1.28.x86_64.rpm ..................................................
 
      (…)
      ```	
@@ -542,57 +473,33 @@ In this exercise, you will configure operating system settings on Azure VMs runn
 
     ```
      s03-db-0:~ # zypper install sle-ha-release fence-agents
-
      Refreshing service 'Public_Cloud_Module_12_x86_64'.
-
      Refreshing service 'SUSE_Linux_Enterprise_Server_for_SAP_Applications_12_SP3_x86_64'.
-
      Loading repository data...
-
      Reading installed packages...
-
      'fence-agents' is already installed.
-
      No update candidate for 'fence-agents-4.0.25+git.1485179354.eb43835-2.19.x86_64'. The highest available version is already installed.
-
      Resolving package dependencies...
 
      The following 2 NEW packages are going to be installed:
-
        sle-ha-release sle-ha-release-POOL
 
      The following NEW product is going to be installed:
-
        "SUSE Linux Enterprise High Availability Extension 12 SP3"
 
      2 new packages to install.
-
-     Overall download size: 7.6 KiB. Already cached: 0 B. After the operation,
-
-     additional 1.7 KiB will be used.
-
+     Overall download size: 7.6 KiB. Already cached: 0 B. After the operation, additional 1.7 KiB will be used.
      Continue? [y/n/...? shows all options] (y): y
-
      Do you agree with the terms of the license? [yes/no] (no): yes
-
      Retrieving package sle-ha-release-POOL-12.3-1.53.x86_64
-
     (1/2),   3.1 KiB (   67   B unpacked)
-
      Retrieving: sle-ha-release-POOL-12.3-1.53.x86_64.rpm .....................[done]
-
      Retrieving package sle-ha-release-12.3-1.53.x86_64
-
      (2/2),   4.5 KiB (  1.6 KiB unpacked)
-
      Retrieving: sle-ha-release-12.3-1.53.x86_64.rpm ..........................[done]
-
      Checking for file conflicts: .............................................[done]
-
      (1/2) Installing: sle-ha-release-POOL-12.3-1.53.x86_64 ...................[done]
-
      (2/2) Installing: sle-ha-release-12.3-1.53.x86_64 ........................[done]
-
      s03-db-0:~ #
     ```
 
@@ -604,27 +511,16 @@ In this exercise, you will configure operating system settings on Azure VMs runn
 
     ```
      s03-db-0:~ # ssh-keygen -tdsa
-
      Generating public/private dsa key pair.
-
      Enter file in which to save the key (/root/.ssh/id_dsa):
-
      Created directory '/root/.ssh'.
-
      Enter passphrase (empty for no passphrase):
-
      Enter same passphrase again:
-
      Your identification has been saved in /root/.ssh/id_dsa.
-
      Your public key has been saved in /root/.ssh/id_dsa.pub.
-
      The key fingerprint is:
-
      SHA256:d52jKGzQ7o5+z+EqEcwcoD7rxCz3ld8E7+a6izW6+bE root@s03-db-0
-
      The key's randomart image is:
-
      +---[DSA 1024]----+
      |    ..           |
      |   .  .          |
@@ -638,7 +534,6 @@ In this exercise, you will configure operating system settings on Azure VMs runn
      +----[SHA256]-----+
 
      s03-db-0:~ # cat /root/.ssh/id_dsa.pub
-
      ssh-dss AAAAB3NzaC1kc3MAAACBALZjoS47twSwRPzEeCFtCl2QH/Az5m7HC9tJPavdocjx0RG0CBDj qdLiQ7IKrEL0FnupoE7LtVYNxXWN8lO1fEEmi4pJxIknLtKC/UgnSmkmqeZznXPztVZUPoHABw4TX90z Wm9YvrnciAnsMIPUBCe0Kg2ZIo2Z1F3kWmCEw6fhAAAAFQCRunrR7MAH/9RzM57qijQ1El7ybQAAAIEA lHLIvJnwg8czZv5JXIIL6vOO+GRSHNWeCbcw6auBZpJQWIDJQnCdq6kEMYZUXnBcb5QAxYPMMfD9FedU mxxuUJznlh4mnko9V0J4imMl28C8e1Lsjkh9TgH6a7jfB1RDOa8+if0speP2IyDxTuSLexJat8yuzClc lB9LnHu1Ep8AAACAa4ZphhcaCQlELcQao2YKu3br+B56Lj+apafFimLNQeiRY5kZQbAlGtBAVPs5gLpi 3w1kGLzTR3W9WNNwFzw8qpknbQyqSSs0GJmUrwL3PATBkvPn5cUSY+q/ZumCg54a14ooMB00CMQ5Vhup IpHX66hwXbTD9ja+W8XXJXejs8E= root@s03-db-0
     ```
 
@@ -646,25 +541,15 @@ In this exercise, you will configure operating system settings on Azure VMs runn
 
     ```
      s03-db-1:~ # ssh-keygen -tdsa
-
      Generating public/private dsa key pair.
-
      Enter file in which to save the key (/root/.ssh/id_dsa):
-
      Enter passphrase (empty for no passphrase):
-
      Enter same passphrase again:
-
      Your identification has been saved in /root/.ssh/id_dsa.
-
      Your public key has been saved in /root/.ssh/id_dsa.pub.
-
      The key fingerprint is:
-
      SHA256:tziVIs8+N87mb/HObzVO8vasU83kjtMN9XSiAL0WaDE root@s03-db-1
-
      The key's randomart image is:
-
      +---[DSA 1024]----+
      |        E+       |
      |        +.o      |
@@ -698,25 +583,15 @@ In this exercise, you will configure operating system settings on Azure VMs runn
 
     ```
      s03-db-0:~ # ssh-keygen
-
      Generating public/private dsa key pair.
-
      Enter file in which to save the key (/root/.ssh/id_dsa):
-
      Enter passphrase (empty for no passphrase):
-
      Enter same passphrase again:
-
      Your identification has been saved in /root/.ssh/id_rsa.
-
      Your public key has been saved in /root/.ssh/id_rsa.pub.
-
      The key fingerprint is:
-
      SHA256:BGv5NCePmzP/aHMr5MhMHe75to/cKUG6RAmzrgicBlY root@s03-db-1
-
      The key's randomart image is:
-     
      +---[RSA 2048]----+
      |  ++             |
      |.+.              |
@@ -730,7 +605,6 @@ In this exercise, you will configure operating system settings on Azure VMs runn
      +----[SHA256]-----+
 
      s03-db-0:~ # cat /root/.ssh/id_dsa.pub
-
      ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDXf3fFwe4qBmyI88xaorItLGXs8wmJsFRg3BaUD/phBE9Hajxu4pzwLIERyBT+DMW8sbXx6OmVe9bONr+s4GLF9fJ8fDcPlJmiGA5SpooaC33c1IxP1Fa0Hsva295rz6AkVSu+yw89aaImxs37bjpId2wvjbjGmWhujdKBsfxNkzrwisr+WnFnyPGD0vtP7pZ0YhNzPgHN/3IlfRfyILtLtFrFaSoQdJWzjt87Sj9C+SqyIR/R++kX2l55/q7zuHNXDQ4W4wVXawNC1NVS3UubgSJnwaBbqqZkF0Ijdu0gyM0hczdRA9mcp/gQ9NFkHYu4GTGLoYT6z2WyV4JyVNtt root@s03-db-0
     ```
 
@@ -738,25 +612,15 @@ In this exercise, you will configure operating system settings on Azure VMs runn
 
     ```
      s03-db-1:~ # ssh-keygen
-
      Generating public/private dsa key pair.
-
      Enter file in which to save the key (/root/.ssh/id_dsa):
-
      Enter passphrase (empty for no passphrase):
-
      Enter same passphrase again:
-
      Your identification has been saved in /root/.ssh/id_rsa.
-
      Your public key has been saved in /root/.ssh/id_rsa.pub.
-
      The key fingerprint is:
-
      SHA256:BGv5NCePmzP/aHMr5MhMHe75to/cKUG6RAmzrgicBlY root@s03-db-1
-
      The key's randomart image is:
-     
      +---[RSA 2048]----+
      |      .          |
      |   E   +o        |
@@ -770,7 +634,6 @@ In this exercise, you will configure operating system settings on Azure VMs runn
      +----[SHA256]-----+
 
      s03-db-1:~ # cat /root/.ssh/id_dsa.pub
-
      ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCyisn1Le0o491/Rw/99W1zuySWmR3iqMeAYG8XwQ5My6wt9zFHdADQwmw3atd5EgpZjlp/DZb7zk4wBgRhVaqLwEFfcmlqoTSdS4CG3oLuM8JJNYdKnD4asngWi98q7/+jwR78HmOZ36VK7+qWKb8l3cecMRsjlDJQF+MRYWknslMRoJgf9O42JG6GcNZ4RtMfq1FZZ8Qy73oKKIydUynSMBtQnPa38g+u/ypxtzv4wsVQL16LWA5UW2XylR9qK3VurZA6wrqfSY9jX1nO8pxaZOnVyPDIgW7EhUgdt95MuL0RWLYCqaHfOeeKDhPwcC3tLyZysZ7dKu2tLbUQJ3kF root@s03-db-1
     ```
 
@@ -796,7 +659,6 @@ In this exercise, you will configure operating system settings on Azure VMs runn
 
     ```
      PermitRootLogin yes
-
      AuthorizedKeysFile      /root/.ssh/authorized_keys
     ```
 
@@ -882,7 +744,6 @@ In this exercise, you will configure clustering on Azure VMs running Linux.
     
     ```
      s03-db-0:~ # ha-cluster-init
-
      ! NTP is not configured to start at system boot.
      ! No watchdog device found. If SBD is used, the cluster will be unable to start without a watchdog.
      Do you want to continue anyway (y/n)? y
