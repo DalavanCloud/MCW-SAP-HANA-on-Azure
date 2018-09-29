@@ -233,29 +233,29 @@ In this exercise, you will deploy Azure infrastructure prerequisites for impleme
 
     -   Resource group: **hana-s03-RG**
 
-    -   Location: *The Azure region you identified in the Before the Hands-on Lab section*
-
     -   Sap System Id: **S03**
 
     -   Os Type: **SLES 12 BYOS**
 
-    -   Db Type: **HANA**
+    -   Dbtype: **HANA**
 
-    -   SAP System Size: **Demo**
+    -   Sap System Size: **Demo**
 
     -   System Availability: **HA**
 
     -   Admin Username: **demouser**
 
-    -   Admin Password: **demo\@pass123**
+    -   Authentication Type: password
     
-    -   Ssh Key Data: leave blank
+    -   Admin Password Or Key: **demo\@pass123**
 
     -   Subnet id: *To identify the value of the subnet id parameter, run the following three commands from the Cloud Shell's Bash prompt to identify the value to enter here (use the value that ends with* **subnet-1**):
     
     ```
     az network vnet subnet list --resource-group hana-s03-RG --vnet-name hana-s03-RG-vnet --query "[?contains(id,'subnet-1')].{id: id}"
     ```
+    -   Location: [resourceGroup().location]
+
     -   \_artifacts Location: *accept the default value*
 
     -   \_artifacts Location SaS Token: *accept the default value*
