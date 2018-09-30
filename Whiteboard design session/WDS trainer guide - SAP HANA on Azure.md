@@ -10,7 +10,7 @@ SAP HANA on Azure
 </div>
 
 <div class="MCWHeader3">
-December 2017
+October 2018
 </div>
 
 
